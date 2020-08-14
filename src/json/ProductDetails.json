@@ -1,0 +1,88 @@
+{
+    "Data": [
+        {
+            "itemRow": 880,
+            "item": "MP40960",
+            "sale_item": "MP40960",
+            "categoryParentId": 4,
+            "categoryParent": null,
+            "categoryChildId": 51,
+            "categoryChild": null,
+            "descriptionShort": "Emergency Cut-Off Switch",
+            "descriptionLong": "Emergency Cut-Off Switch",
+            "interchangeDetails": [
+                {
+                    "searchNumber": "4204861",
+                    "brandId": 223
+                }
+            ],
+            "productDetails": [
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "Straight Lanyard"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "Kills ignition when lanyard is pulled"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "For use with conventional or magneto ignitions"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "Unique design keeps plunger down when lanyard connected"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "Seals out moisture"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "Makes re-connection easier"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "Panel thickness up to 1/4''"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "_FEATURE",
+                    "value": "4 Terminals allow selection of normally open or normally closed circuit"
+                },
+                {
+                    "itemRow": 880,
+                    "attrtibute": "Replacement Lanyard",
+                    "value": "MP40980"
+                }
+            ],
+            "productSpecs": [
+                {
+                    "weight": 0.1825,
+                    "height": 9.0000,
+                    "depth": 2.1300,
+                    "width": 3.5000,
+                    "superceed": "",
+                    "uintOfMeasure": "EA",
+                    "itemStatus": "A",
+                    "upc": "808282367183",
+                    "stdPkg": 1,
+                    "casePkg": 6,
+                    "hsc": "853650",
+                    "eccn": "8536.50.9065",
+                    "origin": "TW"
+                }
+            ]
+        }
+    ],
+    "Total": 1,
+    "AggregateResults": null,
+    "Errors": null
+}

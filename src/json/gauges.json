@@ -1,0 +1,2962 @@
+[
+ {
+   "Gauge part #": "57897P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 6K/Hourmeter, Amega 3\""
+ },
+ {
+   "Gauge part #": "57898P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Amega 3\" 50 mph"
+ },
+ {
+   "Gauge part #": "57898PH",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Amega 3\" 50 mph"
+ },
+ {
+   "Gauge part #": "57899P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Amega 3\" 80 mph"
+ },
+ {
+   "Gauge part #": "57899PH",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Amega 3\"  80 mph"
+ },
+ {
+   "Gauge part #": "57900P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Amega 3\"  65 mph"
+ },
+ {
+   "Gauge part #": "57900PH",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Amega 3\"  65 mph"
+ },
+ {
+   "Gauge part #": "57901P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Amega 2\", 8-18 VDC"
+ },
+ {
+   "Gauge part #": "57902P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Fuel ",
+   "Diameter": "2\"",
+   "Description": "Fuel Gauge, Amega, 2\""
+ },
+ {
+   "Gauge part #": "57903P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Gauge, Amega 2\" 0-80 PSI"
+ },
+ {
+   "Gauge part #": "57904P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature Gauge, Amega 2\" I/O-IB"
+ },
+ {
+   "Gauge part #": "57905P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Amega 2\" Merc/Volvo DP/SX Yam01"
+ },
+ {
+   "Gauge part #": "57929P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Gauge, Amega 2\" 0-100 PSI"
+ },
+ {
+   "Gauge part #": "58255P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tachometer 7K, Amega 3\""
+ },
+ {
+   "Gauge part #": "58342P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Amega 3\"  35 mph"
+ },
+ {
+   "Gauge part #": "58342PH",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Amega 3\"  35 mph"
+ },
+ {
+   "Gauge part #": "58431P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Amega 2\" J/E, Suz 4 Stroke 02"
+ },
+ {
+   "Gauge part #": "58862P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temp Kit, Amega 2\" Outboard"
+ },
+ {
+   "Gauge part #": "58935P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Amega 3\" BRP System Check"
+ },
+ {
+   "Gauge part #": "61238P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Amega 2\""
+ },
+ {
+   "Gauge part #": "61748P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Amega 2\" Yamaha pre 2001"
+ },
+ {
+   "Gauge part #": "65205P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Systems Check",
+   "Diameter": "2\"",
+   "Description": "Systems Check Gauge BRP, Amega 2\""
+ },
+ {
+   "Gauge part #": "68356P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Ammeter",
+   "Diameter": "2\"",
+   "Description": "Ammeter, Amega 2\", 60-0-60"
+ },
+ {
+   "Gauge part #": "68357P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Amega 2\""
+ },
+ {
+   "Gauge part #": "68361P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Battery Indicator",
+   "Diameter": "2\"",
+   "Description": "Battery Condition Indicator, A"
+ },
+ {
+   "Gauge part #": "68443P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, Amega 3\""
+ },
+ {
+   "Gauge part #": "69044P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Amega 3\" Force"
+ },
+ {
+   "Gauge part #": "69708P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Instrument Set, Amega"
+ },
+ {
+   "Gauge part #": "69709P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Amega Gauge Set (I/O, I/B):"
+ },
+ {
+   "Gauge part #": "69721P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Gauge Kit, Amega, Twin Engine Add On OB"
+ },
+ {
+   "Gauge part #": "69722P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Gauge Kit, Amega, Twin Engine Add On IB/IO"
+ },
+ {
+   "Gauge part #": "781-579-035P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Amega, 35 mph"
+ },
+ {
+   "Gauge part #": "781-579-060P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO GPS, AMEGA, 60 MPH"
+ },
+ {
+   "Gauge part #": "781-579-080P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Amega, 80 mph"
+ },
+ {
+   "Gauge part #": "84760P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Amega 2\" 12-24VDC"
+ },
+ {
+   "Gauge part #": "68358P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega ",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 4K, Amega 3\" Diesel Alt"
+ },
+ {
+   "Gauge part #": "68359P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega ",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Amega 2\" Honda"
+ },
+ {
+   "Gauge part #": "68362P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega ",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "4 Gauge Set, Amega"
+ },
+ {
+   "Gauge part #": "68363P",
+   "AnalogDigital": "Analog",
+   "Style": "Amega ",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "6 Gauge Set, Amega"
+ },
+ {
+   "Gauge part #": "68364P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Ammeter",
+   "Diameter": "2\"",
+   "Description": "Ammeter, Arctic 2\", 60-0-60"
+ },
+ {
+   "Gauge part #": "68365P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Gauge, Artic 2\""
+ },
+ {
+   "Gauge part #": "68366P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Arctic 2\" 12-24VDC"
+ },
+ {
+   "Gauge part #": "68367P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Artic 2\" 0-80 PSI"
+ },
+ {
+   "Gauge part #": "68369P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Arctic"
+ },
+ {
+   "Gauge part #": "68370P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Arctic 3\" 35 mph"
+ },
+ {
+   "Gauge part #": "68371P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Arctic 3\" 65 mph"
+ },
+ {
+   "Gauge part #": "68372P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Arctic 3\" 80 mph"
+ },
+ {
+   "Gauge part #": "68373P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 4K, Arctic 3\" Diesel Alt"
+ },
+ {
+   "Gauge part #": "68374P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Arctic 3\""
+ },
+ {
+   "Gauge part #": "68375P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, Arctic 3\""
+ },
+ {
+   "Gauge part #": "68376P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Arctic 2\" I/O-IB"
+ },
+ {
+   "Gauge part #": "68377P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temp Kit, Arctic 2\" O/B"
+ },
+ {
+   "Gauge part #": "68378P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Arctic 2\" J/E, Suz 4 stroke 02"
+ },
+ {
+   "Gauge part #": "68379P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Gauge, Trim, Arctic 2\" Honda"
+ },
+ {
+   "Gauge part #": "68380P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Arctic 2\" Merc/Volvo DP/SX"
+ },
+ {
+   "Gauge part #": "68381P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Gauge, Trim, Arctic 2\" Yamaha pre 2001"
+ },
+ {
+   "Gauge part #": "68383P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Arctic 2\", 8-18 VDC"
+ },
+ {
+   "Gauge part #": "68384P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Battery Indicator",
+   "Diameter": "2\"",
+   "Description": "Battery Condition Indicator, Artic"
+ },
+ {
+   "Gauge part #": "68385P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Systems Check",
+   "Diameter": "2\"",
+   "Description": "Systems Check Gauge BRP, Arcti"
+ },
+ {
+   "Gauge part #": "68387P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "4 Gauge Set, Arctic"
+ },
+ {
+   "Gauge part #": "68388P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "6 Gauge Set, Arctic"
+ },
+ {
+   "Gauge part #": "69710P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Instrument Set OB w/Tach/Hr -  Arctic"
+ },
+ {
+   "Gauge part #": "69711P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Instrument Set IB/IO w/Tach/Hr"
+ },
+ {
+   "Gauge part #": "69723P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Twin Engine Add On OB Gauge Kit, Arctic"
+ },
+ {
+   "Gauge part #": "69724P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Twin Engine Add On IB/IO Gauge Kit, Arctic"
+ },
+ {
+   "Gauge part #": "781-683-035P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Arctic, 35 mph"
+ },
+ {
+   "Gauge part #": "781-683-060P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO GPS, ARCTIC, 60 MPH"
+ },
+ {
+   "Gauge part #": "781-683-080P",
+   "AnalogDigital": "Analog",
+   "Style": "Arctic",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Arctic, 80 mph"
+ },
+ {
+   "Gauge part #": "65520SSF",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Multi-Gauge",
+   "Diameter": "",
+   "Description": "4N1 ARG OP,WT,FUEL,VOLT AF."
+ },
+ {
+   "Gauge part #": "65524P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "FUEL GAUGE, ARGENT PRO 2\""
+ },
+ {
+   "Gauge part #": "65525P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Oil Pressure",
+   "Diameter": "3 or 4",
+   "Description": "OIL PRESSURE GUAGE, ARGENT PRO"
+ },
+ {
+   "Gauge part #": "65526P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "OIL PRESSURE GUAGE, ARGENT PRO"
+ },
+ {
+   "Gauge part #": "65529P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO KIT, ARGENT, 3\" 50 MPH"
+ },
+ {
+   "Gauge part #": "65530P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Speedometer",
+   "Diameter": "5\"",
+   "Description": "SPEEDO KIT, ARGENT 50 MPH, 5IN"
+ },
+ {
+   "Gauge part #": "65531P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO KIT, ARGENT, 70MPH"
+ },
+ {
+   "Gauge part #": "65535P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tachometer 3\""
+ },
+ {
+   "Gauge part #": "65536P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Tachometer",
+   "Diameter": "5\"",
+   "Description": "Tachometer, Argent 5\""
+ },
+ {
+   "Gauge part #": "65537P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "TACH 4K, ARGENT 3\" DIESEL ALT"
+ },
+ {
+   "Gauge part #": "65545P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach/Hourmeter 7K, 3\" ARGENT"
+ },
+ {
+   "Gauge part #": "65547P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "TRIM, ARGENT 2\""
+ },
+ {
+   "Gauge part #": "65548P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "TRIM, ARGENT 2\""
+ },
+ {
+   "Gauge part #": "65550P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "VOLTMETER, ARGENT 10-16 VOLTS"
+ },
+ {
+   "Gauge part #": "65551P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "WATER PRESSURE KIT"
+ },
+ {
+   "Gauge part #": "65553P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "WATER TEMPERATURE, ARGENT 2\" I/O-IB"
+ },
+ {
+   "Gauge part #": "781-294-060P",
+   "AnalogDigital": "Analog",
+   "Style": "Argent Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO GPS, ARGENT PRO, 60 MPH, 3\""
+ },
+ {
+   "Gauge part #": "62715P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "6 Gauge Instrument Set, Black Premier Pro"
+ },
+ {
+   "Gauge part #": "62718P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Gauge, Black Premier Pro 2\""
+ },
+ {
+   "Gauge part #": "62719P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Black Premier Pro 2"
+ },
+ {
+   "Gauge part #": "62720P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Black Premier Pr"
+ },
+ {
+   "Gauge part #": "62721P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Black"
+ },
+ {
+   "Gauge part #": "62722P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Black Premier Pro 3\""
+ },
+ {
+   "Gauge part #": "62723P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Black Premier Pro 3\""
+ },
+ {
+   "Gauge part #": "62723PH",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Black Premier Pro 3\""
+ },
+ {
+   "Gauge part #": "62724P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 6K, Black Premier Pro 3\""
+ },
+ {
+   "Gauge part #": "62725P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 8K, Black Premier Pro 3\""
+ },
+ {
+   "Gauge part #": "62726P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Black Premier Pro 2\""
+ },
+ {
+   "Gauge part #": "62727P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Black Premier Pro 2\" Merc/Volvo"
+ },
+ {
+   "Gauge part #": "62728P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Black Premier Pro 2\""
+ },
+ {
+   "Gauge part #": "62729P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature Gauge, Black Premier Pro 2\""
+ },
+ {
+   "Gauge part #": "62730P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Black Premier Pro"
+ },
+ {
+   "Gauge part #": "62748P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temp Kit, Black Premier Pro 2\" Outboard"
+ },
+ {
+   "Gauge part #": "781-627-035P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Black Premier Pro"
+ },
+ {
+   "Gauge part #": "781-627-060P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO GPS, BLACK PREMIER PRO"
+ },
+ {
+   "Gauge part #": "781-627-080P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Black Premier Pro"
+ },
+ {
+   "Gauge part #": "781-627-120P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Black Premier Pro"
+ },
+ {
+   "Gauge part #": "67019P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Black Sterling 2\","
+ },
+ {
+   "Gauge part #": "67020P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Black Sterling 2\" I/O - IB"
+ },
+ {
+   "Gauge part #": "67021P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Gauge, Black Sterling 2\""
+ },
+ {
+   "Gauge part #": "67022P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Gauge, Black Sterling 2\""
+ },
+ {
+   "Gauge part #": "67023P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Black Sterling 2\" Merc/Volvo DP/SX Yam01"
+ },
+ {
+   "Gauge part #": "67283P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Black Sterling 3\""
+ },
+ {
+   "Gauge part #": "67285P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Black Sterling 3\""
+ },
+ {
+   "Gauge part #": "67363P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Black Sterling 3\""
+ },
+ {
+   "Gauge part #": "67364P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, Black Sterling 3\""
+ },
+ {
+   "Gauge part #": "67365P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Black Sterling 2\" J/E, Suz 4 stroke 02"
+ },
+ {
+   "Gauge part #": "67382P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Black Sterling"
+ },
+ {
+   "Gauge part #": "68960P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Black Sterling 50 MPH Speedo"
+ },
+ {
+   "Gauge part #": "68960PH",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedometer, Head, Black Sterling 50 MPH"
+ },
+ {
+   "Gauge part #": "69073FP",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedometer/Fuel Gauge, Black Sterling"
+ },
+ {
+   "Gauge part #": "69074FP",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Multi-Gauge",
+   "Diameter": "3\"",
+   "Description": "Tachometer/Voltmeter, Black Sterling"
+ },
+ {
+   "Gauge part #": "61546P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Driftwood 3\""
+ },
+ {
+   "Gauge part #": "61547P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Driftwood 3\"  50 m"
+ },
+ {
+   "Gauge part #": "61548P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Driftwood  2\", 8-18"
+ },
+ {
+   "Gauge part #": "61549P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel, Driftwood 2\""
+ },
+ {
+   "Gauge part #": "61550P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Driftwood 2\" 0-8"
+ },
+ {
+   "Gauge part #": "61551P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Driftwood 2\" Merc/Volvo DP/SX Yam01"
+ },
+ {
+   "Gauge part #": "61552P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Driftwood 2"
+ },
+ {
+   "Gauge part #": "62375P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Driftwood 2\", Honda"
+ },
+ {
+   "Gauge part #": "62698P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Driftwood 3\" BRP System Check"
+ },
+ {
+   "Gauge part #": "62952P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Driftwood 2\" 12-24V"
+ },
+ {
+   "Gauge part #": "62960P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Driftw"
+ },
+ {
+   "Gauge part #": "63516P",
+   "AnalogDigital": "Analog",
+   "Style": "Driftwood",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Driftwood 3\"  80 m"
+ },
+ {
+   "Gauge part #": "68389P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Ammeter",
+   "Diameter": "2\"",
+   "Description": "Ammeter, Eclipse 2\", 60-0-60"
+ },
+ {
+   "Gauge part #": "68390P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Gauge, Eclipse 2\""
+ },
+ {
+   "Gauge part #": "68391P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Eclipse 2\" 12-24VDC"
+ },
+ {
+   "Gauge part #": "68392P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Gauge, Eclipse 2\" 0-80PSI"
+ },
+ {
+   "Gauge part #": "68393P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Gauge , Eclipse 2\" 0-100PSI"
+ },
+ {
+   "Gauge part #": "68394P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Eclipse 2\", 40 psi"
+ },
+ {
+   "Gauge part #": "68395P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Eclipse 3\" 35 mph"
+ },
+ {
+   "Gauge part #": "68396P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Eclipse 3\" 65 mph"
+ },
+ {
+   "Gauge part #": "68397P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Eclipse 3\" 80 mph"
+ },
+ {
+   "Gauge part #": "68398P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 4K, Eclipse 3\" Diesel Alt"
+ },
+ {
+   "Gauge part #": "68399P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K Eclipse 3\""
+ },
+ {
+   "Gauge part #": "68400P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, Eclipse 3\""
+ },
+ {
+   "Gauge part #": "68401P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Eclipse 2\""
+ },
+ {
+   "Gauge part #": "68402P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temp Kit, Eclipse 2\" O/B"
+ },
+ {
+   "Gauge part #": "68403P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Eclipse 2\" J/E, Suz 4 stroke 02"
+ },
+ {
+   "Gauge part #": "68404P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Eclipse 2\" Honda"
+ },
+ {
+   "Gauge part #": "68405P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Eclipse 2\" Merc/Volvo DP/SX"
+ },
+ {
+   "Gauge part #": "68406P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Eclipse 2\" Yamaha pre 2001"
+ },
+ {
+   "Gauge part #": "68408P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Eclipse 2\", 8-18 VDC"
+ },
+ {
+   "Gauge part #": "68409P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Battery Indicator",
+   "Diameter": "2\"",
+   "Description": "Battery Condition Indicator, Eclipse"
+ },
+ {
+   "Gauge part #": "68410P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Systems Check",
+   "Diameter": "2\"",
+   "Description": "Systems Check Gauge BRP, Eclipse 2\""
+ },
+ {
+   "Gauge part #": "68411P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Warning Light",
+   "Diameter": "2\"",
+   "Description": "Warning Light Gauge, Eclipse 2"
+ },
+ {
+   "Gauge part #": "68412P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "4 Gauge Set, Eclipse"
+ },
+ {
+   "Gauge part #": "68413P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "6 Gauge Set, Eclipse"
+ },
+ {
+   "Gauge part #": "69712P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Instrument Set OB w/Tach/Hr - Eclipse"
+ },
+ {
+   "Gauge part #": "69713P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Instrument Set IB/IO w/Tach/Hr"
+ },
+ {
+   "Gauge part #": "69725P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Gauge Set, Eclipse, Twin Engine Add on O/B"
+ },
+ {
+   "Gauge part #": "69726P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Twin Engine Add On IB/IOGauge"
+ },
+ {
+   "Gauge part #": "781-684-035P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Eclipse, 35 mph"
+ },
+ {
+   "Gauge part #": "781-684-060P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO GPS, ECLIPSE, 60 MPH"
+ },
+ {
+   "Gauge part #": "781-684-080P",
+   "AnalogDigital": "Analog",
+   "Style": "Eclipse",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, Eclipse, 80 mph"
+ },
+ {
+   "Gauge part #": "67102F",
+   "AnalogDigital": "Analog",
+   "Style": "Gold Sterling",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "VOLTMETER, GOLD STERLING 2IN, 8-18 VDC"
+ },
+ {
+   "Gauge part #": "67105",
+   "AnalogDigital": "Analog",
+   "Style": "Gold Sterling",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "WATER TEMPERATURE, GOLD STERLING 2IN I/O-1B"
+ },
+ {
+   "Gauge part #": "67173P",
+   "AnalogDigital": "Analog",
+   "Style": "Gold Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Gold Sterling 3\""
+ },
+ {
+   "Gauge part #": "67173PH",
+   "AnalogDigital": "Analog",
+   "Style": "Gold Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Gold Sterling 3\""
+ },
+ {
+   "Gauge part #": "67174P",
+   "AnalogDigital": "Analog",
+   "Style": "Gold Sterling",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, Gold Sterli"
+ },
+ {
+   "Gauge part #": "67175P",
+   "AnalogDigital": "Analog",
+   "Style": "Gold Sterling",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Gold Sterling 2\" J/E, Suz 4 stroke 02"
+ },
+ {
+   "Gauge part #": "67873P",
+   "AnalogDigital": "Analog",
+   "Style": "Gold Sterling",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Gold Sterling 2\""
+ },
+ {
+   "Gauge part #": "67353P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Heavy Duty Nylon"
+ },
+ {
+   "Gauge part #": "80131P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Heavy Duty Nylon  2\""
+ },
+ {
+   "Gauge part #": "80134P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Heavy Duty Nylon  2\""
+ },
+ {
+   "Gauge part #": "80150P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Heavy Duty Nylon 2\" 12 Volt"
+ },
+ {
+   "Gauge part #": "80180P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Gauge Heavy Duty Nylon 2\""
+ },
+ {
+   "Gauge part #": "80181P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Heavy Duty Nylon"
+ },
+ {
+   "Gauge part #": "80514P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Heavy Duty 3\"  60"
+ },
+ {
+   "Gauge part #": "80514PH",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Heavy Duty 3\"  60"
+ },
+ {
+   "Gauge part #": "80590P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temp, Heavy Duty Nylon 2\""
+ },
+ {
+   "Gauge part #": "80593P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temp, Heavy Duty Nylon 2"
+ },
+ {
+   "Gauge part #": "80596P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Oil Temperature",
+   "Diameter": "2\"",
+   "Description": "Oil Temperature, Heavy Duty Nylon 2\" Guage"
+ },
+ {
+   "Gauge part #": "80710P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Ammeter",
+   "Diameter": "2\"",
+   "Description": "Ammeter, Heavy Duty Nylon 2\","
+ },
+ {
+   "Gauge part #": "80712P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Ammeter",
+   "Diameter": "2\"",
+   "Description": "Ammeter, Heavy Duty Nylon 2\","
+ },
+ {
+   "Gauge part #": "80730P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Engine Synchronizer",
+   "Diameter": "2\"",
+   "Description": "Engine Sync, Heavy Duty Nylon"
+ },
+ {
+   "Gauge part #": "82288P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 6K, Heavy Duty Nylon 3\""
+ },
+ {
+   "Gauge part #": "82301P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 3.5K, Heavy Duty Nylon 3\""
+ },
+ {
+   "Gauge part #": "82302P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 3.5K, Heavy Duty Nylon 3\""
+ },
+ {
+   "Gauge part #": "82303P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 3.5K, Heavy Duty Nylon 3\""
+ },
+ {
+   "Gauge part #": "82760P",
+   "AnalogDigital": "Analog",
+   "Style": "Heavy Duty",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Heavy Duty 2\" 12-24VDC"
+ },
+ {
+   "Gauge part #": "59416P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Lido Pro 2\""
+ },
+ {
+   "Gauge part #": "59656P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Lido Fog Resistant 2\""
+ },
+ {
+   "Gauge part #": "59657P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Lido Fog Resistant 2\" Merc/Mar"
+ },
+ {
+   "Gauge part #": "59713P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Lido Fog Resistant 3\""
+ },
+ {
+   "Gauge part #": "59737P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Lido 3\" Fog Resistant"
+ },
+ {
+   "Gauge part #": "61751P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Lido 3\" 35 mph"
+ },
+ {
+   "Gauge part #": "61751PH",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Lido 3\" 35 mph"
+ },
+ {
+   "Gauge part #": "61752P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Lido 3\" 50 mph"
+ },
+ {
+   "Gauge part #": "61752PH",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Lido 3\" 50 mph"
+ },
+ {
+   "Gauge part #": "64477FP",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Lido 3\" BRP System Ch"
+ },
+ {
+   "Gauge part #": "65129P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, Lido 3\""
+ },
+ {
+   "Gauge part #": "65206SSP",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Systems Check",
+   "Diameter": "2\"",
+   "Description": "Systems Check Gauge BRP, Lido"
+ },
+ {
+   "Gauge part #": "65495P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Engine Synchronizer",
+   "Diameter": "2\"",
+   "Description": "Engine Sync, Lido 2\", Gauge On"
+ },
+ {
+   "Gauge part #": "65496P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Guage, Lido 2\""
+ },
+ {
+   "Gauge part #": "65497P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Lido 2\" 12-24VDC"
+ },
+ {
+   "Gauge part #": "65498P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Lido 2\" 0-100 PSI"
+ },
+ {
+   "Gauge part #": "65501P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Lido 2\" 0-80 PSI"
+ },
+ {
+   "Gauge part #": "65502P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Lido 2\" J/E, Suz 4 stroke 02"
+ },
+ {
+   "Gauge part #": "65503P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Lido 2\" Honda"
+ },
+ {
+   "Gauge part #": "65504P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Lido 2\" Merc/Volvo DP/SX"
+ },
+ {
+   "Gauge part #": "65505P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Lido 2\" Yamaha pre 2001"
+ },
+ {
+   "Gauge part #": "65506P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Lido 2\", 8-18 VDC"
+ },
+ {
+   "Gauge part #": "65507P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Lido 2\""
+ },
+ {
+   "Gauge part #": "65508P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temp Kit, Lido 2\" Outboad"
+ },
+ {
+   "Gauge part #": "65509P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Lido 2\" I/O - IB"
+ },
+ {
+   "Gauge part #": "65510P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Lido 3\" 65 mph"
+ },
+ {
+   "Gauge part #": "65669SSP",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Warning Light",
+   "Diameter": "2\"",
+   "Description": "Warning Light Gauge, Lido 2\","
+ },
+ {
+   "Gauge part #": "65670P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Lido 3\" 80 mph"
+ },
+ {
+   "Gauge part #": "65670PH",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Lido 3\" 80 mph"
+ },
+ {
+   "Gauge part #": "65671P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 4K/Hourmeter Lido 3\" Diesel Alt"
+ },
+ {
+   "Gauge part #": "65692P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 4K/Hourmeter Lido 3\" Diesel"
+ },
+ {
+   "Gauge part #": "65693P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Lido 3\""
+ },
+ {
+   "Gauge part #": "67653P",
+   "AnalogDigital": "Analog",
+   "Style": "lido",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "6 Gauge Set, Lido Fog Resistan"
+ },
+ {
+   "Gauge part #": "67669P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "4 Gauge Set, Lido Pro Fog Resistant"
+ },
+ {
+   "Gauge part #": "780156PMFB",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Multi-Gauge",
+   "Diameter": "",
+   "Description": "4 In 1 Lido Multi Guage"
+ },
+ {
+   "Gauge part #": "780158PMFB",
+   "AnalogDigital": "Analog",
+   "Style": "Lido",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "FUEL LVL E-1/2-F LIDO EL SS                          SPEC ORD ONLY"
+ },
+ {
+   "Gauge part #": "59649P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Lido Pro 3\" 80 mph"
+ },
+ {
+   "Gauge part #": "59653F",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "OIL PRESSURE, ELECT, 0-80 PSI"
+ },
+ {
+   "Gauge part #": "59653P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure Gauge, Lido Pro 2\""
+ },
+ {
+   "Gauge part #": "59654",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "WATER TEMP, ELECT, 120-240F"
+ },
+ {
+   "Gauge part #": "59654F",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "WATER TEMP, ELECT, 120-240F"
+ },
+ {
+   "Gauge part #": "59654P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature Gauge, Lido Pro 2\" I/O - IB"
+ },
+ {
+   "Gauge part #": "59655P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Gauge, Lido Pro  2\""
+ },
+ {
+   "Gauge part #": "61752FP",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Lido Pro 3\" Fog Resistant "
+ },
+ {
+   "Gauge part #": "63523P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Lido Pro 2\""
+ },
+ {
+   "Gauge part #": "67855P",
+   "AnalogDigital": "Analog",
+   "Style": "Black Sterling",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Black Sterling, Honda"
+ },
+ {
+   "Gauge part #": "781-310-035P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "GPS Speedometer, Lido Pro, 35 MPH"
+ },
+ {
+   "Gauge part #": "781-310-060P",
+   "AnalogDigital": "Analog",
+   "Style": "Lido Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO GPS, LIDO PRO, 60 MPH"
+ },
+ {
+   "Gauge part #": "69992D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Secondary, Matrix"
+ },
+ {
+   "Gauge part #": "69993D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Matrix"
+ },
+ {
+   "Gauge part #": "69994D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure 40 PSI, Matrix"
+ },
+ {
+   "Gauge part #": "70000D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tachometer, Matrix, Smartcraft"
+ },
+ {
+   "Gauge part #": "70001D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tachometer, Matrix, NEMA 2000"
+ },
+ {
+   "Gauge part #": "70002D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedometer w/ LCD US 90 MPH"
+ },
+ {
+   "Gauge part #": "70003D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Furl Primary, Matrix"
+ },
+ {
+   "Gauge part #": "70004D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter 10-16 VDC, Matrix"
+ },
+ {
+   "Gauge part #": "70005D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Matrix"
+ },
+ {
+   "Gauge part #": "70006D",
+   "AnalogDigital": "Analog",
+   "Style": "Matrix",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Matrix"
+ },
+ {
+   "Gauge part #": "59703P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Sahara 3\""
+ },
+ {
+   "Gauge part #": "59704P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Sahara 3\"  65 mph"
+ },
+ {
+   "Gauge part #": "59704PH",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Sahara 3\"  65 mph"
+ },
+ {
+   "Gauge part #": "59705P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Sahara 2\" 0-80 P"
+ },
+ {
+   "Gauge part #": "59706P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Sahara 2\" I"
+ },
+ {
+   "Gauge part #": "59707P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel, Sahara 2\""
+ },
+ {
+   "Gauge part #": "59708P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Sahara 2\", 8-18 VDC"
+ },
+ {
+   "Gauge part #": "59709P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Sahara 2\" Merc/Volvo DP/SX"
+ },
+ {
+   "Gauge part #": "61163P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Sahara 3\"  50 mph"
+ },
+ {
+   "Gauge part #": "61826P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Sahara 3\"  35 mph"
+ },
+ {
+   "Gauge part #": "61826PH",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Sahara 3\"  35 mph"
+ },
+ {
+   "Gauge part #": "61901P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Sahara 3\" BRP System"
+ },
+ {
+   "Gauge part #": "61908P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Sahara 2\" J/E, Suz 4 str"
+ },
+ {
+   "Gauge part #": "62369P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Sahara 2\", Honda"
+ },
+ {
+   "Gauge part #": "63076P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Sahara 3\"  80 mph"
+ },
+ {
+   "Gauge part #": "63076PH",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Sahara 3\"  80 mph"
+ },
+ {
+   "Gauge part #": "65481P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "4 Gauge Set, Sahara"
+ },
+ {
+   "Gauge part #": "65485P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "6 Gauge Set, Sahara"
+ },
+ {
+   "Gauge part #": "66956P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Systems Check",
+   "Diameter": "2\"",
+   "Description": "Systems Check Gauge BRP, Sahar"
+ },
+ {
+   "Gauge part #": "69703P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Instrument Set OB w/Tach/Hr SAHARA"
+ },
+ {
+   "Gauge part #": "69704P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Instrument Set IB/IO w/Tach/Hr SAHARA"
+ },
+ {
+   "Gauge part #": "69716P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "uge Kit, Sahara, Twin Engine Add On OB"
+ },
+ {
+   "Gauge part #": "69717P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "Twin Engine Add On IB/IO Gauge Kit"
+ },
+ {
+   "Gauge part #": "69743P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tachometer (Electric):Tach/Hou"
+ },
+ {
+   "Gauge part #": "69870P",
+   "AnalogDigital": "Analog",
+   "Style": "Sahara",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, SAHARA"
+ },
+ {
+   "Gauge part #": "63473P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, Sterling 3\""
+ },
+ {
+   "Gauge part #": "63474P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, Sterling 3\""
+ },
+ {
+   "Gauge part #": "63475P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Sterling 3\"  65 mp"
+ },
+ {
+   "Gauge part #": "63475PH",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Sterling 3\"  65 m"
+ },
+ {
+   "Gauge part #": "63476P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, Sterling 3\"  80 mp"
+ },
+ {
+   "Gauge part #": "63476PH",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, Sterling 3\"  80 m"
+ },
+ {
+   "Gauge part #": "63477P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel, Sterling 2\""
+ },
+ {
+   "Gauge part #": "63478P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, Sterling 2\", 8-18 V"
+ },
+ {
+   "Gauge part #": "63479P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, Sterling 2\" 0-80"
+ },
+ {
+   "Gauge part #": "63480P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, Sterling 2\""
+ },
+ {
+   "Gauge part #": "63481P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Kit O/B, Sterli"
+ },
+ {
+   "Gauge part #": "63482P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim Gauge, Sterling 2\" Merc/Volvo DP/SX Yam01"
+ },
+ {
+   "Gauge part #": "63483P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Sterling 2\" J/E, Suz 4 s"
+ },
+ {
+   "Gauge part #": "63585P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Systems Check",
+   "Diameter": "2\"",
+   "Description": "Systems Check Gauge BRP, Sterling 2\""
+ },
+ {
+   "Gauge part #": "64475P",
+   "AnalogDigital": "Analog",
+   "Style": "Sterling",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, Sterling 2\" Honda"
+ },
+ {
+   "Gauge part #": "26000P",
+   "AnalogDigital": "Digital",
+   "Style": "Universal",
+   "Type": "Depth Finder",
+   "Diameter": "2\"",
+   "Description": "DEPTH FINDER, UNIVERSAL"
+ },
+ {
+   "Gauge part #": "56928P",
+   "AnalogDigital": "Analog",
+   "Style": "Vector",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, 80 mph, Vector, 3\""
+ },
+ {
+   "Gauge part #": "62538P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, White Premier Pro 2"
+ },
+ {
+   "Gauge part #": "62539P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, White Premier Pro"
+ },
+ {
+   "Gauge part #": "62540P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Water Temperature",
+   "Diameter": "2\"",
+   "Description": "Water Temperature, White Premi"
+ },
+ {
+   "Gauge part #": "62542P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, White Premier Pr"
+ },
+ {
+   "Gauge part #": "62543P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Oil Pressure",
+   "Diameter": "2\"",
+   "Description": "Oil Pressure, White Premier Pr"
+ },
+ {
+   "Gauge part #": "62546P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, White Premier Pro"
+ },
+ {
+   "Gauge part #": "62546PH",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Head, White Premier Pro"
+ },
+ {
+   "Gauge part #": "62547P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 4K, White Premier Pro 3\","
+ },
+ {
+   "Gauge part #": "62548P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 4K, White Premier Pro 3\","
+ },
+ {
+   "Gauge part #": "62549P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, White Premier Pro 2\" Mer"
+ },
+ {
+   "Gauge part #": "62550P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Trim",
+   "Diameter": "2\"",
+   "Description": "Trim, White Premier Pro 2\" J/E"
+ },
+ {
+   "Gauge part #": "62551P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Fuel",
+   "Diameter": "2\"",
+   "Description": "Fuel Gauge, White Premier Pro 2\""
+ },
+ {
+   "Gauge part #": "62555P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Voltmeter",
+   "Diameter": "2\"",
+   "Description": "Voltmeter, White Premier Pro"
+ },
+ {
+   "Gauge part #": "62561P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Tachometer",
+   "Diameter": "3\"",
+   "Description": "Tach 7K, White Premier Pro 3\""
+ },
+ {
+   "Gauge part #": "62565P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Tach/Hour",
+   "Diameter": "3\"",
+   "Description": "Tach 7K/Hourmeter, White Premi"
+ },
+ {
+   "Gauge part #": "65626SSFP",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo Kit, White Premier Pro"
+ },
+ {
+   "Gauge part #": "67654P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Gauge Kit",
+   "Diameter": "",
+   "Description": "6 Gauge Set, White Premier Pro"
+ },
+ {
+   "Gauge part #": "67657P",
+   "AnalogDigital": "Analog",
+   "Style": "White Premier Pro",
+   "Type": "Water Pressure",
+   "Diameter": "2\"",
+   "Description": "Water Pressure Gauge Kit O/B, White Premier Pro 2\""
+ },
+ {
+   "Gauge part #": "781-625-035P",
+   "AnalogDigital": "Analog",
+   "Style": "white Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, White Premier Pro"
+ },
+ {
+   "Gauge part #": "781-625-060P",
+   "AnalogDigital": "Analog",
+   "Style": "white Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "SPEEDO GPS, WHITE PREMIER PRO"
+ },
+ {
+   "Gauge part #": "781-625-080P",
+   "AnalogDigital": "Analog",
+   "Style": "white Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, White Premier Pro"
+ },
+ {
+   "Gauge part #": "781-625-120P",
+   "AnalogDigital": "Analog",
+   "Style": "white Premier Pro",
+   "Type": "Speedometer",
+   "Diameter": "3\"",
+   "Description": "Speedo GPS, White Premier Pro"
+ },
+ {
+   "Gauge part #": "10860",
+   "AnalogDigital": "",
+   "Style": "Accessories",
+   "Type": "",
+   "Diameter": "2\"",
+   "Description": "Blank Gauge Insert 2\""
+ },
+ {
+   "Gauge part #": "1502778",
+   "AnalogDigital": "",
+   "Style": "Other",
+   "Type": "Sender",
+   "Diameter": "",
+   "Description": "RUDDER ANGLE IND. SENDER, DUAL STA"
+ },
+ {
+   "Gauge part #": "1507678P",
+   "AnalogDigital": "",
+   "Style": "Other",
+   "Type": "Sender",
+   "Diameter": "",
+   "Description": "Magnetic Proximity Sender"
+ },
+ {
+   "Gauge part #": "1508370P",
+   "AnalogDigital": "",
+   "Style": "Other",
+   "Type": "Engine Synchronizer",
+   "Diameter": "",
+   "Description": "Eng Synch Module, 4-Cycle Gas"
+ },
+ {
+   "Gauge part #": "1827871P",
+   "AnalogDigital": "",
+   "Style": "Other",
+   "Type": "Light Kit",
+   "Diameter": "",
+   "Description": "Bulb & Socket Kit"
+ },
+ {
+   "Gauge part #": "50441",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Pitot",
+   "Diameter": "",
+   "Description": "PITOT TUBE KIT UNIVERSAL"
+ },
+ {
+   "Gauge part #": "56353P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Pitot",
+   "Diameter": "",
+   "Description": "Pitot Tubing 100'"
+ },
+ {
+   "Gauge part #": "56948P",
+   "AnalogDigital": "Analog",
+   "Style": "Sender",
+   "Type": "Fuel Sender",
+   "Diameter": "",
+   "Description": "Fuel Sender Kit w/Gauge, 4-24\" Depth"
+ },
+ {
+   "Gauge part #": "56966P",
+   "AnalogDigital": "Analog",
+   "Style": "Universal",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Hourmeter, Round"
+ },
+ {
+   "Gauge part #": "56967P",
+   "AnalogDigital": "Analog",
+   "Style": "Universal",
+   "Type": "Hourmeter",
+   "Diameter": "",
+   "Description": "Hourmeter, Rect"
+ },
+ {
+   "Gauge part #": "56968P",
+   "AnalogDigital": "Digital",
+   "Style": "Universal",
+   "Type": "Hourmeter",
+   "Diameter": "",
+   "Description": "Small Engine Hourmeter"
+ },
+ {
+   "Gauge part #": "56969P",
+   "AnalogDigital": "Digital",
+   "Style": "Universal",
+   "Type": "Tach/Hour",
+   "Diameter": "",
+   "Description": "Small Engine TACH/HR"
+ },
+ {
+   "Gauge part #": "56973P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Speedometer",
+   "Diameter": "",
+   "Description": "Pitot, 30-80 mph Speedometers"
+ },
+ {
+   "Gauge part #": "58403",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Oil Pressure",
+   "Diameter": "",
+   "Description": "OIL PRESSURE, ELECT, 0-80 PSI"
+ },
+ {
+   "Gauge part #": "59646",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Trim",
+   "Diameter": "",
+   "Description": "TRIM GCII MERC"
+ },
+ {
+   "Gauge part #": "59677P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Pitot",
+   "Diameter": "",
+   "Description": "Accessory, Pack O'Pitots"
+ },
+ {
+   "Gauge part #": "61886P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Adapter",
+   "Diameter": "",
+   "Description": "Accessory, Yamaha Adapter for"
+ },
+ {
+   "Gauge part #": "6283274",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "",
+   "Diameter": "",
+   "Description": "ACCESSORY, WEDGE BASE 24V BULK"
+ },
+ {
+   "Gauge part #": "63963",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Voltmeter",
+   "Diameter": "",
+   "Description": "VOLTMETER"
+ },
+ {
+   "Gauge part #": "64082",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Fuel",
+   "Diameter": "",
+   "Description": "Fuel Sender Gasket"
+ },
+ {
+   "Gauge part #": "67281P",
+   "AnalogDigital": "Digital",
+   "Style": "",
+   "Type": "Hourmeter",
+   "Diameter": "2\"",
+   "Description": "Dual Hourmeter - LCD"
+ },
+ {
+   "Gauge part #": "67437P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Pitot",
+   "Diameter": "",
+   "Description": "Accessory, Pitot Hose Kit w/ Hardware"
+ },
+ {
+   "Gauge part #": "67457P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Pitot",
+   "Diameter": "",
+   "Description": "Pitot Tubing 25'"
+ },
+ {
+   "Gauge part #": "68080P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "",
+   "Diameter": "",
+   "Description": "KIT MY HANDLE MEDALLION"
+ },
+ {
+   "Gauge part #": "68143",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Speedometer",
+   "Diameter": "",
+   "Description": "SPEEDO 65 MPH DM SS W/PRSM"
+ },
+ {
+   "Gauge part #": "68145",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Fuel",
+   "Diameter": "",
+   "Description": "FUEL E-F 240 OHM DM SS W/PRSM"
+ },
+ {
+   "Gauge part #": "68146",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Voltmeter",
+   "Diameter": "",
+   "Description": "VOLT 8-18 DM SS W/PRSM"
+ },
+ {
+   "Gauge part #": "68147",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Trim",
+   "Diameter": "",
+   "Description": "TRIM W/PRISM"
+ },
+ {
+   "Gauge part #": "68148",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Oil Pressure",
+   "Diameter": "",
+   "Description": "OIL PRESSURE 80 PSI"
+ },
+ {
+   "Gauge part #": "68755P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "GPS ",
+   "Diameter": "",
+   "Description": "GPS Receiver - 25'"
+ },
+ {
+   "Gauge part #": "68969",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "GPS ",
+   "Diameter": "",
+   "Description": "GPS RECEIVER - 4FT W/CONNECTOR"
+ },
+ {
+   "Gauge part #": "68982P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "GPS ",
+   "Diameter": "",
+   "Description": "GPS Receiver - 4'"
+ },
+ {
+   "Gauge part #": "69053P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "GPS ",
+   "Diameter": "",
+   "Description": "GPS Receiver, High Speed w/ Conn 4'"
+ },
+ {
+   "Gauge part #": "69268P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Bezel",
+   "Diameter": "",
+   "Description": "Eyebrow Bezel"
+ },
+ {
+   "Gauge part #": "69269P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Bezel",
+   "Diameter": "",
+   "Description": "Eyebrow Bezel"
+ },
+ {
+   "Gauge part #": "69270P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Bezel",
+   "Diameter": "",
+   "Description": "Eyebrow Bezel"
+ },
+ {
+   "Gauge part #": "69380P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Bezel",
+   "Diameter": "",
+   "Description": "Bezel Kit"
+ },
+ {
+   "Gauge part #": "69381P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Bezel",
+   "Diameter": "",
+   "Description": "Bezel Kit"
+ },
+ {
+   "Gauge part #": "69741P",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Converter",
+   "Diameter": "",
+   "Description": "Digital Analog Converter"
+ },
+ {
+   "Gauge part #": "69995K",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Harness",
+   "Diameter": "",
+   "Description": "HARNESS - TACHOMETER TO SMARTC"
+ },
+ {
+   "Gauge part #": "69996K",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Harness",
+   "Diameter": "",
+   "Description": "HARNESS - TACHOMETER TO NMEA, 30\""
+ },
+ {
+   "Gauge part #": "69997K",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Harness",
+   "Diameter": "",
+   "Description": "HARNESS - TACHOMETER TO SPEEDO"
+ },
+ {
+   "Gauge part #": "69998K",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "",
+   "Diameter": "",
+   "Description": "TERMINATOR"
+ },
+ {
+   "Gauge part #": "69999K",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Harness",
+   "Diameter": "",
+   "Description": "HARNESS"
+ },
+ {
+   "Gauge part #": "70605F",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Water Level",
+   "Diameter": "2\"",
+   "Description": "WATER LVL SW PRM AF"
+ },
+ {
+   "Gauge part #": "780629SDFD",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Water Temperature",
+   "Diameter": "",
+   "Description": "WATER TEMPERATURE 120-240F"
+ },
+ {
+   "Gauge part #": "780631SDFD",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Oil Pressure",
+   "Diameter": "",
+   "Description": "OIL PRESSURE 0-125 PSI"
+ },
+ {
+   "Gauge part #": "780641SDFD",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Fuel",
+   "Diameter": "",
+   "Description": "FUEL SECONDARY"
+ },
+ {
+   "Gauge part #": "84160",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Water Level",
+   "Diameter": "",
+   "Description": "WATER LVL E-F VDO PRM"
+ },
+ {
+   "Gauge part #": "84161",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Waste Level",
+   "Diameter": "",
+   "Description": "WASTE LVL E-F VDO PRM"
+ },
+ {
+   "Gauge part #": "84710",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Ammeter",
+   "Diameter": "",
+   "Description": "AMMETER 60 AMP PREMIER"
+ },
+ {
+   "Gauge part #": "90424P",
+   "AnalogDigital": "Analog",
+   "Style": "Sender",
+   "Type": "Fuel",
+   "Diameter": "",
+   "Description": "Fuel, Sender 4-24\" Depth"
+ },
+ {
+   "Gauge part #": "9154675",
+   "AnalogDigital": "Analog",
+   "Style": "",
+   "Type": "Ammeter",
+   "Diameter": "",
+   "Description": "100 AMP AMMETER"
+ },
+ {
+   "Gauge part #": "IA55009",
+   "AnalogDigital": "Analog",
+   "Style": "Other",
+   "Type": "Sender",
+   "Diameter": "",
+   "Description": "Z Bracket, O/B Temp Sndr"
+ },
+ {
+   "Gauge part #": "IA62995",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Light Kit",
+   "Diameter": "",
+   "Description": "Accessory, Light Kit, Wedge Base, 12VDC"
+ },
+ {
+   "Gauge part #": "IA65476",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Bezel",
+   "Diameter": "2\"",
+   "Description": "Accessory, Aircraft Bezel, 2\""
+ },
+ {
+   "Gauge part #": "IA65477",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Bezel",
+   "Diameter": "3\"",
+   "Description": "Accessory, Aircraft Bezel, 3\""
+ },
+ {
+   "Gauge part #": "IH14767",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Tachometer",
+   "Diameter": "",
+   "Description": "Tach Harness, Evinrude, Johnson"
+ },
+ {
+   "Gauge part #": "IH15105",
+   "AnalogDigital": "Analog",
+   "Style": "Accessories",
+   "Type": "Tachometer",
+   "Diameter": "",
+   "Description": "Tach Harness, Mariner/Merc O/B"
+ }
+]
