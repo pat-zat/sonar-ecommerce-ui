@@ -186,7 +186,9 @@ class EngineGrid extends React.Component {
     componentDidMount = () => {
 
         window.addEventListener("popstate", this.closeWindow);
-
+        console.log("sierra grid mounted");
+        this.props.urlAction();
+        
         if (this.props.urlQuery.skip !== '0') {
             console.log("paged");
             this.setState({

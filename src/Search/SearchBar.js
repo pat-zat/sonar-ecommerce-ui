@@ -63,9 +63,12 @@ class SearchBar extends React.Component {
         this.loaderGrid = React.createRef();
         this.sierraGrid = React.createRef();
 
+        //CALLBACKS
         this.handlerA = this.handlerA.bind(this);
         this.releaseHandler = this.releaseHandler.bind(this);
         this.urlAction = this.urlAction.bind(this);
+        //this.urlActionB = this.urlActionB.bind(this);
+
         this.state = {
             catList: [],
             subCatList: [],
@@ -456,6 +459,7 @@ class SearchBar extends React.Component {
                     <EngineGrid
                         ref={this.EngineGrid}
                         releaseAction={this.releaseHandler}
+                        urlAction={this.urlAction}
                         engineSearch={this.state.engineSearch}
                         search={this.state.search}
                         query={this.state.query}
@@ -479,6 +483,7 @@ class SearchBar extends React.Component {
                     <InterchangeGrid
                         ref={this.InterchangeGrid}
                         releaseAction={this.releaseHandler}
+                        urlAction={this.urlAction}
                         interSearch={this.state.interSearch}
                         action={this.releaseHandler}
                         search={this.state.search}

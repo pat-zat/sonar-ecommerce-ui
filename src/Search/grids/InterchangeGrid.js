@@ -104,7 +104,7 @@ class InterchangeGrid extends React.Component {
         let stack = [];
         for (var i = 0; i < localStorage.length; i++) {
             stack = localStorage.key(i);
-            console.log(stack);
+            //console.log(stack);
         }
 
         this.setState({
@@ -145,8 +145,8 @@ class InterchangeGrid extends React.Component {
     reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
 
     componentDidMount = () => {
-
-        window.addEventListener("popstate", this.closeWindow);
+        window.addEventListener("popstate", this.props.urlAction());
+        //window.addEventListener("popstate", this.closeWindow);
 
         if (this.props.urlQuery.skip !== '0') {
             console.log("paged");

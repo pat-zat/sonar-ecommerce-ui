@@ -90,9 +90,9 @@ class SierraGrid extends React.Component {
         let page = Math.round(this.state.dataState.skip / 10)
         const url = setParams({ skip: page });
         history.push('/sierra/api/AdvancedSearch/Details/?id=sierrapart'
-            + '&parentCategoryId=' + this.props.parentCategoryName
+            + '&parentCategoryId=' + this.props.parentCategoryId
             + '&parentCategoryName=' + this.props.parentCategoryName
-            + '&childCategoryId=' + this.props.childCategoryName
+            + '&childCategoryId=' + this.props.childCategoryId
             + '&childCategoryName=' + this.props.childCategoryName
             + '&productNumber=' + this.props.productNumber
             + '&queryType=' + this.props.checked
@@ -102,11 +102,8 @@ class SierraGrid extends React.Component {
 
 
     dataRecieved = (products) => {
-
         this.props.releaseAction();
-
         localStorage.setItem(this.props.location.search, JSON.stringify(this.state.products.data));
-
         let stack = [];
         for (var i = 0; i < localStorage.length; i++) {
             stack = localStorage.key(i);
@@ -127,7 +124,6 @@ class SierraGrid extends React.Component {
         this.setState({
             windowVisible: false
         });
-        // history.go(-1);
     }
 
     handleGridRowClick1 = (e) => {
@@ -155,28 +151,28 @@ class SierraGrid extends React.Component {
 
     componentDidMount = () => {
         console.log("sierra grid mounted");
-        this.props.urlAction();
-        //window.addEventListener("popstate", this.closeWindow);
-        this.unlisten = history.listen((location, action) => {
-            history.listen(location => {
+        
+        window.addEventListener("popstate", this.props.urlAction());
+        // this.unlisten = history.listen((location, action) => {
+        //     history.listen(location => {
 
-                const storedData = JSON.parse(localStorage.getItem(this.props.location.search));
-                let stack = [];
-                for (var i = 0; i < localStorage.length; i++) {
-                    stack = localStorage.key(i);
+        //         const storedData = JSON.parse(localStorage.getItem(this.props.location.search));
+        //         let stack = [];
+        //         for (var i = 0; i < localStorage.length; i++) {
+        //             stack = localStorage.key(i);
 
-                    if (stack.includes(this.props.location.search)) {
-                        this.setState({
-                            ...this.state,
-                            results: storedData.data,
-                            products: storedData,
-                        });
-                        //console.log(this.state.products.data.total);
-                    }
-                }
+        //             if (stack.includes(this.props.location.search)) {
+        //                 this.setState({
+        //                     ...this.state,
+        //                     results: storedData.data,
+        //                     products: storedData,
+        //                 });
+        //                 //console.log(this.state.products.data.total);
+        //             }
+        //         }
 
-            });
-        });
+        //     });
+        // });
 
         if (this.props.urlQuery.skip !== '0') {
             this.setState({
