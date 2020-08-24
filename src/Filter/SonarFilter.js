@@ -6,7 +6,7 @@ import FilterHeader from './Filterheader';
 import StyleFilter from './StyleFilter';
 import TypeFilter from './TypeFilter';
 import SizeFilter from './SizeFilter';
-import { FilterLoader } from './FilterLoader.js';
+
 
 let mCustomScrollbar = '';
 

@@ -1,0 +1,41 @@
+http://localhost:3000/api/AdvancedSearch/Details/?id=interchange&oeNumber=9-82202 
+{
+    "Data": [
+        {
+            "productId": 1,
+            "productNumber": "18-9080",
+            "interchangeNumber": "9-82202",
+            "descLong": "Fuel Stabilizer (1 Gallon)",
+            "descShort": "Fuel Stabilizer - 1 Gal",
+            "categoryParent": "Fuel Systems",
+            "categoryChild": "Additives",
+            "imagePath": "18-9080.JPG",
+            "brandName": "Mallory"
+        },
+        {
+            "productId": 819,
+            "productNumber": "18-5140",
+            "interchangeNumber": "398-2202",
+            "descLong": "Contact Set",
+            "descShort": "Contact Set",
+            "categoryParent": "Ignition Systems",
+            "categoryChild": "Contact Sets",
+            "imagePath": "18-5140.JPG",
+            "brandName": "Mercury Marine"
+        },
+        {
+            "productId": 5315,
+            "productNumber": "18-5907",
+            "interchangeNumber": "982202",
+            "descLong": "Starter (Heavy-Duty)(No Core)",
+            "descShort": "Starter",
+            "categoryParent": "Electrical Systems",
+            "categoryChild": "Starter",
+            "imagePath": "18-5907.jpg",
+            "brandName": "OMC Stern Drive"
+        }
+    ],
+    "Total": 3,
+    "AggregateResults": null,
+    "Errors": null
+}

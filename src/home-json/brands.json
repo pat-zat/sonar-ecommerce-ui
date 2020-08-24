@@ -1,0 +1,144 @@
+http://10.92.48.29:9002/api/AdvancedSearch/Details/?id=getbrands
+{
+    "Data": [
+        {
+            "brandId": 286,
+            "brandName": "Aprilia"
+        },
+        {
+            "brandId": 54,
+            "brandName": "Arctic Cat PWC"
+        },
+        {
+            "brandId": 4,
+            "brandName": "Chrysler/Force/US Marine"
+        },
+        {
+            "brandId": 20,
+            "brandName": "Fischer Panda"
+        },
+        {
+            "brandId": 5,
+            "brandName": "Honda"
+        },
+        {
+            "brandId": 74,
+            "brandName": "Honda Outboard"
+        },
+        {
+            "brandId": 25,
+            "brandName": "Indmar"
+        },
+        {
+            "brandId": 120,
+            "brandName": "John Deere"
+        },
+        {
+            "brandId": 73,
+            "brandName": "Johnson/Evinrude Outboard"
+        },
+        {
+            "brandId": 28,
+            "brandName": "Kawasaki"
+        },
+        {
+            "brandId": 29,
+            "brandName": "Kohler"
+        },
+        {
+            "brandId": 300,
+            "brandName": "Marine"
+        },
+        {
+            "brandId": 31,
+            "brandName": "Marine Power"
+        },
+        {
+            "brandId": 227,
+            "brandName": "Mase"
+        },
+        {
+            "brandId": 1,
+            "brandName": "Mercruiser Stern Drive"
+        },
+        {
+            "brandId": 40,
+            "brandName": "Mercury Marine"
+        },
+        {
+            "brandId": 204,
+            "brandName": "Mercury Race Outboard"
+        },
+        {
+            "brandId": 205,
+            "brandName": "Mercury Race Sterndrive"
+        },
+        {
+            "brandId": 206,
+            "brandName": "Mercury Sport Jet"
+        },
+        {
+            "brandId": 79,
+            "brandName": "Nissan/Tohatsu Outboard"
+        },
+        {
+            "brandId": 32,
+            "brandName": "Northern Lights"
+        },
+        {
+            "brandId": 229,
+            "brandName": "OMC Inboard"
+        },
+        {
+            "brandId": 87,
+            "brandName": "OMC Stern Drive"
+        },
+        {
+            "brandId": 34,
+            "brandName": "Onan"
+        },
+        {
+            "brandId": 201,
+            "brandName": "Polaris"
+        },
+        {
+            "brandId": 42,
+            "brandName": "Sea-Doo"
+        },
+        {
+            "brandId": 177,
+            "brandName": "Sears"
+        },
+        {
+            "brandId": 313,
+            "brandName": "Ski Doo"
+        },
+        {
+            "brandId": 217,
+            "brandName": "Suzuki"
+        },
+        {
+            "brandId": 80,
+            "brandName": "Suzuki Outboard"
+        },
+        {
+            "brandId": 11,
+            "brandName": "Volvo Penta"
+        },
+        {
+            "brandId": 48,
+            "brandName": "Westerbeke"
+        },
+        {
+            "brandId": 9,
+            "brandName": "Yamaha Outboard"
+        },
+        {
+            "brandId": 44,
+            "brandName": "Yanmar"
+        }
+    ],
+    "Total": 34,
+    "AggregateResults": null,
+    "Errors": null
+}

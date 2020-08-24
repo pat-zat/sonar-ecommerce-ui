@@ -1,32 +1,20 @@
-﻿﻿import React from 'react';
+import React from 'react';
 import { SRLWrapper } from 'simple-react-lightbox'
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
-import { ProductLoader } from './ProductLoader.js';
+import { EngineLoader } from './EngineLoader.js';
 import { process } from '@progress/kendo-data-query';
 import Button from '@material-ui/core/Button';
 import { TabStrip, TabStripTab } from '@progress/kendo-react-layout'
 import $ from 'jquery';
-import { GridColumnMenuSort, GridColumnMenuFilter } from '@progress/kendo-react-grid';
 import { Window } from '@progress/kendo-react-dialogs';
-import history from '../history.js';
-import gauges from '../json/gauges.json';
+import history from '../../history.js';
+import { Route, Link } from 'react-router-dom';
 
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
     searchParams.set("skip", skip || "0");
     //console.log("function Set Params works");
     return searchParams.toString();
-}
-
-class ColumnMenu extends React.Component {
-    render() {
-        return (
-            <div>
-                <GridColumnMenuSort {...this.props} />
-                <GridColumnMenuFilter {...this.props} />
-            </div>
-        );
-    }
 }
 
 class CustomCell extends React.Component {
@@ -38,18 +26,17 @@ class CustomCell extends React.Component {
     }
 }
 
-// 1.	Engine Details Section - http://10.92.48.29:9002/api/EngineDetails/Details/400456
-// 2.	Parts for this Engine - http://10.92.48.29:9002/api/CategorySearch/Details/?custId=000000&id=405562
-// 3.	Filter by choosing a Category - http://10.92.48.29:9002/api/ProductSearch/Details/?custId=000000&id=400456
-
-
-class LoaderGrid extends React.Component {
+class EngineGrid extends React.Component {
     init = { method: 'GET', accept: 'application/json', headers: {} };
+
     enginePartsUrl = 'http://10.92.48.29:9002/api/productsearch/details/';
-    PartsUrl = 'http://10.92.48.29:9002/api/categorysearch/details/';
+    PartsUrl = 'http://10.92.48.29:9002/api/ProductSearch/Details/?custId=000000&id=';
     engineDetailsUrl = 'http://10.92.48.29:9002/api/EngineDetails/Details/';
+
+    //PartsUrl = 'http://10.92.48.29:9002/api/categorysearch/details/';
     productDetailsUrl = 'http://10.92.48.29:9002/api/SierraPartSearch/Details/';
     containsTabUrl = 'http://10.92.48.29:9002/api/SierraPartPartialSearch/Details/?id=contains&containsItemRow=';
+
     docsTabUrl = 'http://10.92.48.29:9002/api/SierraPartPartialSearch/Details/?id=documents&documentsItemRow=';
     gridWidth = 600;
     payload = false;
@@ -70,15 +57,7 @@ class LoaderGrid extends React.Component {
             filter: '',
             active: false,
             left: false,
-            columnsA: [
-                { field: 'productNumber', title: "Product #" },
-                { field: "interchangeNumber", title: "interchange" },
-                { field: "categoryParent", title: "Parent category" },
-                { field: "categoryChild", title: "Child category" },
-                { field: "descriptionLong", title: "description Long", width: 300 },
-                { field: "imagePath", title: "imagePath", cell: CustomCell },
-            ],
-            columnsB: [
+            columns: [
                 { field: "brandName", title: "brandName", width: 300 },
                 { field: "engineId", title: "Engine Id" },
                 { field: "modelNumber", title: "Model Number" },
@@ -90,58 +69,20 @@ class LoaderGrid extends React.Component {
                 { field: "serialNumberStart", title: "Serial # Start" },
                 { field: "serialNumberStop", title: "Serial # Stop" },
             ],
-            columnsC: [
-                { field: 'productNumber', title: "Product #" },
-                { field: "categoryParent", title: "Parent category" },
-                { field: "categoryChild", title: "Child category" },
-                { field: "descriptionLong", title: "description Long", width: 300 },
-                { field: "imagePath", title: "imagePath", cell: CustomCell },
-            ],
             productSearch: "product",
             windowVisible: false,
             gridClickedRow: {},
             enginePartsData: [],
-            selected: 0,
-            selected2: 0,
-            selected3: 0,
             dataState2: { skip: 0, take: 60, group: [{ field: 'cat1_name' }] },
             results: [],
             storeStack: [],
         };
     }
 
-    handleSelect = (e) => {
-        this.setState({ selected: e.selected })
-    }
-    handleSelect2 = (e) => {
-        this.setState({ selected2: e.selected2 })
-    }
-    handleSelect3 = (e) => {
-        this.setState({ selected3: e.selected3 })
-    }
     expandChange = (event) => {
         event.dataItem[event.target.props.expandField] = event.value;
         this.forceUpdate();
     };
-
-    patsDataStateChange = (e) => {
-        this.setState({
-            enginePartsData: process(this.state.enginePartsData, this.state.dataState2),
-            dataState2: e.data
-        });
-    };
-
-    SearchTypeA = () => {
-        this.setState({ productSearch: "product" });
-    }
-
-    SearchTypeB = () => {
-        this.setState({ productSearch: 'engine' });
-    }
-
-    SearchTypeD = () => {
-        this.setState({ productSearch: 'filter' });
-    }
 
     dataStateChange = (e) => {
         this.setState({
@@ -156,31 +97,30 @@ class LoaderGrid extends React.Component {
         let page = Math.round(this.state.dataState.skip / 10)
         const url = setParams({ skip: page });
         //console.log(page)
-        history.push("/api/AdvancedSearch/Details/" + '?id=' + 'brandmodel'
-            + '&brand=' + this.props.urlQuery.brand
-            + '&modelNumber=' + this.props.urlQuery.modelNumber
-            + '&year=' + this.props.urlQuery.year
-            + '&hp=' + this.props.urlQuery.hp
-            + '&serialNumber=' + this.props.urlQuery.serialNo
-            + '&queryType=' + this.props.urlQuery.checked
+        history.push("/brand/api/AdvancedSearch/Details/" + '?id=' + 'brandmodel'
+            + '&brand=' + this.props.brand
+            + '&modelNumber=' + this.props.modelNumber
+            + '&year=' + this.props.year
+            + '&hp=' + this.props.hp
+            + '&serialNumber=' + this.props.serialNo
+            + '&queryType=' + this.props.checked
             + '&skip=' + page);
 
     };
-   
 
     dataRecieved = (products) => {
 
         console.log("data received");
         //this should be setting true to false
-        this.props.action();
+        this.props.releaseAction();
 
         localStorage.setItem(this.props.location.search, JSON.stringify(this.state.products.data));
         const storedData = JSON.parse(localStorage.getItem('searchGridData'));
         let stack = [];
-        for ( var i = 0; i < localStorage.length; i++) {
+        for (var i = 0; i < localStorage.length; i++) {
             stack = localStorage.key(i);
-            console.log(stack);
-          }
+         //   console.log(stack);
+        }
 
         this.setState({
             ...this.state,
@@ -192,28 +132,14 @@ class LoaderGrid extends React.Component {
 
     }
 
-    closeWindow = (products) => {
-        this.setState({
-            windowVisible: false
-        });
-    }
-
-    columnProps(field) {
-        return {
-            field: field,
-            columnMenu: ColumnMenu,
-            headerClassName: this.isColumnActive(field, this.state.dataState) ? 'active' : ''
-        };
-    }
-
-    isColumnActive(field, dataState, filter, sort) {
-        return GridColumnMenuFilter.active(field, filter) ||
-            GridColumnMenuSort.active(field, sort);
-    }
+    // closeWindow = (products) => {
+    //     this.setState({
+    //         windowVisible: false
+    //     });
+    // }
 
     handleGridRowClick = (e) => {
         let eId = e.dataItem.engineId;
-        window.scrollTo(0, 0)
         this.setState({
             windowVisible: true,
             gridClickedRow: e.dataItem
@@ -236,28 +162,7 @@ class LoaderGrid extends React.Component {
         this.setState({
             detailType: 'engine'
         });
-        history.push("/api/SimpleSearch/GetProducts/?urlEngineId=" + e.dataItem.engineId);
-    }
-
-    handleGridRowClick1 = (e) => {
-        window.scrollTo(0, 0)
-        this.setState({
-            windowVisible: true,
-            gridClickedRow: e.dataItem
-        });
-        fetch(this.productDetailsUrl + e.dataItem.itemRow, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ productDetailData: json.Data }));
-        fetch(this.docsTabUrl + e.dataItem.itemRow, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ productDetailDataDoc: json.Data }));
-        fetch(this.containsTabUrl + e.dataItem.itemRow, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ productDetailDataCon: json.Data }));
-        this.setState({
-            detailType: 'product'
-        });
-        history.push("/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
+        history.push("/brand/api/SimpleSearch/GetProducts/?urlEngineId=" + e.dataItem.engineId);
     }
 
     handleGridRowClick2 = (e) => {
@@ -273,19 +178,15 @@ class LoaderGrid extends React.Component {
         this.setState({
             detailType: 'product'
         });
-        history.push("/api/SimpleSearch/GetProducts/?C_item_row=" + e.dataItem.C_item_row);
+        history.push("/brand/api/SimpleSearch/GetProducts/?C_item_row=" + e.dataItem.C_item_row);
     }
 
     reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
 
     componentDidMount = () => {
 
-        //TODO 2 ADD NEW FUNCTION HERE THAT DETECTS IF BACK OR FORWARD AND CALLS PREVIOUS STORAGE OR close window
-        //always update local storage on new search.
-        //if location.search !== local storage key
         window.addEventListener("popstate", this.closeWindow);
 
-        //if I set state in mount from url it only happens on refresh or navigation
         if (this.props.urlQuery.skip !== '0') {
             console.log("paged");
             this.setState({
@@ -317,24 +218,7 @@ class LoaderGrid extends React.Component {
                 detailType: 'engine'
             });
         }
-        if (this.props.urlQuery.itemRow) {
-            let uId = this.props.urlQuery.itemRow;
-            this.setState({
-                windowVisible: true,
-            });
-            fetch(this.productDetailsUrl + uId, this.init)
-                .then(response => response.json())
-                .then(json => this.setState({ productDetailData: json.Data }));
-            fetch(this.docsTabUrl + uId, this.init)
-                .then(response => response.json())
-                .then(json => this.setState({ productDetailDataDoc: json.Data }));
-            fetch(this.containsTabUrl + uId, this.init)
-                .then(response => response.json())
-                .then(json => this.setState({ productDetailDataCon: json.Data }));
-            this.setState({
-                detailType: 'product'
-            });
-        }
+
         if (this.props.urlQuery.C_item_row) {
             let cuId = this.props.urlQuery.C_item_row;
             this.setState({
@@ -348,39 +232,15 @@ class LoaderGrid extends React.Component {
                 detailType: 'product'
             });
         }
-    }
-    pageIt() {
-        //console.log("page evnet fired");
+
     }
 
     render() {
 
-        //SET columnsToShow as global
-        //add function callback after data recieved setState to change the value of columns to
 
-        let columnsToShow;
-        var columnsToShowProduct = this.state.columnsA.map((column, index) => {
+        var columnsToShow = this.state.columns.map((column, index) => {
             return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
         })
-        var columnsToShowSierra = this.state.columnsC.map((column, index) => {
-            return <Column {...this.columnProps(column.field)} field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
-        })
-        var columnsToShowEngine = this.state.columnsB.map((columnb, index) => {
-            return <Column field={columnb.field} title={columnb.title} key={index} width={columnb.width} cell={columnb.cell} />;
-        })
-        columnsToShow = columnsToShowProduct
-        if (this.props.search === true) {
-            if (this.props.advancedSearchType !== "brand") {
-                if (this.props.advancedSearchType === "interchange") {
-                    columnsToShow = columnsToShowProduct;
-                }
-                else {
-                    columnsToShow = columnsToShowSierra;
-                }
-                
-            }
-            else { columnsToShow = columnsToShowEngine; }
-        }
 
 
         return (
@@ -396,55 +256,29 @@ class LoaderGrid extends React.Component {
                     </Button>
                 </div>
 
-                <div className={this.props.activeSearch === true ? 'visigrid' : 'hider'}>
-                    {/* TODO //add a condition here to say search = true */}
+                <div >
 
-                    {/* 
-                      when the grid is already visible and 
-                      one of the search buttons is clicked 
-                      the columns cant change until this.props.search===true 
-                      */}
-
-                    {this.props.advancedSearchType !== "brand" ? (
+                    <div className={this.props.urlQuery.brand !== "" ? 'visigrid' : 'hider'}>
                         <Grid
                             style={{ height: '600px' }}
                             ref={div => this.gridWidth = div}
                             pageable={true}
                             resizable={true}
-                        
+                            take={this.state.dataState.take}
+                            total={this.state.products.data.length}
                             {...this.state.dataState}
                             {...this.state.products}
                             onChange={this.props.action}
                             onDataStateChange={this.dataStateChange}
-                            onRowClick={this.handleGridRowClick1}
+                            onRowClick={this.handleGridRowClick}
                             filterable={true}
-                            skip={parseInt(this.props.urlQuery.skip)}
-                            onPageChange={this.pageIt}
+                            //skip={parseInt(this.props.urlQuery.skip)}
+
                             sortable={true}>
                             {columnsToShow}
                         </Grid>
-                    ) : (
-                            <Grid
-                                style={{ height: '600px' }}
-                                ref={div => this.gridWidth = div}
-                                pageable={true}
-                                resizable={true}
-                                //skip={this.props.urlQuery.skip ? this.props.urlQuery.skip : this.state.dataState.skip}
-                                take={this.state.dataState.take}
-                                total={this.state.products.data.length}
-                                {...this.state.dataState}
-                                {...this.state.products}
-                                onChange={this.props.action}
-                                onDataStateChange={this.dataStateChange}
-                                onRowClick={this.handleGridRowClick}
-                                filterable={true}
-
-                                sortable={true}>
-                                {columnsToShow}
-                            </Grid>
-                        )}
-
-                    {this.state.windowVisible && this.state.detailType === 'engine' &&
+                    </div>
+                    {this.state.windowVisible &&
 
                         <Window title="Engine Details" onClose={this.closeWindow}>
                             <div className="flexrow engineModel">
@@ -503,37 +337,51 @@ class LoaderGrid extends React.Component {
                     }
 
                     {this.state.windowVisible && this.state.detailType === 'product' &&
-                        <Window title="Product Details" onClose={this.closeWindow} >
+                        <Window
+                            title="Product Details"
+                            onClose={this.closeWindow}
+                        >
+
+                            <div className="flexrow engineModel">
+                                <h3>Model#:</h3>
+                                <div>{this.state.gridClickedRow.C_item_row}</div>
+                            </div>
+
                             <div className='detailsCon'>
-                                <div className="close-btn">
-                                    <button onClick={this.closeWindow} className="k-button" >close</button>
-                                </div>
+
                                 {this.state.productDetailData.map(details =>
+
                                     <div>
-                                        <h1>{"Item#:  " + details.sale_item}</h1>
+                                        <h1>{details.description}</h1>
                                         <div className='details'>
                                             <div className="flexrow startStop">
                                                 <div>Category: {details.categoryParent}</div>
                                                 <div>Subcategory: {details.categoryChild}</div>
                                             </div>
+
                                             <div className="flexrow">
-                                                <div>Description: {details.descriptionShort}</div>
+                                                <div>Description: {details.descriptionLong}</div>
+                                                <div>interchange: {details.interchangeNumber}</div>
+
                                             </div>
 
                                             <div className="flexrow">
-                                                <SRLWrapper><img src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + details.imagePath} alt='' /></SRLWrapper>
+                                                <div>image: {details.imagePath}</div>
+
                                             </div>
                                         </div>
-                                        <TabStrip selected={this.state.selected} onSelect={this.handleSelect}>
-                                            <TabStripTab disabled={details.productDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Details">
+                                        <TabStrip className={details.productDetails.length > 0 ? 'deets-tab' : 'no-click-opacity'} selected={this.state.selected} onSelect={this.handleSelect}>
+                                            <TabStripTab contentClassName='detailsTab' title="Details">
                                                 <h2>Features</h2>
                                                 <div>
                                                     {details.productDetails.map(productDetail =>
-                                                        <div>{productDetail.value}</div>
+                                                        <div>
+                                                            {/* {productDetail.attrtibute} */}
+                                                            {productDetail.value}</div>
                                                     )}
                                                 </div>
                                             </TabStripTab>
-                                            <TabStripTab disabled={details.productSpecs.length > 0 ? false : true} title="Specs">
+                                            <TabStripTab title="Specs">
                                                 <div>
                                                     <h2>Specifications</h2>
                                                     {details.productSpecs.map(productSpec =>
@@ -555,7 +403,7 @@ class LoaderGrid extends React.Component {
                                                     )}
                                                 </div>
                                             </TabStripTab>
-                                            <TabStripTab disabled={details.interchangeDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Interchange">
+                                            <TabStripTab contentClassName='detailsTab' title="Interchange">
                                                 <h2>Interchange</h2>
                                                 <div>
                                                     {details.interchangeDetails.map(interchangeDetail =>
@@ -575,59 +423,32 @@ class LoaderGrid extends React.Component {
                             <h3>contains</h3>
                             {this.state.productDetailDataCon.map(details3 =>
                                 <div>
-                                    <hr />
                                     <div>{details3.descriptionLong}</div>
-                                    <div>{details3.saleItem}</div>
-                                    <div>{details3.quantity}</div>
-                                    <SRLWrapper><img className="conImg" alt='' src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + details3.imagePath} /></SRLWrapper>
                                 </div>
                             )}
                             <hr />
-                            {/* 1086 */}
                             <h3>Documents</h3>
                             {this.state.productDetailDataDoc.map(details2 =>
                                 <div>
-                                    <h3>{details2.description}</h3>
-                                    <div>{details2.docRow}</div>
                                     <div>{details2.docName}</div>
-                                    <div>{details2.docType}</div>
-                                    <div>{details2.lastUpdated}</div>
                                 </div>
                             )}
                         </Window>
                     }
                 </div>
-                <ProductLoader
+
+                <EngineLoader
                     dataState={this.state.dataState}
                     onDataRecieved={this.dataRecieved}
-                    activeSearch={this.props.urlQuery || this.props.urlQuery.oeNumber ? true : this.props.activeSearch}
+                    //activeSearch={this.props.urlQuery || this.props.urlQuery.oeNumber ? true : this.props.activeSearch}
                     query={this.props.urlQuery.query ? this.props.urlQuery.query : this.props.query}
-                    search={this.props.urlQuery.oeNumber ? true : this.props.search}
                     action={this.props.action}
-                    searchingForCats={this.props.searchCats}
+                    engineSearch={this.props.urlQuery.brand ? true : this.props.engineSearch}
                     cat={this.props.cat}
-                    releaseSearch={this.props.urlQuery.oeNumber ? true : this.props.releaseSearch}
-                    advancedSearchType={
-                        (() => {
-                            if (this.props.urlQuery.oeNumber)
-                                return "Interchange"
-                            if (this.props.urlQuery.parentCategoryName)
-                                return "sierra"
-                            if (this.props.urlQuery.brand)
-                                return "brand"
-                            if (this.props.urlQuery.query)
-                                return ""
-                            else return this.props.advancedSearchType
-                        })()
-                    }
-                    oenumber={this.props.oenumber ? this.props.oenumber : this.props.urlQuery.oeNumber}
+                    search={this.props.urlQuery.brand ? true : this.props.search}
                     myLocation={this.props.myLocation}
                     storeStack={this.state.storeStack}
-                    parentCategoryName={this.props.urlQuery.parentCategoryName ? this.props.urlQuery.parentCategoryName : this.props.parentCategoryName}
-                    parentCategoryId={this.props.urlQuery.parentCategoryId ? this.props.urlQuery.parentCategoryId : this.props.parentCategoryId}
-                    childCategoryName={this.props.urlQuery.childCategoryName ? this.props.urlQuery.childCategoryName : this.props.childCategoryName}
-                    childCategoryId={this.props.urlQuery.childCategoryId ? this.props.urlQuery.childCategoryId : this.props.childCategoryId}
-                    productNumber={this.props.urlQuery.productNumber ? this.props.urlQuery.productNumber : this.props.productNumber}
+                    advancedSearchType={this.props.advancedSearchType}
 
                     brand={this.props.urlQuery.brand ? this.props.urlQuery.brand : this.props.brand}
                     modelNo={this.props.urlQuery.modelNumber ? this.props.urlQuery.modelNumber : this.props.modelNo}
@@ -641,4 +462,4 @@ class LoaderGrid extends React.Component {
     }
 }
 
-export default LoaderGrid;
+export default EngineGrid;

@@ -41,6 +41,7 @@ th.k-header.active > div > div {
 .circ-border svg {
     z-index: -1;
     position: relative;
+    max-width: 75px;
 }
 
 .details {
@@ -78,11 +79,12 @@ th.k-header.active > div > div {
   
 }
 
-// .close-btn {
-//     position: fixed;
-//     top: 20px;
-//     right: 20px;
-// }
+.close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: none;
+}
 
 .engineModel {
     justify-content: space-between;
@@ -117,12 +119,14 @@ th.k-header.active > div > div {
     position: absolute;
     pointer-events: auto!important;
 }
-
+.k-window-titlebar > .k-button-icon {
+    display: none!important;
+}
 
 
 .k-list-container {
     background: #fff;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .no-click-opacity {
@@ -180,6 +184,7 @@ th.k-header.active > div > div {
 }
 
 .top-third {
+    margin-left: 10px;
 }
 
 .sierraLogo {
@@ -222,10 +227,17 @@ th.k-header.active > div > div {
 
 .srch-btn-con {
     padding: 10px 0;
-    max-width: 90vw;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
     display: flex;
+}
+.expanded-icons {
+    margin-top: 80px;
+
+    .MuiButton-root {
+        display: none;
+    }
 }
 
 .searchFlex {
@@ -239,6 +251,7 @@ th.k-header.active > div > div {
     height: 100px;
     align-items: center;
     justify-content: center;
+    margin-right: 10px;
 }
 
 
@@ -363,7 +376,13 @@ th.k-header.active > div > div {
 
 .activeToggle {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    margin-top: -40px;
+    // button > span {
+    //     writing-mode: vertical-lr; 
+    //     transform: rotate(180deg);
+    //     height: 120px;
+    // }
 }
 
 .activeSearch {

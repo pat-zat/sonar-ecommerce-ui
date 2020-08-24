@@ -55,10 +55,32 @@ body {
     }
 }*/
 
+#root > div > div:nth-child(2) > div > div.collapseIcons > button > span.MuiButton-label {
+    writing-mode: vertical-lr; 
+transform: rotate(180deg);
+min-height: 140px;
+position: absolute;
+left: 0;
+top: -65px;
+display: none;
+}
 
+.collapseIcons {
+    margin-top: -25px;
+    svg {
+        // transform: scale(0.5);
+        width: 25px;
+    }
+    p {
+        display: none;
+    }
+    .MuiButton-root {
+        display: block;
+    }
+}
 
 .circ-border {
-    width: 4vw;
+    width: 5vw;
 
     svg {
         overflow: visible;
