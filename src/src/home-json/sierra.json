@@ -1,0 +1,118 @@
+http://localhost:3000/api/AdvancedSearch/Details/?id=sierrapart&parentCategoryId=167&parentCategoryName=Cooling%20Systems&childCategoryId=582&childCategoryName=Circulating%20Pump&productNumber=&queryType=Contains
+{
+    "Data": [
+        {
+            "itemRow": 607,
+            "productNumber": "18-3593",
+            "descriptionLong": "Water Pump",
+            "descriptionShort": "Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3593.JPG"
+        },
+        {
+            "itemRow": 616,
+            "productNumber": "18-3581",
+            "descriptionLong": "Circulating Water Pump",
+            "descriptionShort": "Circulating Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3581.JPG"
+        },
+        {
+            "itemRow": 617,
+            "productNumber": "18-3573",
+            "descriptionLong": "Circulating Water Pump",
+            "descriptionShort": "Circulating Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3573.JPG"
+        },
+        {
+            "itemRow": 619,
+            "productNumber": "18-3582",
+            "descriptionLong": "Circulating Water Pump",
+            "descriptionShort": "Circulating Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3582.jpg"
+        },
+        {
+            "itemRow": 140220,
+            "productNumber": "18-42608",
+            "descriptionLong": "Water Circulating Pump",
+            "descriptionShort": "Water Circulating Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-42608.jpg"
+        },
+        {
+            "itemRow": 152042,
+            "productNumber": "18-3587-1",
+            "descriptionLong": "Water Pump",
+            "descriptionShort": "Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3587.jpg"
+        },
+        {
+            "itemRow": 152119,
+            "productNumber": "18-3586-1",
+            "descriptionLong": "Raw Water Pump",
+            "descriptionShort": "Raw Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3586.jpg"
+        },
+        {
+            "itemRow": 177736,
+            "productNumber": "18-3506-1",
+            "descriptionLong": "Circulating Pump, V6 w/o Bypass",
+            "descriptionShort": "Circulating Pump, V6 w/o Bypass",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3506.jpg"
+        },
+        {
+            "itemRow": 177992,
+            "productNumber": "18-3599-2",
+            "descriptionLong": "Circulating Water Pump",
+            "descriptionShort": "Circulating Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3599.jpg"
+        },
+        {
+            "itemRow": 177993,
+            "productNumber": "18-3577-2",
+            "descriptionLong": "Circulating Water Pump",
+            "descriptionShort": "Circulating Water Pump",
+            "categoryParentId": 2,
+            "categoryParent": "Cooling Systems",
+            "categoryChildId": 7,
+            "categoryChild": "Circulating Pump",
+            "imagePath": "18-3577.jpg"
+        }
+    ],
+    "Total": 10,
+    "AggregateResults": null,
+    "Errors": null
+}
