@@ -7,7 +7,6 @@ import StyleFilter from './StyleFilter';
 import TypeFilter from './TypeFilter';
 import SizeFilter from './SizeFilter';
 
-
 let mCustomScrollbar = '';
 
 const scrollBarLoaded = () => {
@@ -36,6 +35,7 @@ class SonarFilter extends Component {
             open: false,
             collapsed: false,
             closed: true,
+            term: ''
         };
     }
     componentDidMount() {
@@ -46,23 +46,45 @@ class SonarFilter extends Component {
                 theme: 'dark'
             })
         })
+       // console.log(this.props.filterSet[0]);
     }
+
+    //state = { term: ''};
+//     onFilterClick = event => {
+//         event.preventDefault();
+//         this.props.onFilter(this.state.term);
+//     }
+
+handleFilterChange = value => {
+    let val = value;
+    
+   //let prod = this.state.products.data.data.map(prod => prod);
+   //console.log(prod.filter(prods => prods.descriptionLong.includes({val})));
+   //console.log(this.state.products.data.data.map(prod => prod));
+    this.setState({ 
+        term: val,
+      
+    }, () => {
+        this.props.onFilter(this.state.term);
+    });
+
+  };
+
+
     render() {
         return (
+            
             <div className="filterbar open">           
-                {this.props.filters.map(filterSet =>
+              
+            {/* 
+              {this.props.filterSet.map((filterSet, index) =>
                     <div>
-                        {/* add switch on Filter for condtional rendering of jsx and svg */}
-                        {filterSet.filter}
-                        {filterSet.value.map(filterVals =>
-                        // add onClick to filterVals to handle filtering of grid -> send filters as props and in child loader grid
-                        // set defualt filter to the prop and also set the defualt filter value to '' none here
-                                <div>{filterVals}</div>                               
-                                // if (filterHasIcons = true) => for each filter value
-                                // if filterValue = icon value get that icon and show it
+                        <h2 key={index} >{filterSet.filter}</h2>
+                        {filterSet.value.map( (filterVals, index)  =>
+                                <div key={index} value={filterVals} onClick={this.handleFilterChange.bind(this,filterVals)}>{filterVals}</div>                                                   
                             )}
                     </div>                  
-                )}
+                )} */}
 
 
                 <FilterHeader filterSetTitle="gauge" FilterSetIcon="gaugeCatIcon" />
@@ -81,7 +103,23 @@ class SonarFilter extends Component {
 
                 <hr />
 
-                <SizeFilter />
+                {/* <SizeFilter diameters={this.props.filterSet[0]} /> */}
+
+                <div className="flexcol">
+                    <h3> {this.props.filterSet[0].filter}</h3>            
+                    <div className="size-filter">
+                        <div className="flexrow">
+                           
+
+                            {this.props.filterSet[0].value.map( (diams, index)  =>
+                                <div onClick={this.handleFilterChange.bind(this,diams)} className="small-number-filter" key={index} value={diams} >{diams}</div>                                                   
+                            )}
+                        </div>
+                        {/* <div className="small-number-filter">2"</div>
+                        <div className="small-number-filter">3"</div>
+                        <div className="small-number-filter">5"</div> */}
+                    </div>
+                </div>
 
             </div>
 

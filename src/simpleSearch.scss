@@ -34,15 +34,7 @@ th.k-header.active > div > div {
     color: #fff;
     background-color: #ff6358;
 }
-.circ-border {
-    z-index: 999;
-}
 
-.circ-border svg {
-    z-index: -1;
-    position: relative;
-    max-width: 75px;
-}
 
 .details {
     background: #F5F0ED;
@@ -51,6 +43,7 @@ th.k-header.active > div > div {
         max-width: 300px;
     }
 }
+
 // nav path matching search api query strings
 .k-window-titlebar {
     border-bottom: 0.5px solid gray;

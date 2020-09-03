@@ -13,7 +13,6 @@ import { Route, Link } from 'react-router-dom';
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
     searchParams.set("skip", skip || "0");
-    //console.log("function Set Params works");
     return searchParams.toString();
 }
 
@@ -29,26 +28,27 @@ class CustomCell extends React.Component {
 class SierraGrid extends React.Component {
     init = { method: 'GET', accept: 'application/json', headers: {} };
 
-    PartsUrl = 'http://10.92.48.29:9002/api/categorysearch/details/';
     productDetailsUrl = 'http://10.92.48.29:9002/api/SierraPartSearch/Details/';
     tabsUrl = 'http://10.92.48.29:9002/api/SierraPartPartialSearch/Details/?itemRow=';
     gridWidth = 600;
-    payload = false;
 
     constructor(props) {
         super(props);
 
         this.state = {
+            left: false,
+            windowVisible: false,
+            gridClickedRow: {},
+            productSearch: "product",
+            detailType: 'product',
+            active: false,
+
             products: { data: [], total: 0 },
             dataState: this.props.resetState,
+
             productDetailData: [],
             productDetailDataTab: [],
-            detailType: 'product',
-            details: [],
-            sort: '',
-            filter: '',
-            active: false,
-            left: false,
+
             columns: [
                 { field: 'productNumber', title: "Product #" },
                 { field: "categoryParent", title: "Parent category" },
@@ -56,17 +56,18 @@ class SierraGrid extends React.Component {
                 { field: "descriptionLong", title: "description Long", width: 300 },
                 { field: "imagePath", title: "imagePath", cell: CustomCell },
             ],
-            productSearch: "product",
-            windowVisible: false,
-            gridClickedRow: {},
-            dataState2: { skip: 0, take: 60, group: [{ field: 'cat1_name' }] },
+                     
             results: [],
-            storeStack: [],
         };
     }
 
+    reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
 
-
+    closeWindow = () => {
+        this.setState({
+            windowVisible: false
+        });
+    }
 
     handleSelect = (e) => {
         this.setState({ selected: e.selected })
@@ -76,15 +77,6 @@ class SierraGrid extends React.Component {
         event.dataItem[event.target.props.expandField] = event.value;
         this.forceUpdate();
     };
-
-    dataStateChange = (e) => {
-        this.setState({
-            ...this.state,
-            dataState: e.data
-        }, () => {
-            this.updateURL();
-        });
-    }
 
     updateURL = () => {
         let page = Math.round(this.state.dataState.skip / 10)
@@ -99,7 +91,14 @@ class SierraGrid extends React.Component {
             + '&skip=' + page);
     };
 
-
+    dataStateChange = (e) => {
+        this.setState({
+            ...this.state,
+            dataState: e.data
+        }, () => {
+            this.updateURL();
+        });
+    }
 
     dataRecieved = (products) => {
         this.props.releaseAction();
@@ -107,72 +106,17 @@ class SierraGrid extends React.Component {
         let stack = [];
         for (var i = 0; i < localStorage.length; i++) {
             stack = localStorage.key(i);
-            //console.log(stack);
         }
-
         this.setState({
             ...this.state,
             products: products,
             active: true,
-            results: products.data,
-            storeStack: stack
-        });
-
-    }
-
-    closeWindow = () => {
-        this.setState({
-            windowVisible: false
+            results: products.data
         });
     }
-
-    handleGridRowClick1 = (e) => {
-        window.scrollTo(0, 0);
-        this.setState({
-            windowVisible: true,
-            gridClickedRow: e.dataItem
-        });
-        fetch(this.productDetailsUrl + e.dataItem.itemRow, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ productDetailData: json.Data }));
-        fetch(this.tabsUrl + e.dataItem.itemRow, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ productDetailDataTab: json.Data }));
-
-        this.setState({
-            detailType: 'product'
-        });
-        history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
-    }
-
-    reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
-
-
 
     componentDidMount = () => {
-        console.log("sierra grid mounted");
-        
         window.addEventListener("popstate", this.props.urlAction());
-        // this.unlisten = history.listen((location, action) => {
-        //     history.listen(location => {
-
-        //         const storedData = JSON.parse(localStorage.getItem(this.props.location.search));
-        //         let stack = [];
-        //         for (var i = 0; i < localStorage.length; i++) {
-        //             stack = localStorage.key(i);
-
-        //             if (stack.includes(this.props.location.search)) {
-        //                 this.setState({
-        //                     ...this.state,
-        //                     results: storedData.data,
-        //                     products: storedData,
-        //                 });
-        //                 //console.log(this.state.products.data.total);
-        //             }
-        //         }
-
-        //     });
-        // });
 
         if (this.props.urlQuery.skip !== '0') {
             this.setState({
@@ -193,37 +137,37 @@ class SierraGrid extends React.Component {
             fetch(this.tabsUrl + uId, this.init)
                 .then(response => response.json())
                 .then(json => this.setState({ productDetailDataTab: json.Data }));
-
-            this.setState({
-                detailType: 'product'
-            });
         }
+    }
+    handleGridRowClick1 = (e) => {
+        window.scrollTo(0, 0);
+        this.setState({
+            windowVisible: true,
+            gridClickedRow: e.dataItem
+        });
+        fetch(this.productDetailsUrl + e.dataItem.itemRow, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ productDetailData: json.Data }));
+        fetch(this.tabsUrl + e.dataItem.itemRow, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ productDetailDataTab: json.Data }));
+        history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
+    }
 
+    SearchTypeD = () => {
+        this.setState({ productSearch: 'filter' });
     }
 
     render() {
-
-
         var columnsToShow = this.state.columns.map((column, index) => {
             return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
         })
 
 
         return (
-
             <div className="searchGrid">
-                {/* <HomeButton></HomeButton> */}
-                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}>
-                    <Button
-                        onClick={() => {
-                            this.setState({ dataState: { take: 10, skip: 0 } });
-                        }}>
-                        Clear grid
-                    </Button>
-                </div>
-
-                <div >
-
+                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}><Button onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button></div>
+                <div>
                     <div className={this.props.urlQuery.parentCategoryName !== "" ? 'visigrid' : 'hider'}>
                         <Grid
                             style={{ height: '600px' }}
@@ -238,15 +182,11 @@ class SierraGrid extends React.Component {
                             onDataStateChange={this.dataStateChange}
                             onRowClick={this.handleGridRowClick1}
                             filterable={true}
-                            //skip={parseInt(this.props.urlQuery.skip)}
-
                             sortable={true}>
                             {columnsToShow}
                         </Grid>
                     </div>
                     <Route path="/sierra/details">
-
-
                         {this.state.windowVisible && this.state.detailType === 'product' &&
                             <Window title="Product Details" onClose={this.closeWindow} >
                                 <div className='detailsCon'>
@@ -356,14 +296,15 @@ class SierraGrid extends React.Component {
                 <SierraLoader
                     dataState={this.state.dataState}
                     onDataRecieved={this.dataRecieved}
-
+                    searchingForCats={this.props.searchCats}
                     query={this.props.urlQuery.query ? this.props.urlQuery.query : this.props.query}
                     action={this.props.action}
                     sierraSearch={this.props.urlQuery.parentCategoryName ? true : this.props.sierraSearch}
+                    filterSearch={true}
                     cat={this.props.cat}
 
                     myLocation={this.props.myLocation}
-                    storeStack={this.state.storeStack}
+
                     advancedSearchType={this.props.advancedSearchType}
                     parentCategoryName={this.props.urlQuery.parentCategoryName ? this.props.urlQuery.parentCategoryName : this.props.parentCategoryName}
                     parentCategoryId={this.props.urlQuery.parentCategoryId ? this.props.urlQuery.parentCategoryId : this.props.parentCategoryId}

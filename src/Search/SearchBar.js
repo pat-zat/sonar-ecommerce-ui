@@ -9,7 +9,8 @@ import { Router, Route, Link } from 'react-router-dom';
 import { Outboard, Inboard, Drive, Electrical, Gauges, Tools, Steering, Oil, Performance, Cables, Hose, Manuals, Fuel } from "../Sonar/CatIcons";
 import SonarFilter from '../Filter/SonarFilter';
 import history from '../history.js';
-import LoaderGrid from './LoaderGrid';
+
+import FilterGrid from './grids/FilterGrid';
 import SierraGrid from './grids/SierraGrid';
 import EngineGrid from './grids/EngineGrid';
 import InterchangeGrid from './grids/InterchangeGrid';
@@ -25,6 +26,7 @@ function getParams(location) {
     const searchParams = new URLSearchParams(location.search);
     return {
         query: searchParams.get("query") || "",
+        category: searchParams.get("category") || "",
         oeNumber: searchParams.get("oeNumber") || "",
         parentCategoryId: searchParams.get("parentCategoryId") || "",
         parentCategoryName: searchParams.get("parentCategoryName") || "",
@@ -62,7 +64,7 @@ class SearchBar extends React.Component {
         super(props);
         this.loaderGrid = React.createRef();
         this.sierraGrid = React.createRef();
-
+        this.engineGrid = React.createRef();   
         //CALLBACKS
         this.handlerA = this.handlerA.bind(this);
         this.releaseHandler = this.releaseHandler.bind(this);
@@ -100,10 +102,11 @@ class SearchBar extends React.Component {
             sierraSearch: false,
             engineSearch: false,
             interSearch: false,
+            filterSearch: false,
             filter: '',
             left: false,
             dataState: { take: 10, skip: 0 },
-            filterSet: [],
+            //filterSet: [],
             checked: queryTypes[0].value,
             disabled: false,
 
@@ -132,9 +135,10 @@ class SearchBar extends React.Component {
         fetch(this.catUrl, this.init)
             .then(response => response.json())
             .then(json => this.setState({ catList: json.Data }));
-        fetch(this.filterBarUrl, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ filterSet: json.Data }));
+
+        // fetch(this.filterBarUrl, this.init)
+        //     .then(response => response.json())
+        //     .then(json => this.setState({ filterSet: json.Data }));
 
         let myParams = getParams(this.props.location);
         console.log(myParams);
@@ -143,6 +147,13 @@ class SearchBar extends React.Component {
             if (myParams.parentCategoryName !== "") {
                 this.setState({
                     advancedSearchType: "sierra",
+                    releaseSearch: true,
+                    search: true
+                });
+            }
+            else if (myParams.category !== "") {
+                this.setState({
+                    advancedSearchType: "filter",
                     releaseSearch: true,
                     search: true
                 });
@@ -161,22 +172,48 @@ class SearchBar extends React.Component {
             });
         }
     }
+    catSearch = (event) => {
+       
+        this.setState({
+            advancedSearchType: 'filter',
+            cat: event.target.innerText,
+            search: true,
+            searchCats: true,
+            activeSearch: true,
+            releaseSearch: true,
+            dataState: { take: 10, skip: 0 }
+
+        }, () => {
+            history.push("/filter/api/AdvancedSearch/Details/" + '?id=' + 'sierrapart'
+            + '&category=' + this.state.cat);
+        });
+        if (this.state.left === false) {
+            this.setState({ left: true });
+        }
+        if (this.state.left === true) {
+            this.setState({ left: false });
+        }
+        
+    }
 
     urlAction = () => {
         let myParams = getParams(this.props.location);
-        console.log(myParams);
+
         if (this.props.location.search !== "") {
 
             if (myParams.parentCategoryName !== "") {
                 this.setState({
-                    advancedSearchType: "sierra",
-                   
+                    advancedSearchType: "sierra",                 
+                });
+            }
+            else if (myParams.category !== "") {
+                this.setState({
+                    advancedSearchType: "filter",                  
                 });
             }
             else if (myParams.oeNumber !== "") {
                 this.setState({
-                    advancedSearchType: "Interchange",
-                   
+                    advancedSearchType: "Interchange",                  
                 });
             }
             else this.setState({
@@ -211,17 +248,33 @@ class SearchBar extends React.Component {
 
     advSearchStateChange = (e) => {
         e.preventDefault();
+        if (this.state.oenumber === '' && this.state.advancedSearchType === 'Interchange') {
+            this.setState({
+                search: false,
+                activeSearch: false,
+                releaseSearch: false,
+                dataState: { take: 10, skip: 0 }
+            });
+        }
 
-        this.setState({
-            search: true,
-            activeSearch: true,
-            releaseSearch: true,
-            dataState: { take: 10, skip: 0 }
-        });
+        else {
+            this.setState({
+                search: true,
+                activeSearch: true,
+                releaseSearch: true,
+                dataState: { take: 10, skip: 0 }
+            });
+        }
+
         //this.resetHandler();
 
         if (this.state.advancedSearchType === 'Interchange') {
             history.push("/interchange/api/AdvancedSearch/Details/?id=interchange&oeNumber=" + this.state.oenumber);
+            //window.location.reload();
+        }
+        else if (this.state.advancedSearchType === 'filter') {
+            history.push("/filter/api/AdvancedSearch/Details/" + '?id=' + 'sierrapart'
+                + '&category=' + this.state.cat);
             //window.location.reload();
         }
         else if (this.state.advancedSearchType === 'sierra') {
@@ -241,12 +294,12 @@ class SearchBar extends React.Component {
                 + '&year=' + this.state.year
                 + '&hp=' + this.state.hp
                 + '&serialNumber=' + this.state.serialNo
-                + '&queryType=' + this.state.checked
-                + '&skip=0');
+                + '&queryType=' + this.state.checked);
             //window.location.reload();
         }
     }
-
+  //localhost:3000/brand/api/AdvancedSearch/Details/?id=brandmodel&brand=Honda&modelNumber=undefined&year=&hp=&serialNumber=&queryType=undefined&skip=1
+  //localhost:3000/brand/api/AdvancedSearch/Details/?id=brandmodel&brand=Honda&modelNumber=&year=&hp=&serialNumber=&queryType=Contains&skip=0
     handlerA() {
         this.setState({ search: true });
         console.log("callback");
@@ -256,6 +309,7 @@ class SearchBar extends React.Component {
         
         this.setState({
             sierraSearch: false,
+            filterSearch: false,
             engineSearch: false,
             interSearch: false,
          
@@ -267,30 +321,7 @@ class SearchBar extends React.Component {
     //     this.loaderGrid.current.reset();
     // }
 
-    toggleDrawer = () => {
-        if (this.state.left === false) {
-            this.setState({ left: true });
-        }
-        if (this.state.left === true) {
-            this.setState({ left: false });
-        }
-    }
 
-    catSearch = (event) => {
-        console.log(event.target.innerText);
-        this.setState({
-            cat: event.target.innerText,
-            search: true,
-            searchCats: true,
-            activeSearch: true
-        });
-        if (this.state.left === false) {
-            this.setState({ left: true });
-        }
-        if (this.state.left === true) {
-            this.setState({ left: false });
-        }
-    }
     // handleSearchType = () => {
     //     this.setState({
     //         advancedSearch: false,
@@ -310,14 +341,16 @@ class SearchBar extends React.Component {
             //brand: defaultBrand.brandName,
             checked: queryTypes[0].value,
         });
-
     }
+
     handleBrandChange = (e) => { this.setState({ brand: e.target.value }); }
+    
     handleInterchange = () => {
         this.setState({
             advancedSearch: true,
             search: false,
             releaseSearch: false,
+        
             advancedSearchType: 'Interchange'
         });
     }
@@ -433,9 +466,31 @@ class SearchBar extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                <Route path="/filter" component={FilterGrid}>
+                    <FilterGrid
+                        ref={this.filterGrid}
+                        searchCats={this.state.searchCats}
+                        cat={this.state.cat}
+                        releaseAction={this.releaseHandler}
+                        urlAction={this.urlAction}
+                        search={this.state.search}
+                        query={this.state.query}
+                        activeSearch={this.state.activeSearch}
+                        filterSearch={this.state.filterSearch}
+                        resetState={this.state.dataState}
+                        location={this.props.location}
+                        urlQuery={getParams(this.props.location)}
+                        myLocation={this.props.location}
+                        advancedSearchType={this.state.advancedSearchType}
+                       
+                    />
+                </Route>
+
                 <Route path="/sierra" component={SierraGrid}>
                     <SierraGrid
                         ref={this.sierraGrid}
+
                         releaseAction={this.releaseHandler}
                         urlAction={this.urlAction}
                         search={this.state.search}
@@ -455,7 +510,7 @@ class SearchBar extends React.Component {
                     />
                 </Route>
 
-                <Route path="/brand">
+                <Route path="/brand" component={EngineGrid}>
                     <EngineGrid
                         ref={this.EngineGrid}
                         releaseAction={this.releaseHandler}
@@ -475,7 +530,7 @@ class SearchBar extends React.Component {
                         year={this.state.year}
                         hp={this.state.hp}
                         serialNo={this.state.serialNo}
-                        queryType={this.state.checked}
+                        checked={this.state.checked}
                     />
                 </Route>
 
@@ -495,15 +550,14 @@ class SearchBar extends React.Component {
                         location={this.props.location}
                         urlQuery={getParams(this.props.location)}
                         myLocation={this.props.location}
-                        advancedSearchType={this.state.advancedSearchType}
                         oenumber={this.state.oenumber}
                     />
                 </Route>
 
 
-                <Drawer open={this.state.left} onClose={this.toggleDrawer}>
+                {/* <Drawer open={this.state.left} onClose={this.toggleDrawer}>
                     <SonarFilter filters={this.state.filterSet} />
-                </Drawer>
+                </Drawer> */}
               
 
             </div>

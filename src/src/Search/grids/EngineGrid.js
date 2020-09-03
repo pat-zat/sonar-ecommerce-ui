@@ -13,7 +13,6 @@ import { Route, Link } from 'react-router-dom';
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
     searchParams.set("skip", skip || "0");
-    //console.log("function Set Params works");
     return searchParams.toString();
 }
 
@@ -98,7 +97,7 @@ class EngineGrid extends React.Component {
         //console.log(page)
         history.push("/brand/api/AdvancedSearch/Details/" + '?id=' + 'brandmodel'
             + '&brand=' + this.props.brand
-            + '&modelNumber=' + this.props.modelNumber
+            + '&modelNumber=' + this.props.modelNo
             + '&year=' + this.props.year
             + '&hp=' + this.props.hp
             + '&serialNumber=' + this.props.serialNo
@@ -108,7 +107,7 @@ class EngineGrid extends React.Component {
 
     dataRecieved = (products) => {
         this.props.releaseAction();
-
+        
         this.setState({
             ...this.state,
             products: products,
@@ -167,9 +166,7 @@ class EngineGrid extends React.Component {
 
     componentDidMount = () => {
 
-        window.addEventListener("popstate", this.props.urlAction(() => {
-            this.closeWindow();
-        }));
+        window.addEventListener("popstate", this.props.urlAction());
 
         if (this.props.urlQuery.skip !== '0') {
             console.log("paged");
@@ -289,7 +286,7 @@ class EngineGrid extends React.Component {
 
                                 <div className="flexrow">
                                     <div>
-                                        <h2>parts for this engine</h2>
+                                        <h2>Parts For This Engine</h2>
                                         <Grid
                                             style={{ height: '700px' }}
                                             data={this.state.enginePartsData}

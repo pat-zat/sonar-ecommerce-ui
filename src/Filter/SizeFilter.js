@@ -1,14 +1,21 @@
 import React from 'react';
 
-const SizeFilter = () => {
+const SizeFilter = (props) => {
 
     return (
-        <div className="flexrow">
+        <div className="flexcol">
                     <h3>Diameter</h3>            
                     <div className="size-filter">
-                        <div className="small-number-filter">2"</div>
+                        <div className="flexrow">
+                            {props.diameters[0]}
+
+                            {props.diameters.value.map( (diams, index)  =>
+                                <div className="small-number-filter" key={index} value={diams} >{diams}</div>                                                   
+                            )}
+                        </div>
+                        {/* <div className="small-number-filter">2"</div>
                         <div className="small-number-filter">3"</div>
-                        <div className="small-number-filter">5"</div>
+                        <div className="small-number-filter">5"</div> */}
                     </div>
                 </div>
     )

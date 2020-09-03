@@ -12,7 +12,7 @@ export const Outboard = (props) => {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101 101">
                     <g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><circle className="pulse1" cx="50.5" cy="50.5" r="50" fill="none" stroke="#ff851b" strokeMiterlimit="10" /><path className="cls-2" d="M83.99 39.81h1.37v3.13h-1.37zM28.27 83.65a9.68 9.68 0 00-1.41 2.18 8.85 8.85 0 00-.72 2.24 6.41 6.41 0 00-.08 1.49 3.28 3.28 0 001.06-.1 5.74 5.74 0 001.82-.82A8.46 8.46 0 0030.75 87a9.31 9.31 0 001.4-2.18 8.36 8.36 0 00.57-1.53h-4.13c-.11.11-.22.23-.32.36zM28.27 77c.1.13.21.24.32.36h4.13a8.64 8.64 0 00-.57-1.53 9.52 9.52 0 00-1.4-2.18A8.41 8.41 0 0028.94 72a5.77 5.77 0 00-1.82-.83 3.59 3.59 0 00-1.06-.1 6.46 6.46 0 00.08 1.5 9 9 0 00.72 2.24A9.91 9.91 0 0028.27 77zM86.85 39.81h1.37v3.13h-1.37zM81.13 39.81h1.37v3.13h-1.37zM78.25 40.18v2.77h1.4v-3.14h-1.4v.37zM89.7 39.81h1.37v3.13H89.7zM94.12 39.81h-1.56V43h1.56a1.54 1.54 0 001.54-1.55 1.56 1.56 0 00-1.54-1.64zM25.66 80.31a1.38 1.38 0 001.27 1.49h8.62v-2.94h-8.62a1.37 1.37 0 00-1.27 1.45zM49.58 53l-1 8.76 2.28 1.38.5.31 2.91 1.81L52 54.78a.28.28 0 010-.09 2 2 0 01.54-1.6 2.07 2.07 0 011.53-.67h2.21a.74.74 0 01.74.74v2.37a.9.9 0 00.9.9.91.91 0 00.94-.9v-3.48a1.47 1.47 0 00-1.46-1.47h-7.55zM73.59 25.46h-47.1v11.18h44.16l2.94-11.18zM64.04 16.53l-33.13-3.94-4.42 4.05v7.34h46.08l-8.53-7.45z" /><path className="cls-2" d="M36.29 45.42H31.4v1.4l5.11 3.29h6.56a.74.74 0 010 1.48H37v9.93h6A.74.74 0 0143 63h-6.61l-10.2 2.77v.93h10.1a.74.74 0 01.74.74v9.93h6a.75.75 0 01.74.75.74.74 0 01-.74.74H37v2.94h6a.74.74 0 110 1.48h-5.78l.78 2.31a.78.78 0 01-.09.68l-2.8 4h9.9l5.19-9.86V64.45l-2.8-1.71a.76.76 0 01-.35-.72l1.4-12.26a.75.75 0 01.42-.59l8-3.75H36.29zM68.05 41.84h8.72v-.92h-7.86l-.86.92zM26.49 38.12v1.73l4.46 4.09h33.08l5.47-5.82H26.49z" /></g></g>
                 </svg>
-                <p onClick={props.OnIcon} className="nav-anchor-txt">Outboard</p>
+                <p onClick={props.OnIcon} className="nav-anchor-txt">Generator</p>
                 {/* <input onClick={props.OnIcon} value="outboard"></input> */}
             </div>
         </div>
@@ -56,7 +56,7 @@ export const Electrical = (props) => {
                         </g>
                     </g>
                 </svg>
-                <p onClick={props.OnIcon} className="nav-anchor-txt">Electrical</p>
+                <p onClick={props.OnIcon} className="nav-anchor-txt">Power Systems</p>
             </div>
         </div>
     );
@@ -93,7 +93,7 @@ export const Tools = (props) => {
                         </g>
                     </g>
                 </svg>
-                <p onClick={props.OnIcon} className="nav-anchor-txt">Tools</p>
+                <p onClick={props.OnIcon} className="nav-anchor-txt">Tools and Shop Supplies</p>
             </div>
         </div>
     );
@@ -233,7 +233,7 @@ export const Fuel = (props) => {
                         </g>
                     </g>
                 </svg>
-                <p onClick={props.OnIcon} className="nav-anchor-txt">Fuel</p>
+                <p onClick={props.OnIcon} className="nav-anchor-txt">Tanks</p>
             </div>
         </div>
     );

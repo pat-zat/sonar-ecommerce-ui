@@ -8,18 +8,7 @@ $font-size-h3: 24px;
     light gray - #dfd7ca
     dark gray - #333333
 */
-/*
-    logo bar
-    product line buttons
-    top level search and page layout
-    categories
-    sub cats
-    category collapse
-    filter bar
-    active filters 
-    filter collapse
 
-*/
 body {
     font-family: Industrie;
     font-variation-settings: "wdth" 1000;
@@ -32,37 +21,30 @@ body {
     font-weight: 1 999;
 }
 
+
+
+//START HEADER
+
 .home-logo {
     text-align: center;
 }
 
-/*start main nav and categories layout*/
-/*.search-input {
-    h1 {
-        font-weight: 900;
-        color: #000;
-    }
 
-    label {
-        font-weight: 900;
-        font-size: 32px;
-        margin-right: 20px;
-    }
 
-    .form-control {
-        border-bottom: none;
-        font-size: 28px;
-    }
-}*/
+
+//END HEADER
+
+
+//START ICONS
 
 #root > div > div:nth-child(2) > div > div.collapseIcons > button > span.MuiButton-label {
     writing-mode: vertical-lr; 
-transform: rotate(180deg);
-min-height: 140px;
-position: absolute;
-left: 0;
-top: -65px;
-display: none;
+    transform: rotate(180deg);
+    min-height: 140px;
+    position: absolute;
+    left: 0;
+    top: -65px;
+    display: none;
 }
 
 .collapseIcons {
@@ -81,9 +63,12 @@ display: none;
 
 .circ-border {
     width: 8vw;
-
+    z-index: 999;
     svg {
         overflow: visible;
+        z-index: -1;
+        position: relative;
+        max-width: 75px;
     }
 
     p {
@@ -121,9 +106,9 @@ display: none;
     background-color: #dfd7ca !important;
 }
 
-.itemSearchTableContainer {
-    margin-left: 7vw;
-}
+// .itemSearchTableContainer {
+//     margin-left: 7vw;
+// }
 
 
 

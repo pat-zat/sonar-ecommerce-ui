@@ -64,7 +64,7 @@ class SearchBar extends React.Component {
         super(props);
         this.loaderGrid = React.createRef();
         this.sierraGrid = React.createRef();
-
+        this.engineGrid = React.createRef();   
         //CALLBACKS
         this.handlerA = this.handlerA.bind(this);
         this.releaseHandler = this.releaseHandler.bind(this);
@@ -248,13 +248,24 @@ class SearchBar extends React.Component {
 
     advSearchStateChange = (e) => {
         e.preventDefault();
+        if (this.state.oenumber === '' && this.state.advancedSearchType === 'Interchange') {
+            this.setState({
+                search: false,
+                activeSearch: false,
+                releaseSearch: false,
+                dataState: { take: 10, skip: 0 }
+            });
+        }
 
-        this.setState({
-            search: true,
-            activeSearch: true,
-            releaseSearch: true,
-            dataState: { take: 10, skip: 0 }
-        });
+        else {
+            this.setState({
+                search: true,
+                activeSearch: true,
+                releaseSearch: true,
+                dataState: { take: 10, skip: 0 }
+            });
+        }
+
         //this.resetHandler();
 
         if (this.state.advancedSearchType === 'Interchange') {
@@ -283,13 +294,12 @@ class SearchBar extends React.Component {
                 + '&year=' + this.state.year
                 + '&hp=' + this.state.hp
                 + '&serialNumber=' + this.state.serialNo
-                + '&queryType=' + this.state.checked
-                + '&skip=0');
+                + '&queryType=' + this.state.checked);
             //window.location.reload();
         }
     }
-    
-
+  //localhost:3000/brand/api/AdvancedSearch/Details/?id=brandmodel&brand=Honda&modelNumber=undefined&year=&hp=&serialNumber=&queryType=undefined&skip=1
+  //localhost:3000/brand/api/AdvancedSearch/Details/?id=brandmodel&brand=Honda&modelNumber=&year=&hp=&serialNumber=&queryType=Contains&skip=0
     handlerA() {
         this.setState({ search: true });
         console.log("callback");
@@ -331,14 +341,16 @@ class SearchBar extends React.Component {
             //brand: defaultBrand.brandName,
             checked: queryTypes[0].value,
         });
-
     }
+
     handleBrandChange = (e) => { this.setState({ brand: e.target.value }); }
+    
     handleInterchange = () => {
         this.setState({
             advancedSearch: true,
             search: false,
             releaseSearch: false,
+        
             advancedSearchType: 'Interchange'
         });
     }
@@ -498,7 +510,7 @@ class SearchBar extends React.Component {
                     />
                 </Route>
 
-                <Route path="/brand">
+                <Route path="/brand" component={EngineGrid}>
                     <EngineGrid
                         ref={this.EngineGrid}
                         releaseAction={this.releaseHandler}
@@ -518,7 +530,7 @@ class SearchBar extends React.Component {
                         year={this.state.year}
                         hp={this.state.hp}
                         serialNo={this.state.serialNo}
-                        queryType={this.state.checked}
+                        checked={this.state.checked}
                     />
                 </Route>
 

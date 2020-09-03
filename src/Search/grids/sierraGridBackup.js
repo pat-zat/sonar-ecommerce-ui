@@ -213,6 +213,29 @@ class SierraGrid extends React.Component {
         this.useStorage();
       });
 
+
+
+              // this.unlisten = history.listen((location, action) => {
+        //     history.listen(location => {
+
+        //         const storedData = JSON.parse(localStorage.getItem(this.props.location.search));
+        //         let stack = [];
+        //         for (var i = 0; i < localStorage.length; i++) {
+        //             stack = localStorage.key(i);
+
+        //             if (stack.includes(this.props.location.search)) {
+        //                 this.setState({
+        //                     ...this.state,
+        //                     results: storedData.data,
+        //                     products: storedData,
+        //                 });
+        //                 //console.log(this.state.products.data.total);
+        //             }
+        //         }
+
+        //     });
+        // });
+
         if (this.props.urlQuery.skip !== '0') {
             this.setState({
                 dataState: { skip: this.props.urlQuery.skip, take: 10 }
