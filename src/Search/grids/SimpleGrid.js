@@ -51,23 +51,7 @@ class SimpleGrid extends React.Component {
             productDetailData: [],
             productDetailDataTab: [],
 
-            columns: [
-                { field: "saleItem", title: "Product #", width: 220 },
-                { field: "categoryParent", title: "Parent category", width: 300 },
-                { field: "categoryChild", title: "Child category", width: 300 },
-                { field: "descriptionLong", title: "description", width: 300 },
-                { field: "imagePath", title: "imagePath", cell: CustomCell, width: 300 },
-                { field: "brandName", title: "brandName", width: 200 },
-                { field: "engineId", title: "Engine Id", width: 150 },
-                { field: "modelNumber", title: "Model Number", width: 250 },
-                { field: "startYear", title: "Start Year", width: 100 },
-                { field: "stopYear", title: "Stop Year", width: 100 },
-                { field: "horsePower", title: "Horsepower", width: 100 },
-                { field: "stroke", title: "stroke", width: 100 },
-                { field: "liters", title: "liters", width: 100 },
-                { field: "serialNumberStart", title: "Serial # Start", width: 100 },
-                { field: "serialNumberStop", title: "Serial # Stop", width: 100 },
-            ],
+            columns: [],
             columnsA: [
                 { field: "saleItem", title: "Product #", width: 220 },
                 { field: "categoryParent", title: "Parent category", width: 300 },
@@ -125,18 +109,13 @@ class SimpleGrid extends React.Component {
 
     dataRecieved = (products) => {
         this.props.releaseAction();
-        localStorage.setItem(this.props.location.search, JSON.stringify(this.state.products.data));
-        let stack = [];
-        for (var i = 0; i < localStorage.length; i++) {
-            stack = localStorage.key(i);
-        }
+        
         this.setState({
             ...this.state,
             products: products,
             active: true,
             results: products.data
         });
-        //console.log(this.state.products.data.data);
     }
 
     componentDidMount = () => {
@@ -180,11 +159,9 @@ class SimpleGrid extends React.Component {
 
     columnHasValue = () => {
         let hasValue = false; 
-        // console.log(this.state.products.data.data);  
         this.state.products.data.data.forEach(item => {
             if (item.engineId !== null && item.engineId !== "" && item.engineId !== undefined ) {
-                hasValue = true;         
-               // console.log("has value  " + item.engineId );       
+                hasValue = true;              
             }
         });
         return hasValue;    
@@ -202,24 +179,21 @@ class SimpleGrid extends React.Component {
 
     render() {
         
-        //let columnsToShow;
+        let columnsToShow = this.state.columnsB.map((column, index) => {        
+            return <Column field={column.field} title={column.title} key={index} width={column.width}   />;   
+        });
         if (this.state.active === true) {
             if (this.columnHasValue(this.state.columnsB.engineId) ) {
-                var columnsToShow = this.state.columnsB.map((column, index) => {        
+                 columnsToShow = this.state.columnsB.map((column, index) => {        
                     return <Column field={column.field} title={column.title} key={index} width={column.width}   />;   
                 })
             }
             else {
-                var columnsToShow = this.state.columnsA.map((column, index) => {        
+               columnsToShow = this.state.columnsA.map((column, index) => {        
                     return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;   
                 })  
             }
         }
-            
-    
-        // var columnsToShow = this.state.columns.map((column, index) => {
-        //     return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
-        // })
 
 
         return (
@@ -355,7 +329,7 @@ class SimpleGrid extends React.Component {
                     dataState={this.state.dataState}
                     onDataRecieved={this.dataRecieved}
                     query={this.props.urlQuery.query ? this.props.urlQuery.query : this.props.query}
-                    simSearch={this.props.urlQuery.query ? true : false}
+                    simSearch={this.props.urlQuery.query ? true : this.props.simSearch}
                     action={this.props.action}
                     myLocation={this.props.myLocation}
                     advancedSearchType={this.props.advancedSearchType}                
