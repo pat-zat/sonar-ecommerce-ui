@@ -190,7 +190,6 @@ class InterchangeGrid extends React.Component {
         return (
 
             <div className="searchGrid">
-                {/* <HomeButton></HomeButton> */}
                 <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}>
                     <Button
                         onClick={() => {
@@ -216,8 +215,6 @@ class InterchangeGrid extends React.Component {
                             onDataStateChange={this.dataStateChange}
                             onRowClick={this.handleGridRowClick1}
                             filterable={true}
-                            //skip={parseInt(this.props.urlQuery.skip)}
-
                             sortable={true}>
                             {columnsToShow}
                         </Grid>

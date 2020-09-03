@@ -10,6 +10,7 @@ import { Outboard, Inboard, Drive, Electrical, Gauges, Tools, Steering, Oil, Per
 import SonarFilter from '../Filter/SonarFilter';
 import history from '../history.js';
 
+import SimpleGrid from './grids/SimpleGrid';
 import FilterGrid from './grids/FilterGrid';
 import SierraGrid from './grids/SierraGrid';
 import EngineGrid from './grids/EngineGrid';
@@ -64,7 +65,7 @@ class SearchBar extends React.Component {
         super(props);
         this.loaderGrid = React.createRef();
         this.sierraGrid = React.createRef();
-        this.engineGrid = React.createRef();   
+        this.engineGrid = React.createRef();
         //CALLBACKS
         this.handlerA = this.handlerA.bind(this);
         this.releaseHandler = this.releaseHandler.bind(this);
@@ -100,6 +101,7 @@ class SearchBar extends React.Component {
             activeSearch: false,
             releaseSearch: false,
             sierraSearch: false,
+            simSearch: false,
             engineSearch: false,
             interSearch: false,
             filterSearch: false,
@@ -140,6 +142,7 @@ class SearchBar extends React.Component {
         //     .then(response => response.json())
         //     .then(json => this.setState({ filterSet: json.Data }));
 
+        //this is for loading just from url and having search bar display correctly
         let myParams = getParams(this.props.location);
         console.log(myParams);
         if (this.props.location.search !== "") {
@@ -148,7 +151,16 @@ class SearchBar extends React.Component {
                 this.setState({
                     advancedSearchType: "sierra",
                     releaseSearch: true,
-                    search: true
+                    search: true,
+                    advancedSearch: false
+                });
+            }
+            else if (myParams.query !== "") {
+                this.setState({
+                    advancedSearchType: "simple",
+                    releaseSearch: true,
+                    search: true,
+                    activeSearch: true
                 });
             }
             else if (myParams.category !== "") {
@@ -172,30 +184,8 @@ class SearchBar extends React.Component {
             });
         }
     }
-    catSearch = (event) => {
-       
-        this.setState({
-            advancedSearchType: 'filter',
-            cat: event.target.innerText,
-            search: true,
-            searchCats: true,
-            activeSearch: true,
-            releaseSearch: true,
-            dataState: { take: 10, skip: 0 }
-
-        }, () => {
-            history.push("/filter/api/AdvancedSearch/Details/" + '?id=' + 'sierrapart'
-            + '&category=' + this.state.cat);
-        });
-        if (this.state.left === false) {
-            this.setState({ left: true });
-        }
-        if (this.state.left === true) {
-            this.setState({ left: false });
-        }
-        
-    }
-
+  
+    //this is for maintaing state after search
     urlAction = () => {
         let myParams = getParams(this.props.location);
 
@@ -203,22 +193,27 @@ class SearchBar extends React.Component {
 
             if (myParams.parentCategoryName !== "") {
                 this.setState({
-                    advancedSearchType: "sierra",                 
+                    advancedSearchType: "sierra",
+                });
+            }
+            else if (myParams.query !== "") {
+                this.setState({
+                    advancedSearchType: "simple",
                 });
             }
             else if (myParams.category !== "") {
                 this.setState({
-                    advancedSearchType: "filter",                  
+                    advancedSearchType: "filter",
                 });
             }
             else if (myParams.oeNumber !== "") {
                 this.setState({
-                    advancedSearchType: "Interchange",                  
+                    advancedSearchType: "Interchange",
                 });
             }
             else this.setState({
                 advancedSearchType: "brand",
-            
+
             });
         }
     }
@@ -246,6 +241,19 @@ class SearchBar extends React.Component {
         });
     };
 
+    searchStateChange = (e) => {
+
+        e.preventDefault();
+        this.setState({
+            search: true,
+            activeSearch: true,
+            releaseSearch: true,      
+            dataState: { take: 10, skip: 0 }
+        });
+        //this.resetHandler();
+        history.push("/simpleSearch/api/?id=simpleSearch&query=" + this.state.query);
+    }
+
     advSearchStateChange = (e) => {
         e.preventDefault();
         if (this.state.oenumber === '' && this.state.advancedSearchType === 'Interchange') {
@@ -267,7 +275,7 @@ class SearchBar extends React.Component {
         }
 
         //this.resetHandler();
-
+     
         if (this.state.advancedSearchType === 'Interchange') {
             history.push("/interchange/api/AdvancedSearch/Details/?id=interchange&oeNumber=" + this.state.oenumber);
             //window.location.reload();
@@ -297,22 +305,21 @@ class SearchBar extends React.Component {
                 + '&queryType=' + this.state.checked);
             //window.location.reload();
         }
+        
     }
-  //localhost:3000/brand/api/AdvancedSearch/Details/?id=brandmodel&brand=Honda&modelNumber=undefined&year=&hp=&serialNumber=&queryType=undefined&skip=1
-  //localhost:3000/brand/api/AdvancedSearch/Details/?id=brandmodel&brand=Honda&modelNumber=&year=&hp=&serialNumber=&queryType=Contains&skip=0
+
     handlerA() {
         this.setState({ search: true });
         console.log("callback");
     }
 
-    releaseHandler() {
-        
+    releaseHandler() { 
         this.setState({
             sierraSearch: false,
             filterSearch: false,
             engineSearch: false,
             interSearch: false,
-         
+            simSearch: false,
         });
         console.log("release callback");
     }
@@ -322,15 +329,39 @@ class SearchBar extends React.Component {
     // }
 
 
-    // handleSearchType = () => {
-    //     this.setState({
-    //         advancedSearch: false,
-    //         search: false,
-    //         releaseSearch: false,
-    //         advancedSearchType: undefined,
-    //         products: { data: [], total: 0 }
-    //     });
-    // }
+    catSearch = (event) => {
+
+        this.setState({
+            advancedSearchType: 'filter',
+            cat: event.target.innerText,
+            search: true,
+            searchCats: true,
+            activeSearch: true,
+            releaseSearch: true,
+            dataState: { take: 10, skip: 0 }
+
+        }, () => {
+            history.push("/filter/api/AdvancedSearch/Details/" + '?id=' + 'sierrapart'
+                + '&category=' + this.state.cat);
+        });
+        if (this.state.left === false) {
+            this.setState({ left: true });
+        }
+        if (this.state.left === true) {
+            this.setState({ left: false });
+        }
+
+    }
+
+    handleSearchType = () => {
+        this.setState({
+            advancedSearch: false,
+            search: false,
+            releaseSearch: false,
+            advancedSearchType: 'simple',
+            products: { data: [], total: 0 }
+        });
+    }
     handleBrand = () => {
         //let defaultBrand = this.state.brandList[0];
         this.setState({
@@ -344,13 +375,13 @@ class SearchBar extends React.Component {
     }
 
     handleBrandChange = (e) => { this.setState({ brand: e.target.value }); }
-    
+
     handleInterchange = () => {
         this.setState({
             advancedSearch: true,
             search: false,
             releaseSearch: false,
-        
+
             advancedSearchType: 'Interchange'
         });
     }
@@ -365,9 +396,6 @@ class SearchBar extends React.Component {
         });
     }
 
-
-
-
     render() {
 
         return (
@@ -375,7 +403,13 @@ class SearchBar extends React.Component {
             <div className="simpleSearch" >
                 <div className={this.state.activeSearch ? 'activeSearch' : 'searchCon'}>
                     <div className="flex">
-                        <form className="searchBar" onSubmit={this.advSearchStateChange}>
+
+                        <form className={this.state.advancedSearchType === 'simple' ? "searchBar simpleForm" : 'hiderb'} onSubmit={this.searchStateChange}>
+                            <input style={{ maxWidth: '600px' }}  placeholder="SEARCH" type="text" name="query" value={this.state.query} onChange={this.handleChange} />
+                            <button onClick={this.resetHandler} ref="searchBtn" type={'submit'} className={this.state.advancedSearchType === 'simple' ? 'k-button searchBtn' : 'hiderb'}><span>Search</span></button>
+                        </form>
+
+                        <form className={this.state.advancedSearchType !== 'simple' ? "searchBar" : 'hiderb'} onSubmit={this.advSearchStateChange}>
                             <div className='advanced'>
 
                                 <div className={this.state.advancedSearchType === 'Interchange' ? 'advanced' : 'hiderb'}>
@@ -439,12 +473,13 @@ class SearchBar extends React.Component {
                                         <input style={{ width: '220px' }} placeholder="serial number" type="text" name="serialNo" value={this.state.serialNo} onChange={this.handleChange} />
                                     </div>
                                 </div>
-                                <button ref="advancedToggle" type={'submit'} className="k-button advSearchBtn"><span>Advanced Search</span></button>
+                                <button ref="advancedToggle" type={'submit'} className={this.state.advancedSearch === true || this.state.advancedSearchType === 'brand' ? 'k-button advSearchBtn' : 'hiddenToggle'}><span>Advanced Search</span></button>
                             </div>
                         </form>
 
                     </div>
-                    <div className='adv-btn-row'>
+                    <div className={this.state.advancedSearchType !== 'filter' ? 'adv-btn-row' : 'adv-btn-row moveUp'}>
+                        <button ref="advSearchBtn" onClick={this.handleSearchType} className="k-button"><span>Simple Search</span></button>
                         <button ref="advSearchBtn" onClick={this.handleInterchange} className="k-button"><span>Interchange</span></button>
                         <button ref="advSearchBtn" onClick={this.handleSierra} className="k-button"><span>Sierra Part #</span></button>
                         <button ref="advSearchBtn" onClick={this.handleBrand} className="k-button"><span>Brand - model</span></button>
@@ -452,7 +487,7 @@ class SearchBar extends React.Component {
                 </div>
 
                 <div className={this.state.activeSearch ? 'collapseIcons' : 'expanded-icons'}>
-                <Button onClick={this.toggleDrawer}>Gauge Filter</Button>
+                    {/* <Button onClick={this.toggleDrawer}>Gauge Filter</Button> */}
                     <div className="srch-btn-con">
 
                         <div className="searchFlex">
@@ -483,14 +518,31 @@ class SearchBar extends React.Component {
                         urlQuery={getParams(this.props.location)}
                         myLocation={this.props.location}
                         advancedSearchType={this.state.advancedSearchType}
-                       
+
+                    />
+                </Route>
+
+                <Route path="/simpleSearch" component={SimpleGrid}>
+                    <SimpleGrid
+                        ref={this.simpleGrid}                   
+                        releaseAction={this.releaseHandler}
+                        urlAction={this.urlAction}
+                        search={this.state.search}
+                        query={this.state.query}
+                        activeSearch={this.state.activeSearch}
+                        simSearch={this.state.simSearch}
+                        resetState={this.state.dataState}
+                        location={this.props.location}
+                        urlQuery={getParams(this.props.location)}
+                        myLocation={this.props.location}
+                        advancedSearchType={this.state.advancedSearchType}
+
                     />
                 </Route>
 
                 <Route path="/sierra" component={SierraGrid}>
                     <SierraGrid
                         ref={this.sierraGrid}
-
                         releaseAction={this.releaseHandler}
                         urlAction={this.urlAction}
                         search={this.state.search}
@@ -558,7 +610,7 @@ class SearchBar extends React.Component {
                 {/* <Drawer open={this.state.left} onClose={this.toggleDrawer}>
                     <SonarFilter filters={this.state.filterSet} />
                 </Drawer> */}
-              
+
 
             </div>
         );

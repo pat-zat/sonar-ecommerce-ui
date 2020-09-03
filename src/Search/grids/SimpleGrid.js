@@ -1,7 +1,9 @@
+
+
 import React from 'react';
 import { SRLWrapper } from 'simple-react-lightbox'
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
-import { FilterLoader } from './FilterLoader.js';
+import { SimpleLoader } from './SimpleLoader.js';
 import { process } from '@progress/kendo-data-query';
 import Button from '@material-ui/core/Button';
 import { TabStrip, TabStripTab } from '@progress/kendo-react-layout'
@@ -9,8 +11,6 @@ import $ from 'jquery';
 import { Window } from '@progress/kendo-react-dialogs';
 import history from '../../history.js';
 import { Route, Link } from 'react-router-dom';
-import Drawer from '@material-ui/core/Drawer';
-import SonarFilter from '../../Filter/SonarFilter';
 
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
@@ -27,12 +27,9 @@ class CustomCell extends React.Component {
     }
 }
 
-
-// IconFilters(Hamburger) - http://10.92.48.29:9002/api/IconFilters/Details/?query=Gauges&custId=000000 
-
-class FilterGrid extends React.Component {
+class SimpleGrid extends React.Component {
     init = { method: 'GET', accept: 'application/json', headers: {} };
-    filterBarUrl = 'http://10.92.48.29:9002/api/IconFilters/Details/?query=Gauges&custId=000000';
+
     productDetailsUrl = 'http://10.92.48.29:9002/api/SierraPartSearch/Details/';
     tabsUrl = 'http://10.92.48.29:9002/api/SierraPartPartialSearch/Details/?itemRow=';
     gridWidth = 600;
@@ -44,7 +41,7 @@ class FilterGrid extends React.Component {
             left: false,
             windowVisible: false,
             gridClickedRow: {},
-            productSearch: "filter",
+            productSearch: "product",
             detailType: 'product',
             active: false,
 
@@ -55,26 +52,44 @@ class FilterGrid extends React.Component {
             productDetailDataTab: [],
 
             columns: [
-                { field: 'saleItem', title: "Product #" },
-                { field: "categoryParent", title: "Parent category" },
-                { field: "categoryChild", title: "Child category" },
-                { field: "descriptionLong", title: "description Long", width: 300 },
-                { field: "image", title: "imagePath", cell: CustomCell },
+                { field: "saleItem", title: "Product #", width: 220 },
+                { field: "categoryParent", title: "Parent category", width: 300 },
+                { field: "categoryChild", title: "Child category", width: 300 },
+                { field: "descriptionLong", title: "description", width: 300 },
+                { field: "imagePath", title: "imagePath", cell: CustomCell, width: 300 },
+                { field: "brandName", title: "brandName", width: 200 },
+                { field: "engineId", title: "Engine Id", width: 150 },
+                { field: "modelNumber", title: "Model Number", width: 250 },
+                { field: "startYear", title: "Start Year", width: 100 },
+                { field: "stopYear", title: "Stop Year", width: 100 },
+                { field: "horsePower", title: "Horsepower", width: 100 },
+                { field: "stroke", title: "stroke", width: 100 },
+                { field: "liters", title: "liters", width: 100 },
+                { field: "serialNumberStart", title: "Serial # Start", width: 100 },
+                { field: "serialNumberStop", title: "Serial # Stop", width: 100 },
             ],
+            columnsA: [
+                { field: "saleItem", title: "Product #", width: 220 },
+                { field: "categoryParent", title: "Parent category", width: 300 },
+                { field: "categoryChild", title: "Child category", width: 300 },
+                { field: "descriptionLong", title: "description", width: 300 },
+                { field: "imagePath", title: "imagePath", cell: CustomCell, width: 300 },
+            ],
+            columnsB: [
+                { field: "brandName", title: "brandName" },
+                { field: "engineId", title: "Engine Id" },
+                { field: "startYear", title: "Start Year" },
+                { field: "stopYear", title: "Stop Year"},
+                { field: "horsePower", title: "Horsepower" },
+                { field: "stroke", title: "stroke" },
+                { field: "liters", title: "liters"},
+                { field: "serialNumberStart", title: "Serial # Start" },
+                { field: "serialNumberStop", title: "Serial # Stop"},
+            ],
+                     
             results: [],
-            filter: '',
-            filterValue: '',
-            filterSet: [],
-            filtering: false
         };
     }
-    // checkFilter(products) {
-    //     return products.includes({filterValue})
-    //      call set state
-    // }
-    // checkFilter(dataItem) {
-    //     return dataItem.includes({filterValue})
-    // }
 
     reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
 
@@ -96,9 +111,7 @@ class FilterGrid extends React.Component {
     updateURL = () => {
         let page = Math.round(this.state.dataState.skip / 10)
         const url = setParams({ skip: page });
-        history.push('/filter/api/AdvancedSearch/Details/?id=sierrapart'
-            + '&category=' + this.props.cat
-            + '&skip=' + page);
+        history.push("/simpleSearch/api/?id=simpleSearch&query=" + this.props.query + '&skip=' + page);
     };
 
     dataStateChange = (e) => {
@@ -112,30 +125,22 @@ class FilterGrid extends React.Component {
 
     dataRecieved = (products) => {
         this.props.releaseAction();
-
+        localStorage.setItem(this.props.location.search, JSON.stringify(this.state.products.data));
+        let stack = [];
+        for (var i = 0; i < localStorage.length; i++) {
+            stack = localStorage.key(i);
+        }
         this.setState({
             ...this.state,
             products: products,
             active: true,
             results: products.data
         });
+        //console.log(this.state.products.data.data);
     }
 
-    // Filters for the Item - http://10.92.48.29:9002/api/FilterSet/Details/?query=Gauges&custId=000000
-    //this fetch call needs to happen one time when drawer is toggled
-    toggleDrawer = () => {
-        if (this.state.left === false) {
-            this.setState({ left: true });
-        }
-        if (this.state.left === true) {
-            this.setState({ left: false });
-        }
-    }
     componentDidMount = () => {
         window.addEventListener("popstate", this.props.urlAction());
-        fetch(this.filterBarUrl, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ filterSet: json.Data }));
 
         if (this.props.urlQuery.skip !== '0') {
             this.setState({
@@ -173,42 +178,55 @@ class FilterGrid extends React.Component {
         history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
     }
 
-    onFilterSelect = term => {
-
-        //THIS WORKS - but dataReceived runs and overwrites it probably because the url is different
-        let prod = this.state.products.data.data.map(prod => prod);
-        let filteredProd = prod.filter(prods => prods.descriptionLong.includes('2"'));
-
-        this.setState({
-            //filtering: true,
-            dataState: {
-                filter: {
-                    logic: "and",
-                    filters: [
-                        { field: "descriptionLong", operator: "contains", value: term }
-                    ]
-                }
-            },
-            //products: {data: filteredProd}
+    columnHasValue = () => {
+        let hasValue = false; 
+        // console.log(this.state.products.data.data);  
+        this.state.products.data.data.forEach(item => {
+            if (item.engineId !== null && item.engineId !== "" && item.engineId !== undefined ) {
+                hasValue = true;         
+               // console.log("has value  " + item.engineId );       
+            }
         });
+        return hasValue;    
     }
 
-    render() {
+    componentDidUpdate(prevProps, prevState) {
+      
+        if (this.state.products !== prevState.products) {
+            console.log("prevState " + prevState.products.data.total);
+            console.log("currentState " + this.state.products.data.total);
+        }
 
-        var columnsToShow = this.state.columns.map((column, index) => {
-            return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
-        })
+        
+      }
+
+    render() {
+        
+        //let columnsToShow;
+        if (this.state.active === true) {
+            if (this.columnHasValue(this.state.columnsB.engineId) ) {
+                var columnsToShow = this.state.columnsB.map((column, index) => {        
+                    return <Column field={column.field} title={column.title} key={index} width={column.width}   />;   
+                })
+            }
+            else {
+                var columnsToShow = this.state.columnsA.map((column, index) => {        
+                    return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;   
+                })  
+            }
+        }
+            
+    
+        // var columnsToShow = this.state.columns.map((column, index) => {
+        //     return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
+        // })
 
 
         return (
             <div className="searchGrid">
-                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}>
-                    <Button className="k-button" onClick={this.toggleDrawer}>Gauge Filter</Button>
-                    <Button className="k-button" onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button>
-                </div>
+                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}><Button onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button></div>
                 <div>
-                    <div className={this.props.urlQuery.category !== "" ? 'visigrid' : 'hider'}>
-
+                    <div className={this.props.urlQuery.query !== "" ? 'visigrid' : 'hider'}>
                         <Grid
                             style={{ height: '600px' }}
                             ref={div => this.gridWidth = div}
@@ -226,7 +244,7 @@ class FilterGrid extends React.Component {
                             {columnsToShow}
                         </Grid>
                     </div>
-                    <Route path="/sierra/details">
+                    <Route path="/simpleSearch/details">
                         {this.state.windowVisible && this.state.detailType === 'product' &&
                             <Window title="Product Details" onClose={this.closeWindow} >
                                 <div className='detailsCon'>
@@ -333,23 +351,18 @@ class FilterGrid extends React.Component {
                         }
                     </Route>
                 </div>
-                <FilterLoader
+                <SimpleLoader
                     dataState={this.state.dataState}
                     onDataRecieved={this.dataRecieved}
-                    searchingForCats={this.props.searchCats}
-                    //query={this.props.urlQuery.query ? this.props.urlQuery.query : this.props.query}
+                    query={this.props.urlQuery.query ? this.props.urlQuery.query : this.props.query}
+                    simSearch={this.props.urlQuery.query ? true : false}
                     action={this.props.action}
-                    filterSearch={this.props.urlQuery.category ? true : this.props.filterSearch}
-                    cat={this.props.cat}
                     myLocation={this.props.myLocation}
-                    advancedSearchType={this.props.advancedSearchType}
+                    advancedSearchType={this.props.advancedSearchType}                
                 />
-                <Drawer open={this.state.left} onClose={this.toggleDrawer}>
-                    <SonarFilter filterSet={this.state.filterSet} onFilter={this.onFilterSelect} />
-                </Drawer>
             </div >
         );
     }
 }
 
-export default FilterGrid;
+export default SimpleGrid;

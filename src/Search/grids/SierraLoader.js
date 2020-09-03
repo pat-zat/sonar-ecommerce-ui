@@ -4,7 +4,6 @@ import { process } from '@progress/kendo-data-query';
 
 export class SierraLoader extends React.Component {
     advSearchUrl = 'http://10.92.48.29:9002/api/AdvancedSearch/Details/';
-    catsUrl = 'http://10.92.48.29:9002/api/FilterSet/Details/';
     init = { method: 'GET', accept: 'application/json', headers: {} };
 
     lastSuccess = '';
