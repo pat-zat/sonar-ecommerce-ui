@@ -14,6 +14,7 @@ window.onpopstate = function (event) {
 };
 
 function App() {
+  
   return (
     <Router history={history} forceRefresh={true} >
       <div>

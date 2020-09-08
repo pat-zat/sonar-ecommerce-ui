@@ -1,7 +1,8 @@
 
 
 import React from 'react';
-import { SRLWrapper } from 'simple-react-lightbox'
+import SimpleReactLightbox from 'simple-react-lightbox';
+import { SRLWrapper } from 'simple-react-lightbox';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
 import { SimpleLoader } from './SimpleLoader.js';
 import { process } from '@progress/kendo-data-query';
@@ -11,19 +12,50 @@ import $ from 'jquery';
 import { Window } from '@progress/kendo-react-dialogs';
 import history from '../../history.js';
 import { Route, Link } from 'react-router-dom';
+import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
+
 
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
     searchParams.set("skip", skip || "0");
     return searchParams.toString();
 }
+const callbacks = {
+    onSlideChange: object => console.log(object),
+    onLightboxOpened: object => console.log(object),
+    onLightboxClosed: object => console.log(object),
+    onCountSlides: object => console.log(object)
+};
 
 class CustomCell extends React.Component {
-    //conditional render jsx
-    //if this.props.dataItem[this.props.field] === ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false
+        };
+        this.toggleDialog = this.toggleDialog.bind(this);
+    }
+
+    toggleDialog() {
+        this.setState({
+            visible: !this.state.visible
+        });
+    }
+    
     render() {
-        const value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
-        return (<td><SRLWrapper><img className="thumbnail" src={value} alt='' /></SRLWrapper></td>);
+       let value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
+        return (
+            <div>
+           <td><img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' /></td>
+            {this.state.visible && <Dialog title={this.props.dataItem[this.props.field]} onClose={this.toggleDialog}>
+            <img onClick={this.toggleDialog} className="max" src={value} alt='' />
+                {/* <DialogActionsBar>
+                    <button className="k-button" onClick={this.toggleDialog}>Prev</button>
+                    <button className="k-button" onClick={this.toggleDialog}>Next</button>
+                </DialogActionsBar> */}
+            </Dialog>}
+        </div>
+        );
     }
 }
 
@@ -93,7 +125,7 @@ class SimpleGrid extends React.Component {
     };
 
     updateURL = () => {
-        let page = Math.round(this.state.dataState.skip / 10)
+        let page = Math.round(this.state.dataState.skip)
         const url = setParams({ skip: page });
         history.push("/simpleSearch/api/?id=simpleSearch&query=" + this.props.query + '&skip=' + page);
     };
@@ -123,7 +155,7 @@ class SimpleGrid extends React.Component {
 
         if (this.props.urlQuery.skip !== '0') {
             this.setState({
-                dataState: { skip: this.props.urlQuery.skip, take: 10 }
+                dataState: { skip: parseInt(this.props.urlQuery.skip), take: 10 }
             });
         }
 
@@ -167,14 +199,11 @@ class SimpleGrid extends React.Component {
         return hasValue;    
     }
 
-    componentDidUpdate(prevProps, prevState) {
-      
-        if (this.state.products !== prevState.products) {
-            console.log("prevState " + prevState.products.data.total);
-            console.log("currentState " + this.state.products.data.total);
+    componentDidUpdate(prevProps, prevState) {    
+        if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
+            console.log("prevProps " + prevProps.urlQuery.skip);
+            this.setState({ dataState: { take: 10, skip:  parseInt(this.props.urlQuery.skip) } });         
         }
-
-        
       }
 
     render() {
@@ -198,7 +227,7 @@ class SimpleGrid extends React.Component {
 
         return (
             <div className="searchGrid">
-                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}><Button onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button></div>
+                <div className={this.props.activeSearch ? 'activeToggle' : 'hiddenToggle'}><Button className="k-button" onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button></div>
                 <div>
                     <div className={this.props.urlQuery.query !== "" ? 'visigrid' : 'hider'}>
                         <Grid
@@ -220,6 +249,7 @@ class SimpleGrid extends React.Component {
                     </div>
                     <Route path="/simpleSearch/details">
                         {this.state.windowVisible && this.state.detailType === 'product' &&
+                        <SimpleReactLightbox>
                             <Window title="Product Details" onClose={this.closeWindow} >
                                 <div className='detailsCon'>
                                     <div className="close-btn">
@@ -322,6 +352,7 @@ class SimpleGrid extends React.Component {
                                     )}
                                 </div>
                             </Window>
+                            </SimpleReactLightbox>
                         }
                     </Route>
                 </div>

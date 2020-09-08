@@ -1,5 +1,5 @@
 import React from 'react';
-import { SRLWrapper } from 'simple-react-lightbox'
+import { SRLWrapper } from 'simple-react-lightbox';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
 import { SierraLoader } from './SierraLoader.js';
 import { process } from '@progress/kendo-data-query';
@@ -9,6 +9,9 @@ import $ from 'jquery';
 import { Window } from '@progress/kendo-react-dialogs';
 import history from '../../history.js';
 import { Route, Link } from 'react-router-dom';
+import SimpleReactLightbox from 'simple-react-lightbox';
+import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
+
 
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
@@ -16,15 +19,45 @@ function setParams(location, skip) {
     return searchParams.toString();
 }
 
+// class CustomCell extends React.Component {
+
+//     render() {
+//        let value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
+//         return (<td><img className="thumbnail" src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field]} alt='' /></td>);
+//     }
+// }
+
 class CustomCell extends React.Component {
-    //conditional render jsx
-    //if this.props.dataItem[this.props.field] === ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false
+        };
+        this.toggleDialog = this.toggleDialog.bind(this);
+    }
+
+    toggleDialog() {
+        this.setState({
+            visible: !this.state.visible
+        });
+    }
+    
     render() {
-        const value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
-        return (<td><SRLWrapper><img className="thumbnail" src={value} alt='' /></SRLWrapper></td>);
+       let value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
+        return (
+            <div>
+           <td><img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' /></td>
+            {this.state.visible && <Dialog title={this.props.dataItem[this.props.field]} onClose={this.toggleDialog}>
+            <img onClick={this.toggleDialog} className="max" src={value} alt='' />
+                {/* <DialogActionsBar>
+                    <button className="k-button" onClick={this.toggleDialog}>Prev</button>
+                    <button className="k-button" onClick={this.toggleDialog}>Next</button>
+                </DialogActionsBar> */}
+            </Dialog>}
+        </div>
+        );
     }
 }
-
 class SierraGrid extends React.Component {
     init = { method: 'GET', accept: 'application/json', headers: {} };
 
@@ -79,13 +112,13 @@ class SierraGrid extends React.Component {
     };
 
     updateURL = () => {
-        let page = Math.round(this.state.dataState.skip / 10)
+        let page = Math.round(this.state.dataState.skip)
         const url = setParams({ skip: page });
         history.push('/sierra/api/AdvancedSearch/Details/?id=sierrapart'
             + '&parentCategoryId=' + this.props.parentCategoryId
             + '&parentCategoryName=' + this.props.parentCategoryName
-            + '&childCategoryId=' + this.props.childCategoryId
-            + '&childCategoryName=' + this.props.childCategoryName
+            + '&childCategoryId=' + (this.props.childCategoryId ? this.props.childCategoryId : '')
+            + '&childCategoryName=' + (this.props.childCategoryName ? this.props.childCategoryName : '')
             + '&productNumber=' + this.props.productNumber
             + '&queryType=' + this.props.checked
             + '&skip=' + page);
@@ -118,9 +151,9 @@ class SierraGrid extends React.Component {
     componentDidMount = () => {
         window.addEventListener("popstate", this.props.urlAction());
 
-        if (this.props.urlQuery.skip !== '0') {
+        if (this.props.urlQuery.skip !== 0) {
             this.setState({
-                dataState: { skip: this.props.urlQuery.skip, take: 10 }
+                dataState: { skip: parseInt(this.props.urlQuery.skip), take: 10 }
             });
         }
 
@@ -154,9 +187,17 @@ class SierraGrid extends React.Component {
         history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
     }
 
-    SearchTypeD = () => {
-        this.setState({ productSearch: 'filter' });
-    }
+    // SearchTypeD = () => {
+    //     this.setState({ productSearch: 'filter' });
+    // }
+
+    componentDidUpdate(prevProps, prevState) {    
+        if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
+            console.log("prevProps " + prevProps.urlQuery.skip);
+            this.setState({ dataState: { take: 10, skip:  parseInt(this.props.urlQuery.skip) } });         
+        }
+        
+      }
 
     render() {
         var columnsToShow = this.state.columns.map((column, index) => {
@@ -166,7 +207,7 @@ class SierraGrid extends React.Component {
 
         return (
             <div className="searchGrid">
-                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}><Button onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button></div>
+                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}><Button className="k-button" onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button></div>
                 <div>
                     <div className={this.props.urlQuery.parentCategoryName !== "" ? 'visigrid' : 'hider'}>
                         <Grid
@@ -174,7 +215,7 @@ class SierraGrid extends React.Component {
                             ref={div => this.gridWidth = div}
                             pageable={true}
                             resizable={true}
-                            take={this.state.dataState.take}
+                            //take={this.state.dataState.take}
                             total={this.state.products.total}
                             {...this.state.dataState}
                             {...this.state.products}
@@ -185,9 +226,11 @@ class SierraGrid extends React.Component {
                             sortable={true}>
                             {columnsToShow}
                         </Grid>
+                  
                     </div>
                     <Route path="/sierra/details">
                         {this.state.windowVisible && this.state.detailType === 'product' &&
+                        <SimpleReactLightbox>
                             <Window title="Product Details" onClose={this.closeWindow} >
                                 <div className='detailsCon'>
                                     <div className="close-btn">
@@ -290,6 +333,7 @@ class SierraGrid extends React.Component {
                                     )}
                                 </div>
                             </Window>
+                            </SimpleReactLightbox>
                         }
                     </Route>
                 </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { SRLWrapper } from 'simple-react-lightbox'
+import SimpleReactLightbox from 'simple-react-lightbox';
+import { SRLWrapper } from 'simple-react-lightbox';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
 import { EngineLoader } from './EngineLoader.js';
 import { process } from '@progress/kendo-data-query';
@@ -21,7 +22,7 @@ class CustomCell extends React.Component {
     //if this.props.dataItem[this.props.field] === ""
     render() {
         const value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
-        return (<td><SRLWrapper><img className="thumbnail" src={value} alt='' /></SRLWrapper></td>);
+        return (<td><SimpleReactLightbox><SRLWrapper><img className="thumbnail" src={value} alt='' /></SRLWrapper></SimpleReactLightbox></td>);
     }
 }
 
@@ -92,7 +93,7 @@ class EngineGrid extends React.Component {
     }
 
     updateURL = () => {
-        let page = Math.round(this.state.dataState.skip / 10)
+        let page = Math.round(this.state.dataState.skip)
         const url = setParams({ skip: page });
         //console.log(page)
         history.push("/brand/api/AdvancedSearch/Details/" + '?id=' + 'brandmodel'
@@ -168,10 +169,10 @@ class EngineGrid extends React.Component {
 
         window.addEventListener("popstate", this.props.urlAction());
 
-        if (this.props.urlQuery.skip !== '0') {
-            console.log("paged");
+        if (this.props.urlQuery.skip !== "0") {
+            console.log("paged " + this.props.urlQuery.skip);
             this.setState({
-                dataState: { skip: this.props.urlQuery.skip, take: 10 }
+                dataState: { skip: parseInt(this.props.urlQuery.skip), take: 10 }
             });
         }
         this.props.urlQuery.query = "";
@@ -212,6 +213,13 @@ class EngineGrid extends React.Component {
 
     }
 
+    componentDidUpdate(prevProps, prevState) {    
+        if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
+            console.log("prevProps " + prevProps.urlQuery.skip);
+            this.setState({ dataState: { take: 10, skip:  parseInt(this.props.urlQuery.skip) } });         
+        }
+      }
+
     render() {
         var columnsToShow = this.state.columns.map((column, index) => {
             return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
@@ -221,7 +229,7 @@ class EngineGrid extends React.Component {
             <div className="searchGrid">
                 {/* <HomeButton></HomeButton> */}
                 <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}>
-                    <Button
+                    <Button className="k-button"
                         onClick={() => {
                             this.setState({ dataState: { take: 10, skip: 0 } });
                         }}>
@@ -237,10 +245,11 @@ class EngineGrid extends React.Component {
                             ref={div => this.gridWidth = div}
                             pageable={true}
                             resizable={true}
-                            take={this.state.dataState.take}
+                            //skip={this.props.urlQuery.skip ? parseInt(this.props.urlQuery.skip) : parseInt(this.state.dataState.skip)}
                             total={this.state.products.data.length}
                             {...this.state.dataState}
                             {...this.state.products}
+                          
                             onChange={this.props.action}
                             onDataStateChange={this.dataStateChange}
                             onRowClick={this.handleGridRowClick}
@@ -310,6 +319,7 @@ class EngineGrid extends React.Component {
                     </Route>
                     <Route path="/brand/details/parts">
                         {this.state.windowVisible && this.state.detailType === 'product' &&
+                        <SimpleReactLightbox>
                             <Window title="Product Details" onClose={this.closeWindow}>
                                 <div className="flexrow engineModel">
                                     <h3>Model#:</h3>
@@ -417,8 +427,8 @@ class EngineGrid extends React.Component {
                                     )}
 
                                 </div>
-
                             </Window>
+                            </SimpleReactLightbox>
                         }
                     </Route>
                 </div>

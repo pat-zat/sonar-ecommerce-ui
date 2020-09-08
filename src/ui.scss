@@ -37,6 +37,10 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    a { 
+        z-index: 10005;
+    }
+        
 }
 
 .top-third {

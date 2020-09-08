@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SimpleReactLightbox from 'simple-react-lightbox'
+import SimpleReactLightbox from 'simple-react-lightbox';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

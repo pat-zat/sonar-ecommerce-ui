@@ -1,5 +1,6 @@
 import React from 'react';
-import { SRLWrapper } from 'simple-react-lightbox'
+import { SRLWrapper } from 'simple-react-lightbox';
+import SimpleReactLightbox from 'simple-react-lightbox';
 import { Grid, GridColumn as Column } from '@progress/kendo-react-grid';
 import { FilterLoader } from './FilterLoader.js';
 import { process } from '@progress/kendo-data-query';
@@ -11,6 +12,8 @@ import history from '../../history.js';
 import { Route, Link } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import SonarFilter from '../../Filter/SonarFilter';
+import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
+
 
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
@@ -19,11 +22,34 @@ function setParams(location, skip) {
 }
 
 class CustomCell extends React.Component {
-    //conditional render jsx
-    //if this.props.dataItem[this.props.field] === ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            visible: false
+        };
+        this.toggleDialog = this.toggleDialog.bind(this);
+    }
+
+    toggleDialog() {
+        this.setState({
+            visible: !this.state.visible
+        });
+    }
+    
     render() {
-        const value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
-        return (<td><SRLWrapper><img className="thumbnail" src={value} alt='' /></SRLWrapper></td>);
+       let value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
+        return (
+            <div>
+           <td><img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' /></td>
+            {this.state.visible && <Dialog title={this.props.dataItem[this.props.field]} onClose={this.toggleDialog}>
+            <img onClick={this.toggleDialog} className="max" src={value} alt='' />
+                {/* <DialogActionsBar>
+                    <button className="k-button" onClick={this.toggleDialog}>Prev</button>
+                    <button className="k-button" onClick={this.toggleDialog}>Next</button>
+                </DialogActionsBar> */}
+            </Dialog>}
+        </div>
+        );
     }
 }
 
@@ -94,7 +120,7 @@ class FilterGrid extends React.Component {
     };
 
     updateURL = () => {
-        let page = Math.round(this.state.dataState.skip / 10)
+        let page = Math.round(this.state.dataState.skip)
         const url = setParams({ skip: page });
         history.push('/filter/api/AdvancedSearch/Details/?id=sierrapart'
             + '&category=' + this.props.cat
@@ -193,6 +219,13 @@ class FilterGrid extends React.Component {
         });
     }
 
+    componentDidUpdate(prevProps, prevState) {    
+        if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
+            console.log("prevProps " + prevProps.urlQuery.skip);
+            this.setState({ dataState: { take: 10, skip:  parseInt(this.props.urlQuery.skip) } });         
+        }
+      }
+
     render() {
 
         var columnsToShow = this.state.columns.map((column, index) => {
@@ -202,7 +235,7 @@ class FilterGrid extends React.Component {
 
         return (
             <div className="searchGrid">
-                <div className={this.state.active ? 'activeToggle' : 'hiddenToggle'}>
+                <div className={this.props.activeSearch ? 'activeToggle' : 'hiddenToggle'}>
                     <Button className="k-button" onClick={this.toggleDrawer}>Gauge Filter</Button>
                     <Button className="k-button" onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button>
                 </div>
@@ -228,6 +261,7 @@ class FilterGrid extends React.Component {
                     </div>
                     <Route path="/sierra/details">
                         {this.state.windowVisible && this.state.detailType === 'product' &&
+                        <SimpleReactLightbox>
                             <Window title="Product Details" onClose={this.closeWindow} >
                                 <div className='detailsCon'>
                                     <div className="close-btn">
@@ -330,6 +364,7 @@ class FilterGrid extends React.Component {
                                     )}
                                 </div>
                             </Window>
+                            </SimpleReactLightbox>
                         }
                     </Route>
                 </div>

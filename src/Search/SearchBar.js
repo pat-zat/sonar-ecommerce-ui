@@ -16,7 +16,7 @@ import SierraGrid from './grids/SierraGrid';
 import EngineGrid from './grids/EngineGrid';
 import InterchangeGrid from './grids/InterchangeGrid';
 
-
+//the issue with pagination is the update url call changing the brand
 const queryTypes = [
     { label: 'Contains', value: 'Contains' },
     { label: 'Ends With', value: 'Ends With' },
@@ -85,7 +85,7 @@ class SearchBar extends React.Component {
             parentCategoryName: { parentCategory: "all", parentCategoryId: 0 },
             parentCats: { parentCategory: "all", parentCategoryId: 0 },
             childCategoryId: '',
-            childCategoryName: { childCategory: "", childCategoryId: "" },
+            childCategoryName: { childCategory: "", childCategoryRow: "" },
             productNumber: '',
 
             brand: { brandName: '', brandId: '' },
@@ -125,14 +125,7 @@ class SearchBar extends React.Component {
     componentDidMount = async () => {
         const responseA = await axios.get(this.engineBrandUrl, { headers: {} });
 
-        if (this.props.location.search !== "") {
-            this.setState({ activeSearch: true });
-        }
-
-        this.setState({
-            brandList: responseA.data.Data,
-            brand: { brandName: responseA.data.Data["0"].brandName, brandId: '' },
-        });
+        this.setState({brandList: responseA.data.Data});
 
         fetch(this.catUrl, this.init)
             .then(response => response.json())
@@ -142,17 +135,24 @@ class SearchBar extends React.Component {
         //     .then(response => response.json())
         //     .then(json => this.setState({ filterSet: json.Data }));
 
-        //this is for loading just from url and having search bar display correctly
-        let myParams = getParams(this.props.location);
-        console.log(myParams);
-        if (this.props.location.search !== "") {
 
+        let myParams = getParams(this.props.location);
+        console.log("url search " + myParams.parentCategoryName);
+        if (this.props.location.search !== "") {
+            this.setState({ activeSearch: true });
             if (myParams.parentCategoryName !== "") {
                 this.setState({
                     advancedSearchType: "sierra",
                     releaseSearch: true,
                     search: true,
-                    advancedSearch: false
+                    advancedSearch: false,
+                    parentCategoryId: myParams.parentCategoryId ,
+                    parentCategoryName: { parentCategory: myParams.parentCategoryName, parentCategoryId: myParams.parentCategoryId },
+                    parentCats: { parentCategory: myParams.parentCategoryName, parentCategoryId:  myParams.parentCategoryId },
+                    childCategoryId: myParams.childCategoryId,
+                    childCategoryName: { childCategory: myParams.childCategoryName, childCategoryRow: myParams.childCategoryId },
+                    productNumber: myParams.productNumber,
+
                 });
             }
             else if (myParams.query !== "") {
@@ -160,7 +160,8 @@ class SearchBar extends React.Component {
                     advancedSearchType: "simple",
                     releaseSearch: true,
                     search: true,
-                    activeSearch: true
+                    activeSearch: true,
+                    query: myParams.query
                 });
             }
             else if (myParams.category !== "") {
@@ -174,13 +175,22 @@ class SearchBar extends React.Component {
                 this.setState({
                     advancedSearchType: "Interchange",
                     releaseSearch: true,
-                    search: true
+                    search: true,
+                    oenumber: myParams.oeNumber
                 });
             }
-            else this.setState({
-                advancedSearchType: "brand",
-                releaseSearch: true,
-                search: true
+            else if (myParams.brand !== "") {
+                this.setState({
+                    advancedSearchType: "brand",
+                    releaseSearch: true,
+                    search: true,
+                    brand: { brandName: myParams.brand, brandId: '' },
+                });
+            } 
+        }
+        else {
+            this.setState({
+                brand: { brandName: responseA.data.Data["0"].brandName, brandId: '' },
             });
         }
     }
@@ -289,8 +299,8 @@ class SearchBar extends React.Component {
             history.push("/sierra/api/AdvancedSearch/Details/" + '?id=' + 'sierrapart'
                 + '&parentCategoryId=' + this.state.parentCategoryName.parentCategoryRow
                 + '&parentCategoryName=' + this.state.parentCategoryName.parentCategory
-                + '&childCategoryId=' + this.state.childCategoryName.childCategoryRow
-                + '&childCategoryName=' + this.state.childCategoryName.childCategory
+                + '&childCategoryId=' + (this.state.childCategoryName.childCategoryRow ? this.state.childCategoryName.childCategoryRow : '')
+                + '&childCategoryName=' + (this.state.childCategoryName.childCategory ? this.state.childCategoryName.childCategory : '' )
                 + '&productNumber=' + this.state.productNumber
                 + '&queryType=' + this.state.checked);
             //window.location.reload();
@@ -302,7 +312,8 @@ class SearchBar extends React.Component {
                 + '&year=' + this.state.year
                 + '&hp=' + this.state.hp
                 + '&serialNumber=' + this.state.serialNo
-                + '&queryType=' + this.state.checked);
+                + '&queryType=' + this.state.checked
+                + '&skip=' + 0);
             //window.location.reload();
         }
         
@@ -325,7 +336,7 @@ class SearchBar extends React.Component {
     }
 
     // resetHandler = () => {
-    //     this.loaderGrid.current.reset();
+    //     this.engineGrid.current.reset();
     // }
 
 
@@ -396,7 +407,24 @@ class SearchBar extends React.Component {
         });
     }
 
+
+    componentDidUpdate(nextProps) {
+        if (nextProps.location !== this.props.location) {
+          // navigated!
+          if (this.props.location.pathname === "/" ) {
+            this.setState({ activeSearch: false });
+          }
+          else this.setState({ activeSearch: true });
+        //console.log(this.props.location);
+        
+        }
+      }
+
     render() {
+        const location = {
+            pathname: '/brand',
+            state: { activeSearch: true }
+          }
 
         return (
 
@@ -473,7 +501,7 @@ class SearchBar extends React.Component {
                                         <input style={{ width: '220px' }} placeholder="serial number" type="text" name="serialNo" value={this.state.serialNo} onChange={this.handleChange} />
                                     </div>
                                 </div>
-                                <button ref="advancedToggle" type={'submit'} className={this.state.advancedSearch === true || this.state.advancedSearchType === 'brand' ? 'k-button advSearchBtn' : 'hiddenToggle'}><span>Advanced Search</span></button>
+                                <button ref="advancedToggle" type={'submit'} className={this.state.advancedSearchType !== 'simple'  && this.state.advancedSearchType !== 'filter' ? 'k-button advSearchBtn' : 'hiddenToggle'}><span>Advanced Search</span></button>
                             </div>
                         </form>
 
@@ -501,6 +529,7 @@ class SearchBar extends React.Component {
                         </div>
                     </div>
                 </div>
+                
 
                 <Route path="/filter" component={FilterGrid}>
                     <FilterGrid
@@ -559,10 +588,11 @@ class SearchBar extends React.Component {
                         childCategoryName={this.state.childCategoryName.childCategory}
                         childCategoryId={this.state.childCategoryName.childCategoryRow}
                         productNumber={this.state.productNumber}
+                        checked={this.state.checked}
                     />
                 </Route>
 
-                <Route path="/brand" component={EngineGrid}>
+                <Route path={location} component={EngineGrid}>
                     <EngineGrid
                         ref={this.EngineGrid}
                         releaseAction={this.releaseHandler}
