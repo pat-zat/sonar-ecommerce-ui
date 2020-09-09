@@ -46,7 +46,7 @@ class CustomCell extends React.Component {
        let value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
         return (
             <div>
-           <td><img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' /></td>
+           <img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' />
             {this.state.visible && <Dialog title={this.props.dataItem[this.props.field]} onClose={this.toggleDialog}>
             <img onClick={this.toggleDialog} className="max" src={value} alt='' />
                 {/* <DialogActionsBar>
@@ -66,6 +66,12 @@ class SimpleGrid extends React.Component {
     tabsUrl = 'http://10.92.48.29:9002/api/SierraPartPartialSearch/Details/?itemRow=';
     gridWidth = 600;
 
+    enginePartsUrl = 'http://10.92.48.29:9002/api/productsearch/details/';
+    PartsUrl = 'http://10.92.48.29:9002/api/ProductSearch/Details/?custId=000000&id=';
+    engineDetailsUrl = 'http://10.92.48.29:9002/api/EngineDetails/Details/';
+
+ 
+
     constructor(props) {
         super(props);
 
@@ -82,6 +88,8 @@ class SimpleGrid extends React.Component {
 
             productDetailData: [],
             productDetailDataTab: [],
+
+            enginePartsData: [],
 
             columns: [],
             columnsA: [
@@ -175,6 +183,7 @@ class SimpleGrid extends React.Component {
         }
     }
     handleGridRowClick1 = (e) => {
+        console.log("products clicked");
         window.scrollTo(0, 0);
         this.setState({
             windowVisible: true,
@@ -189,13 +198,15 @@ class SimpleGrid extends React.Component {
         history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
     }
 
-    columnHasValue = () => {
+    columnHasValue = (prevState) => {
         let hasValue = false; 
         this.state.products.data.data.forEach(item => {
             if (item.engineId !== null && item.engineId !== "" && item.engineId !== undefined ) {
-                hasValue = true;              
-            }
+                hasValue = true;                      
+            }    
         });
+        
+        
         return hasValue;    
     }
 
@@ -204,10 +215,56 @@ class SimpleGrid extends React.Component {
             console.log("prevProps " + prevProps.urlQuery.skip);
             this.setState({ dataState: { take: 10, skip:  parseInt(this.props.urlQuery.skip) } });         
         }
+        // if (this.state.detailType !== prevState.detailType) {
+        //     this.setState({
+        //         detailType: 'engine'
+        //     });
+        // }
+        
       }
 
+      handleGridRowClick = (e) => {
+          console.log("engines clicked");
+        let eId = e.dataItem.engineId;
+        this.setState({
+            windowVisible: true,
+            gridClickedRow: e.dataItem
+        });
+        fetch(this.engineDetailsUrl + eId, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ engineDetailData: json.Data }));
+
+        fetch(this.PartsUrl + eId, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ enginePartsData: process(json.Data, this.state.dataState2) }));
+
+        this.setState({
+            detailType: 'engine'
+        });
+        history.push("/brand/details/api/SimpleSearch/GetProducts/?urlEngineId=" + e.dataItem.engineId);
+    }
+
+    handleGridRowClick2 = (e) => {
+        window.scrollTo(0, 0);
+        this.setState({
+            windowVisible: true,
+            gridClickedRow: e.dataItem
+        });
+        fetch(this.productDetailsUrl + e.dataItem.C_item_row, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ productDetailData: json.Data }));
+        fetch(this.tabsUrl + e.dataItem.C_item_row, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ productDetailDataTab: json.Data }));
+
+        this.setState({
+            detailType: 'product'
+        });
+        history.push("/brand/details/parts/api/SimpleSearch/GetProducts/?C_item_row=" + e.dataItem.C_item_row);
+    }
+
     render() {
-        
+        let rowClick;
         let columnsToShow = this.state.columnsB.map((column, index) => {        
             return <Column field={column.field} title={column.title} key={index} width={column.width}   />;   
         });
@@ -216,11 +273,13 @@ class SimpleGrid extends React.Component {
                  columnsToShow = this.state.columnsB.map((column, index) => {        
                     return <Column field={column.field} title={column.title} key={index} width={column.width}   />;   
                 })
+                 rowClick = this.handleGridRowClick;
             }
             else {
                columnsToShow = this.state.columnsA.map((column, index) => {        
                     return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;   
                 })  
+                 rowClick = this.handleGridRowClick1;
             }
         }
 
@@ -241,7 +300,7 @@ class SimpleGrid extends React.Component {
                             {...this.state.products}
                             onChange={this.props.action}
                             onDataStateChange={this.dataStateChange}
-                            onRowClick={this.handleGridRowClick1}
+                            onRowClick={rowClick}
                             filterable={true}
                             sortable={true}>
                             {columnsToShow}
@@ -350,6 +409,119 @@ class SimpleGrid extends React.Component {
                                             </TabStripTab>
                                         </TabStrip>
                                     )}
+                                </div>
+                            </Window>
+                            </SimpleReactLightbox>
+                        }
+
+                        {this.state.windowVisible && this.state.detailType === 'engine' &&
+                            <SimpleReactLightbox>
+                            <Window title="Product Details" onClose={this.closeWindow}>
+                                <div className="flexrow engineModel">
+                                    <h3>Model#:</h3>
+                                    <div>{this.state.gridClickedRow.C_item_row}</div>
+                                </div>
+
+                                <div className='detailsCon'>
+                                    <div className="close-btn">
+                                        <button onClick={this.closeWindow} className="k-button" >close</button>
+                                    </div>
+                                    {this.state.productDetailData.map(details =>
+                                        <div>
+                                            <h1>{"Item#:  " + details.sale_item}</h1>
+                                            <div className='details'>
+                                                <div className="flexrow startStop">
+                                                    <div>Category: {details.categoryParent}</div>
+                                                    <div>Subcategory: {details.categoryChild}</div>
+                                                </div>
+                                                <div className="flexrow">
+                                                    <div>Description: {details.descriptionShort}</div>
+                                                </div>
+
+                                                <div className="flexrow">
+                                                    <SRLWrapper><img src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + details.imageDetails[0].fileName} alt='' /></SRLWrapper>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    {this.state.productDetailDataTab.map(details =>
+                                        <TabStrip selected={this.state.selected} onSelect={this.handleSelect}>
+                                            <TabStripTab disabled={details.productDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Details">
+                                                <h2>Features</h2>
+                                                <div>
+                                                    {details.productDetails.map(productDetail =>
+                                                        <div>{productDetail.attributeValue}</div>
+                                                    )}
+                                                </div>
+                                            </TabStripTab>
+                                            <TabStripTab disabled={details.productSpecs.length > 0 ? false : true} title="Specs">
+                                                <div>
+                                                    <h2>Specifications</h2>
+                                                    {details.productSpecs.map(productSpec =>
+                                                        <div>
+                                                            <div><span>weight: </span>{productSpec.weight}</div>
+                                                            <div><span>height: </span>{productSpec.height}</div>
+                                                            <div><span>depth: </span>{productSpec.depth}</div>
+                                                            <div><span>width: </span>{productSpec.width}</div>
+                                                            <div><span>superceed: </span>{productSpec.superceed}</div>
+                                                            <div><span>unitOfMeasure: </span>{productSpec.unitOfMeasure}</div>
+                                                            <div><span>itemStatus: </span>{productSpec.itemStatus}</div>
+                                                            <div><span>upc: </span>{productSpec.upc}</div>
+                                                            <div><span>stdPkg: </span>{productSpec.stdPkg}</div>
+                                                            <div><span>casePkg: </span>{productSpec.casePkg}</div>
+                                                            <div><span>hsc: </span>{productSpec.hsc}</div>
+                                                            <div><span>eccn: </span>{productSpec.eccn}</div>
+                                                            <div><span>origin: </span>{productSpec.origin}</div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </TabStripTab>
+                                            <TabStripTab disabled={details.interchangeDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Interchange">
+                                                <h2>Interchange</h2>
+                                                <div>
+                                                    {details.interchangeDetails.map(interchangeDetail =>
+                                                        <div>
+                                                            <div> {interchangeDetail.brandName}</div>
+                                                            <div>{interchangeDetail.oeNumber}</div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </TabStripTab>
+
+                                            {/* contains: 18-2771 */}
+                                            <TabStripTab disabled={details.containsDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Contains">
+                                                <h2>Contains</h2>
+                                                <div>
+                                                    {details.containsDetails.map(containsDetail =>
+                                                        <div>
+                                                            <hr />
+                                                            <div>{containsDetail.nssDesc}</div>
+                                                            <div>{containsDetail.item}</div>
+                                                            <div>{containsDetail.qty}</div>
+                                                            <SRLWrapper><img className="conImg" alt='' src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + containsDetail.image} /></SRLWrapper>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </TabStripTab>
+
+                                            {/* docs: 18-8607 */}
+                                            <TabStripTab disabled={details.documentDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Documents">
+                                                <h2>Documents</h2>
+                                                <div>
+                                                    {details.documentDetails.map(documentDetail =>
+                                                        <div>
+                                                            <h3>{documentDetail.docDescription}</h3>
+                                                            <div>{documentDetail.docRow}</div>
+                                                            <div>{documentDetail.docName}</div>
+                                                            <div>{documentDetail.docType}</div>
+                                                            <div>{documentDetail.LastUpdated}</div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </TabStripTab>
+                                        </TabStrip>
+                                    )}
+
                                 </div>
                             </Window>
                             </SimpleReactLightbox>
