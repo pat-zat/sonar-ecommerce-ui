@@ -171,7 +171,9 @@ body {
 }
 
 .filterCat {
-    width: 60px;
+    width: 50px;
+    margin-left: 40%;
+    margin-top: 10px;
 }
 
 .digi {
@@ -314,6 +316,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    h2 {
+    margin-top: 0px;
+    }
 
     .close-btn {
         width: 25px;

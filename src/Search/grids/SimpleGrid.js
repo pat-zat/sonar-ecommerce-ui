@@ -110,7 +110,7 @@ class SimpleGrid extends React.Component {
                 { field: "serialNumberStart", title: "Serial # Start" },
                 { field: "serialNumberStop", title: "Serial # Stop"},
             ],
-                     
+            dataState2: { skip: 0, take: 60, group: [{ field: 'cat1_name' }] },        
             results: [],
         };
     }
@@ -415,117 +415,176 @@ class SimpleGrid extends React.Component {
                         }
 
                         {this.state.windowVisible && this.state.detailType === 'engine' &&
-                            <SimpleReactLightbox>
-                            <Window title="Product Details" onClose={this.closeWindow}>
-                                <div className="flexrow engineModel">
-                                    <h3>Model#:</h3>
-                                    <div>{this.state.gridClickedRow.C_item_row}</div>
-                                </div>
+                             <Window title="Engine Details" onClose={this.closeWindow}>
+                             <div className="flexrow engineModel">
+                                 {/* <button onClick={this.closeWindow} className="k-button" >close</button> */}
+                                 <h3>Model#:</h3>
+                                 <div>{this.state.gridClickedRow.modelNumber}</div>
+                             </div>
+                             <div className='detailsCon'>
+                                 {this.state.engineDetailData.map(detail =>
+                                     <div>
+                                         <h1>{detail.brandName}</h1>
+                                         <div className='details'>
+                                             <div className="flexrow startStop">
+                                                 <div>yearStart: {detail.yearStart}</div>
+                                                 <div>yearStop: {detail.yearStop}</div>
+                                             </div>
 
-                                <div className='detailsCon'>
-                                    <div className="close-btn">
-                                        <button onClick={this.closeWindow} className="k-button" >close</button>
-                                    </div>
-                                    {this.state.productDetailData.map(details =>
-                                        <div>
-                                            <h1>{"Item#:  " + details.sale_item}</h1>
-                                            <div className='details'>
-                                                <div className="flexrow startStop">
-                                                    <div>Category: {details.categoryParent}</div>
-                                                    <div>Subcategory: {details.categoryChild}</div>
-                                                </div>
-                                                <div className="flexrow">
-                                                    <div>Description: {details.descriptionShort}</div>
-                                                </div>
+                                             <div className="flexrow">
+                                                 <div>Horsepower: {detail.horsePower}</div>
+                                                 <div>Stroke: {detail.stroke}</div>
+                                                 <div>Cylinders: {detail.cylinders}</div>
+                                             </div>
 
-                                                <div className="flexrow">
-                                                    <SRLWrapper><img src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + details.imageDetails[0].fileName} alt='' /></SRLWrapper>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {this.state.productDetailDataTab.map(details =>
-                                        <TabStrip selected={this.state.selected} onSelect={this.handleSelect}>
-                                            <TabStripTab disabled={details.productDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Details">
-                                                <h2>Features</h2>
-                                                <div>
-                                                    {details.productDetails.map(productDetail =>
-                                                        <div>{productDetail.attributeValue}</div>
-                                                    )}
-                                                </div>
-                                            </TabStripTab>
-                                            <TabStripTab disabled={details.productSpecs.length > 0 ? false : true} title="Specs">
-                                                <div>
-                                                    <h2>Specifications</h2>
-                                                    {details.productSpecs.map(productSpec =>
-                                                        <div>
-                                                            <div><span>weight: </span>{productSpec.weight}</div>
-                                                            <div><span>height: </span>{productSpec.height}</div>
-                                                            <div><span>depth: </span>{productSpec.depth}</div>
-                                                            <div><span>width: </span>{productSpec.width}</div>
-                                                            <div><span>superceed: </span>{productSpec.superceed}</div>
-                                                            <div><span>unitOfMeasure: </span>{productSpec.unitOfMeasure}</div>
-                                                            <div><span>itemStatus: </span>{productSpec.itemStatus}</div>
-                                                            <div><span>upc: </span>{productSpec.upc}</div>
-                                                            <div><span>stdPkg: </span>{productSpec.stdPkg}</div>
-                                                            <div><span>casePkg: </span>{productSpec.casePkg}</div>
-                                                            <div><span>hsc: </span>{productSpec.hsc}</div>
-                                                            <div><span>eccn: </span>{productSpec.eccn}</div>
-                                                            <div><span>origin: </span>{productSpec.origin}</div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </TabStripTab>
-                                            <TabStripTab disabled={details.interchangeDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Interchange">
-                                                <h2>Interchange</h2>
-                                                <div>
-                                                    {details.interchangeDetails.map(interchangeDetail =>
-                                                        <div>
-                                                            <div> {interchangeDetail.brandName}</div>
-                                                            <div>{interchangeDetail.oeNumber}</div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </TabStripTab>
+                                             <div className="flexrow">
+                                                 <div>Liters: {detail.liters}</div>
+                                                 <div>CID: {detail.cubicInchDisplacement}</div>
+                                                 <div>CC: {detail.engineCC}</div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 )}
+                             </div>
 
-                                            {/* contains: 18-2771 */}
-                                            <TabStripTab disabled={details.containsDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Contains">
-                                                <h2>Contains</h2>
-                                                <div>
-                                                    {details.containsDetails.map(containsDetail =>
-                                                        <div>
-                                                            <hr />
-                                                            <div>{containsDetail.nssDesc}</div>
-                                                            <div>{containsDetail.item}</div>
-                                                            <div>{containsDetail.qty}</div>
-                                                            <SRLWrapper><img className="conImg" alt='' src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + containsDetail.image} /></SRLWrapper>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </TabStripTab>
+                             <div className="flexrow">
+                                 <div>
+                                     <h2>Parts For This Engine</h2>
+                                     <Grid
+                                         style={{ height: '700px' }}
+                                         data={this.state.enginePartsData}
+                                         total={this.state.enginePartsData.length}
+                                         expandField="_expanded"
+                                         onDataRecieved={this.dataRecieved}
+                                         onDataStateChange={this.patsDataStateChange}
+                                         {...this.state.dataState2}
+                                         onRowClick={this.handleGridRowClick2}
+                                         onExpandChange={this.expandChange}
+                                         resizable={true}
+                                         reorderable={true}>
+                                         <Column field="cat1_name" title="category" />
+                                         <Column field="sale_item" title="Sierra Part #" />
+                                         <Column field="desclong" title="Description" />
+                                         
+                                     </Grid>
+                                 </div>
+                             </div>
+                         </Window>
+                     }
+                 </Route>
+                 <Route path="/brand/details/parts">
+                     {this.state.windowVisible && this.state.detailType === 'product' &&
+                     <SimpleReactLightbox>
+                         <Window title="Product Details" onClose={this.closeWindow}>
+                             <div className="flexrow engineModel">
+                                 <h3>Model#:</h3>
+                                 <div>{this.state.gridClickedRow.C_item_row}</div>
+                             </div>
 
-                                            {/* docs: 18-8607 */}
-                                            <TabStripTab disabled={details.documentDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Documents">
-                                                <h2>Documents</h2>
-                                                <div>
-                                                    {details.documentDetails.map(documentDetail =>
-                                                        <div>
-                                                            <h3>{documentDetail.docDescription}</h3>
-                                                            <div>{documentDetail.docRow}</div>
-                                                            <div>{documentDetail.docName}</div>
-                                                            <div>{documentDetail.docType}</div>
-                                                            <div>{documentDetail.LastUpdated}</div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </TabStripTab>
-                                        </TabStrip>
-                                    )}
+                             <div className='detailsCon'>
+                                 <div className="close-btn">
+                                     <button onClick={this.closeWindow} className="k-button" >close</button>
+                                 </div>
+                                 {this.state.productDetailData.map(details =>
+                                     <div>
+                                         <h1>{"Item#:  " + details.sale_item}</h1>
+                                         <div className='details'>
+                                             <div className="flexrow startStop">
+                                                 <div>Category: {details.categoryParent}</div>
+                                                 <div>Subcategory: {details.categoryChild}</div>
+                                             </div>
+                                             <div className="flexrow">
+                                                 <div>Description: {details.descriptionShort}</div>
+                                             </div>
 
-                                </div>
-                            </Window>
-                            </SimpleReactLightbox>
-                        }
+                                             <div className="flexrow">
+                                                 <SRLWrapper><img src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + details.imageDetails[0].fileName} alt='' /></SRLWrapper>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 )}
+                                 {this.state.productDetailDataTab.map(details =>
+                                     <TabStrip selected={this.state.selected} onSelect={this.handleSelect}>
+                                         <TabStripTab disabled={details.productDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Details">
+                                             <h2>Features</h2>
+                                             <div>
+                                                 {details.productDetails.map(productDetail =>
+                                                     <div>{productDetail.attributeValue}</div>
+                                                 )}
+                                             </div>
+                                         </TabStripTab>
+                                         <TabStripTab disabled={details.productSpecs.length > 0 ? false : true} title="Specs">
+                                             <div>
+                                                 <h2>Specifications</h2>
+                                                 {details.productSpecs.map(productSpec =>
+                                                     <div>
+                                                         <div><span>weight: </span>{productSpec.weight}</div>
+                                                         <div><span>height: </span>{productSpec.height}</div>
+                                                         <div><span>depth: </span>{productSpec.depth}</div>
+                                                         <div><span>width: </span>{productSpec.width}</div>
+                                                         <div><span>superceed: </span>{productSpec.superceed}</div>
+                                                         <div><span>unitOfMeasure: </span>{productSpec.unitOfMeasure}</div>
+                                                         <div><span>itemStatus: </span>{productSpec.itemStatus}</div>
+                                                         <div><span>upc: </span>{productSpec.upc}</div>
+                                                         <div><span>stdPkg: </span>{productSpec.stdPkg}</div>
+                                                         <div><span>casePkg: </span>{productSpec.casePkg}</div>
+                                                         <div><span>hsc: </span>{productSpec.hsc}</div>
+                                                         <div><span>eccn: </span>{productSpec.eccn}</div>
+                                                         <div><span>origin: </span>{productSpec.origin}</div>
+                                                     </div>
+                                                 )}
+                                             </div>
+                                         </TabStripTab>
+                                         <TabStripTab disabled={details.interchangeDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Interchange">
+                                             <h2>Interchange</h2>
+                                             <div>
+                                                 {details.interchangeDetails.map(interchangeDetail =>
+                                                     <div>
+                                                         <div> {interchangeDetail.brandName}</div>
+                                                         <div>{interchangeDetail.oeNumber}</div>
+                                                     </div>
+                                                 )}
+                                             </div>
+                                         </TabStripTab>
+
+                                         {/* contains: 18-2771 */}
+                                         <TabStripTab disabled={details.containsDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Contains">
+                                             <h2>Contains</h2>
+                                             <div>
+                                                 {details.containsDetails.map(containsDetail =>
+                                                     <div>
+                                                         <hr />
+                                                         <div>{containsDetail.nssDesc}</div>
+                                                         <div>{containsDetail.item}</div>
+                                                         <div>{containsDetail.qty}</div>
+                                                         <SRLWrapper><img className="conImg" alt='' src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + containsDetail.image} /></SRLWrapper>
+                                                     </div>
+                                                 )}
+                                             </div>
+                                         </TabStripTab>
+
+                                         {/* docs: 18-8607 */}
+                                         <TabStripTab disabled={details.documentDetails.length > 0 ? false : true} contentClassName='detailsTab' title="Documents">
+                                             <h2>Documents</h2>
+                                             <div>
+                                                 {details.documentDetails.map(documentDetail =>
+                                                     <div>
+                                                         <h3>{documentDetail.docDescription}</h3>
+                                                         <div>{documentDetail.docRow}</div>
+                                                         <div>{documentDetail.docName}</div>
+                                                         <div>{documentDetail.docType}</div>
+                                                         <div>{documentDetail.LastUpdated}</div>
+                                                     </div>
+                                                 )}
+                                             </div>
+                                         </TabStripTab>
+                                     </TabStrip>
+                                 )}
+
+                             </div>
+                         </Window>
+                         </SimpleReactLightbox>
+                     }
                     </Route>
                 </div>
                 <SimpleLoader

@@ -75,7 +75,7 @@ export const Gauges = (props) => {
                         </g>
                     </g>
                 </svg>
-                <p onClick={props.OnIcon} className="nav-anchor-txt">Gauges</p>
+                <p onClick={props.OnIcon} className="nav-anchor-txt">Instrumentation</p>
             </div>
         </div>
     );

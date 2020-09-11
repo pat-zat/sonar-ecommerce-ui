@@ -58,7 +58,7 @@ class CustomCell extends React.Component {
 
 class FilterGrid extends React.Component {
     init = { method: 'GET', accept: 'application/json', headers: {} };
-    filterBarUrl = 'http://10.92.48.29:9002/api/IconFilters/Details/?query=Gauges&custId=000000';
+    filterBarUrl = 'http://10.92.48.29:9002/api/IconFilters/Details/?query=Instrumentation&custId=000000';
     productDetailsUrl = 'http://10.92.48.29:9002/api/SierraPartSearch/Details/';
     tabsUrl = 'http://10.92.48.29:9002/api/SierraPartPartialSearch/Details/?itemRow=';
     gridWidth = 600;

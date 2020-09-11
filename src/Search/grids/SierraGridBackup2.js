@@ -19,6 +19,14 @@ function setParams(location, skip) {
     return searchParams.toString();
 }
 
+// class CustomCell extends React.Component {
+
+//     render() {
+//        let value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
+//         return (<td><img className="thumbnail" src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field]} alt='' /></td>);
+//     }
+// }
+
 class CustomCell extends React.Component {
     constructor(props) {
         super(props);
@@ -39,7 +47,8 @@ class CustomCell extends React.Component {
 
         if (this.props.dataItem[this.props.field]) {
             return (
-                <td><img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' />
+                <div>
+                    <td><img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' /></td>
                     {this.state.visible && <Dialog title={this.props.dataItem[this.props.field]} onClose={this.toggleDialog}>
                         <img onClick={this.toggleDialog} className="max" src={value} alt='' />
                         {/* 
@@ -49,7 +58,7 @@ class CustomCell extends React.Component {
                         </DialogActionsBar>
                         */}
                     </Dialog>}
-                </td>
+                </div>
             );
         }
         else {
@@ -57,9 +66,9 @@ class CustomCell extends React.Component {
                 <td><p>no image available</p></td>
             );
         }
+
     }
 }
-
 class SierraGrid extends React.Component {
     init = { method: 'GET', accept: 'application/json', headers: {} };
 
@@ -74,22 +83,29 @@ class SierraGrid extends React.Component {
             left: false,
             windowVisible: false,
             gridClickedRow: {},
+            productSearch: "product",
+            detailType: 'product',
             active: false,
+
             products: { data: [], total: 0 },
             dataState: this.props.resetState,
+
             productDetailData: [],
             productDetailDataTab: [],
+
             columns: [
                 { field: 'productNumber', title: "Product #" },
                 { field: "categoryParent", title: "Parent category" },
                 { field: "categoryChild", title: "Child category" },
                 { field: "descriptionLong", title: "description Long", width: 300 },
                 { field: "imagePath", title: "imagePath", cell: CustomCell },
-            ]
+            ],
+
+            results: [],
         };
     }
 
-    //reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
+    reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
 
     closeWindow = () => {
         this.setState({
@@ -110,7 +126,7 @@ class SierraGrid extends React.Component {
         let page = Math.round(this.state.dataState.skip)
         const url = setParams({ skip: page });
         history.push('/sierra/api/AdvancedSearch/Details/?id=sierrapart'
-            + '&parentCategoryId=' + (this.props.parentCategoryId ? this.props.parentCategoryId : '')
+            + '&parentCategoryId=' + this.props.parentCategoryId
             + '&parentCategoryName=' + this.props.parentCategoryName
             + '&childCategoryId=' + (this.props.childCategoryId ? this.props.childCategoryId : '')
             + '&childCategoryName=' + (this.props.childCategoryName ? this.props.childCategoryName : '')
@@ -138,7 +154,8 @@ class SierraGrid extends React.Component {
         this.setState({
             ...this.state,
             products: products,
-            active: true
+            active: true,
+            results: products.data
         });
     }
 
@@ -181,18 +198,16 @@ class SierraGrid extends React.Component {
         history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
     }
 
+    // SearchTypeD = () => {
+    //     this.setState({ productSearch: 'filter' });
+    // }
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
             console.log("prevProps " + prevProps.urlQuery.skip);
             this.setState({ dataState: { take: 10, skip: parseInt(this.props.urlQuery.skip) } });
         }
-    }
 
-    componentWillUnmount = () => {
-        console.log("unmounted");
-        // if (this.props.location === "/") {
-        //     window.location.reload();
-        // }
     }
 
     render() {
@@ -225,7 +240,7 @@ class SierraGrid extends React.Component {
 
                     </div>
                     <Route path="/sierra/details">
-                        {this.state.windowVisible &&
+                        {this.state.windowVisible && this.state.detailType === 'product' &&
                             <SimpleReactLightbox>
                                 <Window title="Product Details" onClose={this.closeWindow} >
                                     <div className='detailsCon flexrow'>
@@ -330,16 +345,16 @@ class SierraGrid extends React.Component {
                                         </div>
 
                                         <div className="flexcol">
-                                            {this.state.productDetailData.map(details =>
-                                                <SRLWrapper>
-                                                    {/* if imageDetails[0] is not empty*/}
-                                                    {details.imageDetails.map(images =>
-                                                        <img src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + images.fileName} alt='' />
+                                        {this.state.productDetailData.map(details =>
+                                            <SRLWrapper>
+                                                {/* if imageDetails[0] is not empty*/}
+                                                {details.imageDetails.map(images =>
+                                                <img src={"https://sonar-embed.seastarsolutions.com/productImages/product/" + images.fileName} alt='' />
+                                      
+                                                )}
 
-                                                    )}
-
-                                                </SRLWrapper>
-                                            )}
+                                            </SRLWrapper>
+                                             )}
                                         </div>
 
 

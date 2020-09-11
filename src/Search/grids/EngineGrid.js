@@ -311,6 +311,7 @@ class EngineGrid extends React.Component {
                                             <Column field="cat1_name" title="category" />
                                             <Column field="sale_item" title="Sierra Part #" />
                                             <Column field="desclong" title="Description" />
+                                            
                                         </Grid>
                                     </div>
                                 </div>

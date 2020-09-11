@@ -7,7 +7,6 @@ import { DropDownList } from '@progress/kendo-react-dropdowns';
 import { Router, Route, Link } from 'react-router-dom';
 
 import { Outboard, Inboard, Drive, Electrical, Gauges, Tools, Steering, Oil, Performance, Cables, Hose, Manuals, Fuel } from "../Sonar/CatIcons";
-import SonarFilter from '../Filter/SonarFilter';
 import history from '../history.js';
 
 import SimpleGrid from './grids/SimpleGrid';
@@ -82,8 +81,8 @@ class SearchBar extends React.Component {
             oenumber: '',
 
             parentCategoryId: '',
-            parentCategoryName: { parentCategory: "all", parentCategoryId: 0 },
-            parentCats: { parentCategory: "all", parentCategoryId: 0 },
+            parentCategoryName: { parentCategory: "all", parentCategoryRow: '' },
+            parentCats: { parentCategory: "all", parentCategoryId: '' },
             childCategoryId: '',
             childCategoryName: { childCategory: "", childCategoryRow: "" },
             productNumber: '',
@@ -125,7 +124,7 @@ class SearchBar extends React.Component {
     componentDidMount = async () => {
         const responseA = await axios.get(this.engineBrandUrl, { headers: {} });
 
-        this.setState({brandList: responseA.data.Data});
+        this.setState({ brandList: responseA.data.Data });
 
         fetch(this.catUrl, this.init)
             .then(response => response.json())
@@ -141,14 +140,18 @@ class SearchBar extends React.Component {
         if (this.props.location.search !== "") {
             this.setState({ activeSearch: true });
             if (myParams.parentCategoryName !== "") {
+                console.log("reload " + myParams.parentCategoryId);
+                fetch(this.subCatUrl + myParams.parentCategoryId, this.init)
+                    .then(response => response.json())
+                    .then(json => this.setState({ subCatList: json.Data }));
                 this.setState({
                     advancedSearchType: "sierra",
                     releaseSearch: true,
                     search: true,
                     advancedSearch: false,
-                    parentCategoryId: myParams.parentCategoryId ,
-                    parentCategoryName: { parentCategory: myParams.parentCategoryName, parentCategoryId: myParams.parentCategoryId },
-                    parentCats: { parentCategory: myParams.parentCategoryName, parentCategoryId:  myParams.parentCategoryId },
+                    parentCategoryId: myParams.parentCategoryId,
+                    parentCategoryName: { parentCategory: myParams.parentCategoryName, parentCategoryRow: myParams.parentCategoryId },
+                    parentCats: { parentCategory: myParams.parentCategoryName, parentCategoryId: myParams.parentCategoryId },
                     childCategoryId: myParams.childCategoryId,
                     childCategoryName: { childCategory: myParams.childCategoryName, childCategoryRow: myParams.childCategoryId },
                     productNumber: myParams.productNumber,
@@ -186,7 +189,7 @@ class SearchBar extends React.Component {
                     search: true,
                     brand: { brandName: myParams.brand, brandId: '' },
                 });
-            } 
+            }
         }
         else {
             this.setState({
@@ -194,7 +197,7 @@ class SearchBar extends React.Component {
             });
         }
     }
-  
+
     //this is for maintaing state after search
     urlAction = () => {
         let myParams = getParams(this.props.location);
@@ -254,28 +257,24 @@ class SearchBar extends React.Component {
     searchStateChange = (e) => {
 
         e.preventDefault();
-        this.setState({
-            search: true,
-            activeSearch: true,
-            releaseSearch: true,      
-            dataState: { take: 10, skip: 0 }
-        });
-        //this.resetHandler();
-        history.push("/simpleSearch/api/?id=simpleSearch&query=" + this.state.query);
+        if (this.state.query) {
+            this.setState({
+                search: true,
+                activeSearch: true,
+                releaseSearch: true,
+                dataState: { take: 10, skip: 0 }
+            });
+            //this.resetHandler();
+            history.push("/simpleSearch/api/?id=simpleSearch&query=" + this.state.query);
+        }
+
     }
 
     advSearchStateChange = (e) => {
         e.preventDefault();
-        if (this.state.oenumber === '' && this.state.advancedSearchType === 'Interchange') {
-            this.setState({
-                search: false,
-                activeSearch: false,
-                releaseSearch: false,
-                dataState: { take: 10, skip: 0 }
-            });
-        }
 
-        else {
+        if (this.state.advancedSearchType === 'Interchange' && this.state.oenumber !== '') {
+            history.push("/interchange/api/AdvancedSearch/Details/?id=interchange&oeNumber=" + this.state.oenumber);
             this.setState({
                 search: true,
                 activeSearch: true,
@@ -283,27 +282,30 @@ class SearchBar extends React.Component {
                 dataState: { take: 10, skip: 0 }
             });
         }
-
-        //this.resetHandler();
-     
-        if (this.state.advancedSearchType === 'Interchange') {
-            history.push("/interchange/api/AdvancedSearch/Details/?id=interchange&oeNumber=" + this.state.oenumber);
-            //window.location.reload();
-        }
-        else if (this.state.advancedSearchType === 'filter') {
+        else if (this.state.advancedSearchType === 'filter' && this.state.cat) {
             history.push("/filter/api/AdvancedSearch/Details/" + '?id=' + 'sierrapart'
                 + '&category=' + this.state.cat);
-            //window.location.reload();
+            this.setState({
+                search: true,
+                activeSearch: true,
+                releaseSearch: true,
+                dataState: { take: 10, skip: 0 }
+            });
         }
-        else if (this.state.advancedSearchType === 'sierra') {
+        else if (this.state.advancedSearchType === 'sierra' && this.state.parentCategoryName.parentCategory) {
             history.push("/sierra/api/AdvancedSearch/Details/" + '?id=' + 'sierrapart'
-                + '&parentCategoryId=' + this.state.parentCategoryName.parentCategoryRow
+                + '&parentCategoryId=' + (this.state.parentCategoryName.parentCategoryRow ? this.state.parentCategoryName.parentCategoryRow : '')
                 + '&parentCategoryName=' + this.state.parentCategoryName.parentCategory
                 + '&childCategoryId=' + (this.state.childCategoryName.childCategoryRow ? this.state.childCategoryName.childCategoryRow : '')
-                + '&childCategoryName=' + (this.state.childCategoryName.childCategory ? this.state.childCategoryName.childCategory : '' )
+                + '&childCategoryName=' + (this.state.childCategoryName.childCategory ? this.state.childCategoryName.childCategory : '')
                 + '&productNumber=' + this.state.productNumber
                 + '&queryType=' + this.state.checked);
-            //window.location.reload();
+            this.setState({
+                search: true,
+                activeSearch: true,
+                releaseSearch: true,
+                dataState: { take: 10, skip: 0 }
+            });
         }
         else if (this.state.advancedSearchType === 'brand') {
             history.push("/brand/api/AdvancedSearch/Details/" + '?id=' + 'brandmodel'
@@ -314,9 +316,22 @@ class SearchBar extends React.Component {
                 + '&serialNumber=' + this.state.serialNo
                 + '&queryType=' + this.state.checked
                 + '&skip=' + 0);
-            //window.location.reload();
+            this.setState({
+                search: true,
+                activeSearch: true,
+                releaseSearch: true,
+                dataState: { take: 10, skip: 0 }
+            });
         }
-        
+        else {
+            this.setState({
+                search: false,
+                activeSearch: false,
+                releaseSearch: false,
+                dataState: { take: 10, skip: 0 }
+            });
+        }
+
     }
 
     handlerA() {
@@ -324,7 +339,7 @@ class SearchBar extends React.Component {
         console.log("callback");
     }
 
-    releaseHandler() { 
+    releaseHandler() {
         this.setState({
             sierraSearch: false,
             filterSearch: false,
@@ -410,21 +425,22 @@ class SearchBar extends React.Component {
 
     componentDidUpdate(nextProps) {
         if (nextProps.location !== this.props.location) {
-          // navigated!
-          if (this.props.location.pathname === "/" ) {
-            this.setState({ activeSearch: false });
-          }
-          else this.setState({ activeSearch: true });
-        //console.log(this.props.location);
-        
+            // navigated!
+            if (this.props.location.pathname === "/") {
+                this.setState({ activeSearch: false });
+                history.go(0)
+            }
+            else this.setState({ activeSearch: true });
+            //console.log(this.props.location);
+
         }
-      }
+    }
 
     render() {
         const location = {
             pathname: '/brand',
             state: { activeSearch: true }
-          }
+        }
 
         return (
 
@@ -433,7 +449,7 @@ class SearchBar extends React.Component {
                     <div className="flex">
 
                         <form className={this.state.advancedSearchType === 'simple' ? "searchBar simpleForm" : 'hiderb'} onSubmit={this.searchStateChange}>
-                            <input style={{ maxWidth: '600px' }}  placeholder="SEARCH" type="text" name="query" value={this.state.query} onChange={this.handleChange} />
+                            <input style={{ maxWidth: '600px' }} placeholder="SEARCH" type="text" name="query" value={this.state.query} onChange={this.handleChange} />
                             <button onClick={this.resetHandler} ref="searchBtn" type={'submit'} className={this.state.advancedSearchType === 'simple' ? 'k-button searchBtn' : 'hiderb'}><span>Search</span></button>
                         </form>
 
@@ -501,7 +517,7 @@ class SearchBar extends React.Component {
                                         <input style={{ width: '220px' }} placeholder="serial number" type="text" name="serialNo" value={this.state.serialNo} onChange={this.handleChange} />
                                     </div>
                                 </div>
-                                <button ref="advancedToggle" type={'submit'} className={this.state.advancedSearchType !== 'simple'  && this.state.advancedSearchType !== 'filter' ? 'k-button advSearchBtn' : 'hiddenToggle'}><span>Advanced Search</span></button>
+                                <button ref="advancedToggle" type={'submit'} className={this.state.advancedSearchType !== 'simple' && this.state.advancedSearchType !== 'filter' ? 'k-button advSearchBtn' : 'hiddenToggle'}><span>Advanced Search</span></button>
                             </div>
                         </form>
 
@@ -529,7 +545,7 @@ class SearchBar extends React.Component {
                         </div>
                     </div>
                 </div>
-                
+
 
                 <Route path="/filter" component={FilterGrid}>
                     <FilterGrid
@@ -553,7 +569,7 @@ class SearchBar extends React.Component {
 
                 <Route path="/simpleSearch" component={SimpleGrid}>
                     <SimpleGrid
-                        ref={this.simpleGrid}                   
+                        ref={this.simpleGrid}
                         releaseAction={this.releaseHandler}
                         urlAction={this.urlAction}
                         search={this.state.search}
@@ -583,10 +599,10 @@ class SearchBar extends React.Component {
                         urlQuery={getParams(this.props.location)}
                         myLocation={this.props.location}
                         advancedSearchType={this.state.advancedSearchType}
-                        parentCategoryName={this.state.parentCategoryName.parentCategory}
-                        parentCategoryId={this.state.parentCategoryName.parentCategoryRow}
-                        childCategoryName={this.state.childCategoryName.childCategory}
-                        childCategoryId={this.state.childCategoryName.childCategoryRow}
+                        parentCategoryName={(this.state.parentCategoryName.parentCategory ? this.state.parentCategoryName.parentCategory : '')}
+                        parentCategoryId={(this.state.parentCategoryName.parentCategoryRow ? this.state.parentCategoryName.parentCategoryRow : '')}
+                        childCategoryName={(this.state.childCategoryName.childCategory ? this.state.childCategoryName.childCategory : '')}
+                        childCategoryId={this.state.childCategoryName.childCategoryRow ? this.state.childCategoryName.childCategoryRow : ''}
                         productNumber={this.state.productNumber}
                         checked={this.state.checked}
                     />
@@ -635,12 +651,6 @@ class SearchBar extends React.Component {
                         oenumber={this.state.oenumber}
                     />
                 </Route>
-
-
-                {/* <Drawer open={this.state.left} onClose={this.toggleDrawer}>
-                    <SonarFilter filters={this.state.filterSet} />
-                </Drawer> */}
-
 
             </div>
         );
