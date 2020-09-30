@@ -79,7 +79,6 @@ class FilterGrid extends React.Component {
         super(props);
 
         this.state = {
-            showFilteredData: false,
             left: false,
             windowVisible: false,
             gridClickedRow: {},
@@ -87,7 +86,6 @@ class FilterGrid extends React.Component {
             detailType: 'product',
             active: false,
             products: { data: [], total: 0 },
-            filteredProducts: { data: [], total: 0 },
             dataState: this.props.resetState,
             productDetailData: [],
             productDetailDataTab: [],
@@ -103,9 +101,7 @@ class FilterGrid extends React.Component {
             filterSet: [],
             filtering: false,
             ItemsWithFilters: [],
-            filteredSkus: [],
-            filterCollapse: true,
-            terms: []
+            filteredSkus: []
         };
     }
 
@@ -178,7 +174,7 @@ class FilterGrid extends React.Component {
             //  results: products.data
         });
     }
-
+    
 
     componentDidMount = async () => {
 
@@ -196,7 +192,7 @@ class FilterGrid extends React.Component {
 
         const filterResponse = await axios.get(this.ItemsWithFiltersUrl + this.props.cat + '&custId=000000', { headers: {} });
         this.setState({ ItemsWithFilters: filterResponse.data.Data });
-
+  
         this.props.urlQuery.query = "";
 
         if (this.props.urlQuery.itemRow) {
@@ -213,45 +209,47 @@ class FilterGrid extends React.Component {
         }
     }
 
+    
 
-    //I need to pass in separate arrays or separate arrays with lodash -> then create separate filter foreach type
-    //also ensure only one filter of each type can be selected at a time
-
-    //could try using join() with && as separator 
     onFilterSelect = term => {
-        let termArray = [...term];
-        this.setState({
-            filtering: true,
-            filterCollapse: true,
-            showFilteredData: true,
-            terms: termArray
-        });
+        this.setState({ filtering: true});
+    let skus = this.state.ItemsWithFilters.map((element) => {
+        let filterSku = { ...element, filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value[0] === 'Sahara') };
+        return filterSku;
+    });
+
+    let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
+    this.setState({ filteredSkus: activeFilterSkuArrayFinal});
+
+    console.log(this.state.products);
+    let proItemRows = this.state.products.data.map(data => data);
+    
+    console.log(activeFilterSkuArrayFinal);
+    console.log(proItemRows);
+
+    //------------------------------------------------------------------------------------------------------------
+    //proItemRow is just one page of products ->
+    //FIRST you neeed to get this array to include all pages
+        //-this means you have to move the process() method in the loader to happen after the filtering
+    //SECOND you need to use includes or INDEX OF to compare one array to another -> filteredSkus to proItemRows
+
+    var profiltered = proItemRows.filter(item => activeFilterSkuArrayFinal.includes(item.itemRow));
+    console.log(profiltered);
+    this.setState({ products: { data: profiltered, total: profiltered.length } });
+    //------------------------------------------------------------------------------------------------------------
+
+
+    //Term is working
+    console.log(term);
     }
 
-    
+
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
             console.log("prevProps " + prevProps.urlQuery.skip);
             this.setState({ dataState: { take: 10, skip: parseInt(this.props.urlQuery.skip) } });
         }
-        if (prevState.terms !== this.state.terms) {
-            let filterSku;
-            let skus = this.state.ItemsWithFilters.map((element) => {
-                filterSku = {
-                    ...element,
-                    filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value.some( r => this.state.terms.includes(r)))
-                };
-
-                return filterSku;
-            });
-            let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
-            this.setState({ filteredSkus: activeFilterSkuArrayFinal });
-            var profiltered = this.state.products.data.filter(item => activeFilterSkuArrayFinal.includes(item.itemRow));
-            this.setState({ filteredProducts: { data: profiltered, total: profiltered.length } });
-            console.log("filterGrid updated");
-
-        }
-        
     }
 
     render() {
@@ -262,7 +260,7 @@ class FilterGrid extends React.Component {
         return (
             <div className="searchGrid">
                 <div className={this.props.activeSearch ? 'activeToggle' : 'hiddenToggle'}>
-                    <Button className="k-button" onClick={this.toggleDrawer}><span>{this.props.cat}</span>&nbsp;  Filter</Button>
+                    <Button className="k-button" onClick={this.toggleDrawer}>Gauge Filter</Button>
                     <Button className="k-button" onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button>
                 </div>
                 <div>
@@ -274,15 +272,14 @@ class FilterGrid extends React.Component {
                             pageable={true}
                             resizable={true}
                             take={this.state.dataState.take}
-                            {...this.state.products}
-                            {...this.state.dataState}
-
-                            data={this.state.showFilteredData ? process(this.state.filteredProducts.data, this.state.dataState) : process(this.state.products.data, this.state.dataState)}
+                            total={this.state.products.total}
+                            // {...this.state.dataState}
+                            // {...this.state.products}
+                            data={process(this.state.products.data, this.state.dataState )}
                             onChange={this.props.action}
                             onDataStateChange={this.dataStateChange}
                             onRowClick={this.handleGridRowClick1}
                             filterable={true}
-                            pagesize={10}
                             sortable={true}>
                             {columnsToShow}
                         </Grid>

@@ -34,20 +34,20 @@ class CustomCell extends React.Component {
         });
     }
 
+    addDefaultSrc(ev) {
+        ev.target.src = '/logo192.png'
+    }
+
     render() {
         let value = "https://sonar-embed.seastarsolutions.com/productImages/product/" + this.props.dataItem[this.props.field];
-
+        console.log(this.props.dataItem[this.props.field]);
         if (this.props.dataItem[this.props.field]) {
             return (
-                <td><img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' />
-                    {this.state.visible && <Dialog title={this.props.dataItem[this.props.field]} onClose={this.toggleDialog}>
+                <td>
+                    <img onClick={this.toggleDialog} className="thumbnail" src={value} alt='' onError={this.addDefaultSrc} />
+                    {this.state.visible && 
+                    <Dialog title={this.props.dataItem[this.props.field]} onClose={this.toggleDialog}>
                         <img onClick={this.toggleDialog} className="max" src={value} alt='' />
-                        {/* 
-                        <DialogActionsBar>
-                            <button className="k-button" onClick={this.toggleDialog}>Prev</button>
-                            <button className="k-button" onClick={this.toggleDialog}>Next</button>
-                        </DialogActionsBar>
-                        */}
                     </Dialog>}
                 </td>
             );
@@ -263,7 +263,7 @@ class SierraGrid extends React.Component {
                                                         <div>
                                                             <h2>Specifications</h2>
                                                             {details.productSpecs.map(productSpec =>
-                                                                <div>
+                                                                <div className="specsDivs">
                                                                     <div><span>weight: </span>{productSpec.weight}</div>
                                                                     <div><span>height: </span>{productSpec.height}</div>
                                                                     <div><span>depth: </span>{productSpec.depth}</div>

@@ -104,8 +104,7 @@ class FilterGrid extends React.Component {
             filtering: false,
             ItemsWithFilters: [],
             filteredSkus: [],
-            filterCollapse: true,
-            terms: []
+            filterCollapse: true
         };
     }
 
@@ -214,44 +213,89 @@ class FilterGrid extends React.Component {
     }
 
 
-    //I need to pass in separate arrays or separate arrays with lodash -> then create separate filter foreach type
-    //also ensure only one filter of each type can be selected at a time
 
-    //could try using join() with && as separator 
     onFilterSelect = term => {
-        let termArray = [...term];
-        this.setState({
+        this.setState({ 
             filtering: true,
             filterCollapse: true,
-            showFilteredData: true,
-            terms: termArray
+            showFilteredData: true
+         });
+
+         
+
+        //term needs to be object here
+        //need switch for each filter type 
+        //terms: [{filter: '', values:['']}]
+        //1 filter with multiple parameters
+        //2 separate filters
+        //3 if items with filters === term.filter title
+        //there should only be one filter active for each type
+
+        //I CAN MAP OUT THE FILTER SETS PASSED DOWN TO SONAR FILTER SO THE KEY OF THE ARRAY VALUES WILL READ AS THE FILTER TITLE NOT THE WORD VALUE
+        //you could map out filterSetFilter with index filterSetFilter.filter 
+        //if there are multiples for each it will still match the right key
+        // term: {
+        //     analogfilter: [],
+        //     StyleFilter: [],
+        //     typeFilter: [],
+        //     diamFilter: [],
+        // }
+         // filterSetFilter.value[0] === term SHOULD ACTUALL BE  filterSetFilter.value.includes(term) 
+         //the two things i have to really think about are multiple filter types at one time and multiple filters of one type ...should we handle that?
+         //AS WELL AS HOW A CALLBACK WOULD WORK ON LEVER FURTHER DOWN FRON SONAR FILTER INTO THE FILTERS THEMESEVLES
+
+         //multiple filter sets -> HOW TO MAKE THIS DYNAMIC
+
+         //showing active filter types
+
+        let skus = this.state.ItemsWithFilters.map((element) => {
+            console.log(element);
+            let filterSku = { ...element, filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value[0] === term) };
+            return filterSku;
         });
+
+        
+        console.log(skus);
+
+        let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
+        this.setState({ filteredSkus: activeFilterSkuArrayFinal });
+
+        let proItemRows = this.state.products.data.map(data => data);
+
+        // console.log(activeFilterSkuArrayFinal);
+        // console.log(proItemRows);
+
+        
+        var profiltered = proItemRows.filter(item => activeFilterSkuArrayFinal.includes(item.itemRow));
+        // console.log(profiltered);
+        // this.setState({ products: { data: profiltered, total: profiltered.length } });
+        this.setState({ filteredProducts: { data: profiltered, total: profiltered.length } });
+        // this.setState({ 
+        //     filteredProducts:  profiltered,
+        //  });
+
+//IF FILTER ACTIVE SET DATA TO FILTERED DATA ^ PROFILTERED
+//YOU ARE FILTERING ALREADY ONCE FILTERED RESULTS
     }
 
-    
+
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
             console.log("prevProps " + prevProps.urlQuery.skip);
             this.setState({ dataState: { take: 10, skip: parseInt(this.props.urlQuery.skip) } });
         }
-        if (prevState.terms !== this.state.terms) {
-            let filterSku;
-            let skus = this.state.ItemsWithFilters.map((element) => {
-                filterSku = {
-                    ...element,
-                    filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value.some( r => this.state.terms.includes(r)))
-                };
+        if (prevState.filteredSkus !== this.state.filteredSkus) {
+            // if (this.state.showFilteredData) {
+            //     this.setState({ products: { data: this.state.filteredProducts, total: this.state.filteredProducts.length } });
+            // }
+            // else {
 
-                return filterSku;
-            });
-            let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
-            this.setState({ filteredSkus: activeFilterSkuArrayFinal });
-            var profiltered = this.state.products.data.filter(item => activeFilterSkuArrayFinal.includes(item.itemRow));
-            this.setState({ filteredProducts: { data: profiltered, total: profiltered.length } });
-            console.log("filterGrid updated");
+            // }
+            
 
         }
-        
+        console.log("filterGrid updated");
     }
 
     render() {
@@ -276,7 +320,7 @@ class FilterGrid extends React.Component {
                             take={this.state.dataState.take}
                             {...this.state.products}
                             {...this.state.dataState}
-
+                          
                             data={this.state.showFilteredData ? process(this.state.filteredProducts.data, this.state.dataState) : process(this.state.products.data, this.state.dataState)}
                             onChange={this.props.action}
                             onDataStateChange={this.dataStateChange}

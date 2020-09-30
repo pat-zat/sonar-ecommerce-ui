@@ -110,7 +110,8 @@ class SearchBar extends React.Component {
             //filterSet: [],
             checked: queryTypes[0].value,
             disabled: false,
-
+            
+            activeCatIcon: ""
         };
     }
 

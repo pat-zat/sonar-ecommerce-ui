@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterHeader = () => {
+const FilterHeader = (props) => {
 
 
     return (
@@ -16,7 +16,7 @@ const FilterHeader = () => {
                 </g>
             </g>
         </svg>
-        <h2 className="">Gauge Filter</h2>
+        <h2 className="">{props.filterSetTitle}</h2>
         {/* <div className="close-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40.71 40.71"><g id="close-btn" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><line className="cls-1" x1="0.35" y1="40.35" x2="40.35" y2="0.35" /><line className="cls-1" x1="40.35" y1="40.35" x2="0.35" y2="0.35" /></g></g>
             </svg>

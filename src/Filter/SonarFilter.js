@@ -6,6 +6,7 @@ import FilterHeader from './Filterheader';
 import StyleFilter from './StyleFilter';
 import TypeFilter from './TypeFilter';
 import SizeFilter from './SizeFilter';
+import SvgSterlingGauge from './SvgSterlingGauge';
 
 let mCustomScrollbar = '';
 
@@ -27,15 +28,15 @@ const scrollBarLoaded = () => {
     })
 }
 class SonarFilter extends Component {
-   filterBarUrl = 'http://10.92.48.29:9002/api/IconFilters/Details/Gauges';
-   init = { method: 'GET', accept: 'application/json', headers: {} };
+    filterBarUrl = 'http://10.92.48.29:9002/api/IconFilters/Details/Gauges';
+    init = { method: 'GET', accept: 'application/json', headers: {} };
     constructor(props) {
         super(props);
         this.state = {
             open: false,
             collapsed: false,
             closed: true,
-            term: ''
+            term: []
         };
     }
     componentDidMount() {
@@ -46,78 +47,72 @@ class SonarFilter extends Component {
                 theme: 'dark'
             })
         })
-       // console.log(this.props.filterSet[0]);
+
+
+        
     }
 
-    //state = { term: ''};
-//     onFilterClick = event => {
-//         event.preventDefault();
-//         this.props.onFilter(this.state.term);
-//     }
 
-handleFilterChange = value => {
-    let val = value;
-    
-   //let prod = this.state.products.data.data.map(prod => prod);
-   //console.log(prod.filter(prods => prods.descriptionLong.includes({val})));
-   //console.log(this.state.products.data.data.map(prod => prod));
-    this.setState({ 
-        term: val,
+    //term should be an empty array of objects to mirror the data for multiple filters at a time
+    //each time you filter it will be a new set of paramaters applied to the unchanging aka immutable state.products
+
+    //terms: [{filter: '', values:['']}]
+
+    //this.setState({ myArray: [...this.state.myArray, 'new value'] }) //simple value
+    // this.setState({ myArray: [...this.state.myArray, ...[1,2,3] ] }) //another array
+
+    // this.setState(prevState => ({
+    //     myArray: [...prevState.myArray, {"name": "object"}]
+    //   }))
+
+
+
+    handleFilterChange = value => {
+        let val = value;
+        let terms = [...this.state.term];
+        terms.push(val);
       
-    }, () => {
-        this.props.onFilter(this.state.term);
-    });
+        console.log(terms);
+        this.setState({
+            term: terms,
+             
+        }, () => {
+            this.props.onFilter(this.state.term);
+        });
 
-  };
-
+    };
+   // onFilter={this.props.onFilter} => pass this into each filter
 
     render() {
         return (
-            
-            <div className="filterbar open">           
-              
-            {/* 
-              {this.props.filterSet.map((filterSet, index) =>
-                    <div>
-                        <h2 key={index} >{filterSet.filter}</h2>
-                        {filterSet.value.map( (filterVals, index)  =>
-                                <div key={index} value={filterVals} onClick={this.handleFilterChange.bind(this,filterVals)}>{filterVals}</div>                                                   
-                            )}
-                    </div>                  
-                )} */}
-
-
-                <FilterHeader filterSetTitle="gauge" FilterSetIcon="gaugeCatIcon" />
-
+            <div className="filterbar open">
+                <FilterHeader filterSetTitle={this.props.cat} FilterSetIcon="gaugeCatIcon" />
                 <hr />
-
                 <div className="digi"><SvgDigilog className="" /></div>
-
                 <hr />
-
-                <StyleFilter />
-
+                {/* <StyleFilter filterSet={this.props.filterSet[2]} onFilter={this.props.onFilter} /> */}
+                <div>
+            <h3>Style</h3>
+                <div className="styleFilter">
+                    <ul>                            {/*Back-ticks/rim-glow*/}
+                    {this.props.filterSet[2].value.map((colors, index) =>
+                        <li onClick={this.handleFilterChange.bind(this, colors)} className="" key={index} value={colors} >{colors}</li>
+                    )}
+                    </ul>
+                    <SvgSterlingGauge rim="" center="" back="" />
+                </div>
+        </div>
                 <hr />
-
-                <TypeFilter />
-
+                <TypeFilter  />
                 <hr />
-
-                {/* <SizeFilter diameters={this.props.filterSet[0]} /> */}
-
                 <div className="flexcol">
-                    <h3> {this.props.filterSet[0].filter}</h3>            
+                    <h3> {this.props.filterSet[0].filter}</h3>
                     <div className="size-filter">
                         <div className="flexrow">
-                           
-
-                            {this.props.filterSet[0].value.map( (diams, index)  =>
-                                <div onClick={this.handleFilterChange.bind(this,diams)} className="small-number-filter" key={index} value={diams} >{diams}</div>                                                   
+                            {this.props.filterSet[0].value.map((diams, index) =>
+                                <div onClick={this.handleFilterChange.bind(this, diams)} className="small-number-filter" key={index} value={diams} >{diams}</div>
                             )}
                         </div>
-                        {/* <div className="small-number-filter">2"</div>
-                        <div className="small-number-filter">3"</div>
-                        <div className="small-number-filter">5"</div> */}
                     </div>
                 </div>
 

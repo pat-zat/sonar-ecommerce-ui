@@ -19,7 +19,7 @@ function App() {
     <Router history={history} forceRefresh={true} >
       <div>
         <div className="top-bar">
-          <Link to="/"><div className="top-third"><SvgSierra /></div></Link>
+          <Link to="/"><div className="top-third"><SvgSierra/></div></Link>
           <div className="Logo"><div className="lottieLogo"><UncontrolledLottie ></UncontrolledLottie></div></div>
           {/*<div className="top-third flex-end"><div></div></div>*/}
         </div>

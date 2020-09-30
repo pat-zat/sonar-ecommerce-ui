@@ -37,9 +37,9 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    a { 
-        z-index: 10005;
-    }
+    // a { 
+    //     z-index: 10005;
+    // }
         
 }
 
@@ -172,7 +172,7 @@ body {
 
 .filterCat {
     width: 50px;
-    margin-left: 40%;
+
     margin-top: 10px;
 }
 
@@ -224,7 +224,10 @@ body {
 }
 
 .small-number-filter:nth-child(2) {
-    font-size: 19px;
+   
+    font-size: 16px;
+    padding-top: 0;
+
 }
 
 .small-number-filter {
@@ -235,7 +238,7 @@ body {
     border: 0.5px solid black;
     border-radius: 50px;
     margin: 10px;
-    padding: 5px;
+    padding: 0 5px;
     transform: scale(0.75);
     line-height: 60px;
 }

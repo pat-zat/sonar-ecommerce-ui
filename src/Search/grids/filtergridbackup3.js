@@ -14,7 +14,7 @@ import { Route, Link } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import SonarFilter from '../../Filter/SonarFilter';
 import { Dialog, DialogActionsBar } from '@progress/kendo-react-dialogs';
-import { process } from '@progress/kendo-data-query';
+
 
 function setParams(location, skip) {
     const searchParams = new URLSearchParams(location.search);
@@ -69,9 +69,17 @@ class CustomCell extends React.Component {
 
 class FilterGrid extends React.Component {
     init = { method: 'GET', accept: 'application/json', headers: {} };
+
+    //------------------------------------------------------------------------------------------------------------------------
+    //NEED TO FILTER OUT ItemsWithFilters and only show item rows if contained in the filtered result of ItemsWithFilters
+    //+  + &custId=000000
+    //------------------------------------------------------------------------------------------------------------------------
+
+
     filterBarUrl = 'http://10.92.48.29:9002/api/IconFilters/Details/?query=Instrumentation&custId=000000';
     productDetailsUrl = 'http://10.92.48.29:9002/api/SierraPartSearch/Details/';
     tabsUrl = 'http://10.92.48.29:9002/api/SierraPartPartialSearch/Details/?itemRow=';
+
     ItemsWithFiltersUrl = 'http://10.92.48.29:9002/api/FilterSet/Details/?query=';
     gridWidth = 600;
 
@@ -79,18 +87,19 @@ class FilterGrid extends React.Component {
         super(props);
 
         this.state = {
-            showFilteredData: false,
             left: false,
             windowVisible: false,
             gridClickedRow: {},
             productSearch: "filter",
             detailType: 'product',
             active: false,
+
             products: { data: [], total: 0 },
-            filteredProducts: { data: [], total: 0 },
             dataState: this.props.resetState,
+
             productDetailData: [],
             productDetailDataTab: [],
+
             columns: [
                 { field: 'saleItem', title: "Product #" },
                 { field: "categoryParent", title: "Parent category" },
@@ -98,16 +107,22 @@ class FilterGrid extends React.Component {
                 { field: "descriptionLong", title: "description Long", width: 300 },
                 { field: "image", title: "imagePath", cell: CustomCell },
             ],
+
             filter: '',
             filterValue: '',
             filterSet: [],
             filtering: false,
             ItemsWithFilters: [],
-            filteredSkus: [],
-            filterCollapse: true,
-            terms: []
+            filteredSkus: []
         };
     }
+    // checkFilter(products) {
+    //     return products.includes({filterValue})
+    //      call set state
+    // }
+    // checkFilter(dataItem) {
+    //     return dataItem.includes({filterValue})
+    // }
 
     reset = () => { this.setState({ dataState: { take: 10, skip: 0 } }); }
 
@@ -115,15 +130,6 @@ class FilterGrid extends React.Component {
         this.setState({
             windowVisible: false
         });
-    }
-
-    toggleDrawer = () => {
-        if (this.state.left === false) {
-            this.setState({ left: true });
-        }
-        if (this.state.left === true) {
-            this.setState({ left: false });
-        }
     }
 
     handleSelect = (e) => {
@@ -134,22 +140,6 @@ class FilterGrid extends React.Component {
         event.dataItem[event.target.props.expandField] = event.value;
         this.forceUpdate();
     };
-
-    handleGridRowClick1 = (e) => {
-        window.scrollTo(0, 0);
-        this.setState({
-            windowVisible: true,
-            gridClickedRow: e.dataItem
-        });
-        fetch(this.productDetailsUrl + e.dataItem.itemRow, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ productDetailData: json.Data }));
-        fetch(this.tabsUrl + e.dataItem.itemRow, this.init)
-            .then(response => response.json())
-            .then(json => this.setState({ productDetailDataTab: json.Data }));
-        history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
-    }
-
 
     updateURL = () => {
         let page = Math.round(this.state.dataState.skip)
@@ -179,7 +169,28 @@ class FilterGrid extends React.Component {
         });
     }
 
+    // Filters for the Item - http://10.92.48.29:9002/api/FilterSet/Details/?query=Gauges&custId=000000
+    //this fetch call needs to happen one time when drawer is toggled
+    toggleDrawer = () => {
 
+        //if state.filterset is empty or if it = prevState.filterSet
+        //axios fetch w/promis tracker HERE
+        //toggle drawer show loading div with promise tracker
+
+        // 'http://10.92.48.29:9002/api/FilterSet/Details/?query=' + this.props.cat + '&custId=000000'
+        // if (!this.state.ItemsWithFilters) {
+        //     if (this.state.ItemsWithFilters )
+        // }
+
+
+        if (this.state.left === false) {
+            this.setState({ left: true });
+        }
+        if (this.state.left === true) {
+            this.setState({ left: false });
+        }
+
+    }
     componentDidMount = async () => {
 
         window.addEventListener("popstate", this.props.urlAction());
@@ -188,14 +199,37 @@ class FilterGrid extends React.Component {
             .then(response => response.json())
             .then(json => this.setState({ filterSet: json.Data }));
 
+
         if (this.props.urlQuery.skip !== '0') {
             this.setState({
                 dataState: { skip: this.props.urlQuery.skip, take: 10 }
             });
         }
 
+
+
+
         const filterResponse = await axios.get(this.ItemsWithFiltersUrl + this.props.cat + '&custId=000000', { headers: {} });
         this.setState({ ItemsWithFilters: filterResponse.data.Data });
+    
+
+
+        //this should happen in componentDidMount because we dont have products yet
+
+        // let skus = this.state.ItemsWithFilters.map((element) => {
+        //     let filterSku = { ...element, filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value[0] === 'Sahara') };
+        //     if (filterSku.filterSetFilter.length > 0) {
+        //        // console.log(filterSku.itemRow);
+        //     }
+            
+        //     return filterSku;
+        // })
+        // let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
+        // this.setState({ filteredSkus: activeFilterSkuArrayFinal});
+      
+     
+
+
 
         this.props.urlQuery.query = "";
 
@@ -212,57 +246,82 @@ class FilterGrid extends React.Component {
                 .then(json => this.setState({ productDetailDataTab: json.Data }));
         }
     }
-
-
-    //I need to pass in separate arrays or separate arrays with lodash -> then create separate filter foreach type
-    //also ensure only one filter of each type can be selected at a time
-
-    //could try using join() with && as separator 
-    onFilterSelect = term => {
-        let termArray = [...term];
+    handleGridRowClick1 = (e) => {
+        window.scrollTo(0, 0);
         this.setState({
-            filtering: true,
-            filterCollapse: true,
-            showFilteredData: true,
-            terms: termArray
+            windowVisible: true,
+            gridClickedRow: e.dataItem
         });
+        fetch(this.productDetailsUrl + e.dataItem.itemRow, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ productDetailData: json.Data }));
+        fetch(this.tabsUrl + e.dataItem.itemRow, this.init)
+            .then(response => response.json())
+            .then(json => this.setState({ productDetailDataTab: json.Data }));
+        history.push("/sierra/details/api/SimpleSearch/GetProducts/?itemRow=" + e.dataItem.itemRow);
     }
 
     
+
+
+
+    onFilterSelect = term => {
+   
+    let skus = this.state.ItemsWithFilters.map((element) => {
+        let filterSku = { ...element, filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value[0] === 'Sahara') };
+        return filterSku;
+    });
+
+    let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
+    this.setState({ filteredSkus: activeFilterSkuArrayFinal});
+
+    //console.log(this.state.products);
+    let proItemRows = this.state.products.data.data.map(data => data.itemRow);
+    
+    console.log(activeFilterSkuArrayFinal);
+    console.log(proItemRows);
+
+    //------------------------------------------------------------------------------------------------------------
+    //proItemRow is just one page of products ->
+    //FIRST you neeed to get this array to include all pages
+        //-this means you have to move the process() method in the loader to happen after the filtering
+    //SECOND you need to use includes or INDEX OF to compare one array to another -> filteredSkus to proItemRows
+
+    //var profiltered = this.state.products.data.data.filter(item => this.state.filteredSkus.includes(item.itemRow).map(items => items.itemRow));
+    //.console.log(profiltered);
+    //------------------------------------------------------------------------------------------------------------
+
+
+    //Term is working
+    console.log(term);
+    }
+
+
+
+
+
+
+
+
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
             console.log("prevProps " + prevProps.urlQuery.skip);
             this.setState({ dataState: { take: 10, skip: parseInt(this.props.urlQuery.skip) } });
         }
-        if (prevState.terms !== this.state.terms) {
-            let filterSku;
-            let skus = this.state.ItemsWithFilters.map((element) => {
-                filterSku = {
-                    ...element,
-                    filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value.some( r => this.state.terms.includes(r)))
-                };
-
-                return filterSku;
-            });
-            let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
-            this.setState({ filteredSkus: activeFilterSkuArrayFinal });
-            var profiltered = this.state.products.data.filter(item => activeFilterSkuArrayFinal.includes(item.itemRow));
-            this.setState({ filteredProducts: { data: profiltered, total: profiltered.length } });
-            console.log("filterGrid updated");
-
-        }
-        
     }
 
     render() {
+
         var columnsToShow = this.state.columns.map((column, index) => {
             return <Column field={column.field} title={column.title} key={index} width={column.width} cell={column.cell} />;
         })
 
+
         return (
             <div className="searchGrid">
                 <div className={this.props.activeSearch ? 'activeToggle' : 'hiddenToggle'}>
-                    <Button className="k-button" onClick={this.toggleDrawer}><span>{this.props.cat}</span>&nbsp;  Filter</Button>
+                    <Button className="k-button" onClick={this.toggleDrawer}>Gauge Filter</Button>
                     <Button className="k-button" onClick={() => { this.setState({ dataState: { take: 10, skip: 0 } }); }}>Clear grid</Button>
                 </div>
                 <div>
@@ -274,15 +333,13 @@ class FilterGrid extends React.Component {
                             pageable={true}
                             resizable={true}
                             take={this.state.dataState.take}
-                            {...this.state.products}
+                            total={this.state.products.total}
                             {...this.state.dataState}
-
-                            data={this.state.showFilteredData ? process(this.state.filteredProducts.data, this.state.dataState) : process(this.state.products.data, this.state.dataState)}
+                            {...this.state.products}
                             onChange={this.props.action}
                             onDataStateChange={this.dataStateChange}
                             onRowClick={this.handleGridRowClick1}
                             filterable={true}
-                            pagesize={10}
                             sortable={true}>
                             {columnsToShow}
                         </Grid>
@@ -403,7 +460,6 @@ class FilterGrid extends React.Component {
                     action={this.props.action}
                     filterSearch={this.props.urlQuery.category ? true : this.props.filterSearch}
                     cat={this.props.cat}
-                    filtering={this.state.filtering}
                     myLocation={this.props.myLocation}
                     advancedSearchType={this.props.advancedSearchType}
                 />

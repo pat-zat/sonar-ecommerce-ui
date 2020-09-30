@@ -214,10 +214,9 @@ class FilterGrid extends React.Component {
     }
 
 
-    //I need to pass in separate arrays or separate arrays with lodash -> then create separate filter foreach type
-    //also ensure only one filter of each type can be selected at a time
+    // I just need to trigger the filter every time a new filter is added to the array. I believe what I need to do is actually return a new array.
 
-    //could try using join() with && as separator 
+
     onFilterSelect = term => {
         let termArray = [...term];
         this.setState({
@@ -226,9 +225,14 @@ class FilterGrid extends React.Component {
             showFilteredData: true,
             terms: termArray
         });
+      
     }
 
-    
+
+  
+
+
+
     componentDidUpdate(prevProps, prevState) {
         if (this.props.urlQuery.skip !== prevProps.urlQuery.skip) {
             console.log("prevProps " + prevProps.urlQuery.skip);
@@ -241,11 +245,12 @@ class FilterGrid extends React.Component {
                     ...element,
                     filterSetFilter: element.filterSetFilter.filter((filterSetFilter) => filterSetFilter.value.some( r => this.state.terms.includes(r)))
                 };
-
+                //console.log(filterSku);
                 return filterSku;
             });
             let activeFilterSkuArrayFinal = skus.filter(sku => sku.filterSetFilter.length > 0).map(fSku => fSku.itemRow);
             this.setState({ filteredSkus: activeFilterSkuArrayFinal });
+            //let proItemRows = this.state.products.data.map(data => data);
             var profiltered = this.state.products.data.filter(item => activeFilterSkuArrayFinal.includes(item.itemRow));
             this.setState({ filteredProducts: { data: profiltered, total: profiltered.length } });
             console.log("filterGrid updated");

@@ -13,36 +13,39 @@ export class FilterLoader extends React.Component {
     lastSuccess = '';
     pending = '';
     requestDataIfNeeded = () => {
+    if (this.props.filtering === false) {
         if (this.props.filterSearch === true && this.props.advancedSearchType === "filter") {
-        if ((this.pending || JSON.stringify(this.props.dataState) === this.lastSuccess)) {
-            console.log("request returned");
-            return;
-        }
-
-        this.pending = JSON.stringify(this.props.dataState);
-        if (this.props.searchingForCats === true) {
-                console.log("cats ran " + this.props.cat);
-                fetch(this.catsUrl + this.props.cat + '&custId=000000', this.init)
-                .then(response => response.json())
-                .then(json => {
-                    this.lastSuccess = this.pending;             
-                    this.pending = '';
+            if ((this.pending || JSON.stringify(this.props.dataState) === this.lastSuccess)) {
+                console.log("request returned");
+                return;
+            }
+    
+            this.pending = JSON.stringify(this.props.dataState);
+            if (this.props.searchingForCats === true) {
+                    console.log("cats ran " + this.props.cat);
+                    fetch(this.catsUrl + this.props.cat + '&custId=000000', this.init)
+                    .then(response => response.json())
+                    .then(json => {
+                        this.lastSuccess = this.pending;             
+                        this.pending = '';
+            
+                        if (JSON.stringify(this.props.dataState) === this.lastSuccess) {
+                            this.props.onDataRecieved.call(undefined, {
+                                data: json.Data,
+                                total: json['@odata.count']
+                            });
+                            this.lastSuccess = '';
+                        } else {
+                            this.requestDataIfNeeded();
+                        }
+                    });  
+                }        
+            }
+            else {
+                return;
+            }
+    }
         
-                    if (JSON.stringify(this.props.dataState) === this.lastSuccess) {
-                        this.props.onDataRecieved.call(undefined, {
-                            data: process(json.Data, this.props.dataState),
-                            total: json['@odata.count']
-                        });
-                        this.lastSuccess = '';
-                    } else {
-                        this.requestDataIfNeeded();
-                    }
-                });  
-            }        
-        }
-        else {
-            return;
-        }
     }
 
     render() {
